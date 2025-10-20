@@ -31,12 +31,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "CLAUDE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "CLAUDE"
             }
           }
         ]
@@ -186,12 +186,14 @@
   },
   "active": "2338fd467724e071",
   "lastOpenFiles": [
+    "obsidian/getting-started.md",
+    "README.md",
+    "main.py",
     "whiteboard/janitor/02-error-Untitled.canvas.md",
     "whiteboard/janitor/01-error-2025-10-21.md",
     "README.md.tmp.41484.1761003012141",
     "README.md.tmp.41484.1761002963454",
     "index/Untitled.canvas.md",
-    "main.py",
     "Untitled.canvas",
     "2025-10-21.md",
     "obsidian/architecture-overview.md",
@@ -220,8 +222,6 @@
     "obsidian/tag-inheritance.md",
     "ast-cache/code/operations/log.ast.md",
     "obsidian/arithmetic-operations.md",
-    "obsidian/graph-metrics-system.md",
-    "whiteboard/graph-metrics.md",
-    "ast-cache/code/test_calculator/TestCalculatorInteractive.test_interactive_quit.ast.md"
+    "obsidian/graph-metrics-system.md"
   ]
 }

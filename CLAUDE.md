@@ -293,5 +293,6 @@ This system creates:
 - Wikilinks create semantic relationships
 - Tags enable multiple views of the same content
 - Navigate from "why" to "how" to "what" seamlessly
+- Creates a flexible taxonomy for the AI where it can navigate based on context
 
 The filesystem structure is minimal; tags and links provide the organization.
