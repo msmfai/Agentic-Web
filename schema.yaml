@@ -118,3 +118,62 @@ markdown-auto-generated:
   required_tags:
     - "type/index"
     - "auto-generated"
+
+---
+# Tag Hierarchy Guidelines
+# These are recommendations for subdividing tags as the codebase grows
+
+tag-hierarchies:
+  # Domain tags - what area of functionality
+  domain:
+    mathematics:
+      - "domain/mathematics"              # Parent tag (always include)
+      - "domain/mathematics/arithmetic"   # Basic operations: +, -, *, /, !
+      - "domain/mathematics/trigonometry" # Trig functions: sin, cos, tan, asin, acos, atan
+      - "domain/mathematics/exponential"  # Exp/log: exp, ln, log10, log, power, sqrt, cbrt
+
+    testing:
+      - "domain/testing"                  # Parent tag (always include)
+      - "domain/testing/unit"             # Unit tests for individual functions/classes
+      - "domain/testing/integration"      # Integration tests for component interaction
+
+    ui:
+      - "domain/ui"                       # User interface code
+
+    automation:
+      - "domain/automation"               # Infrastructure and build scripts
+
+  # Layer tags - architectural layer
+  layer:
+    - "layer/core"                        # Core business logic / domain layer
+    - "layer/domain"                      # Domain-specific implementations
+    - "layer/interface"                   # User-facing interfaces
+    - "layer/application"                 # Application orchestration
+    - "layer/infrastructure"              # Build, deployment, tooling
+    - "layer/test"                        # Test code
+
+  # Pattern tags - design patterns in use
+  pattern:
+    strategy:
+      - "pattern/strategy"                # Parent tag (always include)
+      - "pattern/strategy/function-registry" # Dictionary-based function lookup
+      - "pattern/strategy/delegation"     # Delegating to other components
+
+  # Category tags - cross-cutting concerns
+  category:
+    - "category/unit-test"                # Unit testing
+    - "category/code-generation"          # Code generation tools
+    - "category/indexing"                 # Indexing and cataloging
+    - "category/analytics"                # Metrics and analysis
+    - "category/validation"               # Validation and health checks
+    - "category/orchestration"            # Workflow orchestration
+    - "category/best-practices"           # Best practice documentation
+    - "category/behavioral"               # Behavioral design patterns
+    - "category/solid-principles"         # SOLID principles
+
+# Tagging Best Practices:
+# 1. Always include parent tags when using hierarchical tags
+#    Example: #domain/mathematics #domain/mathematics/arithmetic
+# 2. Use hierarchical tags to enable both broad and narrow searches
+# 3. When a tag category reaches 15+ files, consider subdivision
+# 4. AST cache files inherit all tags from their source files

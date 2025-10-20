@@ -1,7 +1,7 @@
 """
 # Operations Module Tests
 
-**Tags**: #type/code-file #domain/testing #layer/test #category/unit-test
+**Tags**: #type/code-file #domain/testing #domain/testing/unit #layer/test #category/unit-test #domain/mathematics
 
 ## Purpose
 Unit tests for the operations module.

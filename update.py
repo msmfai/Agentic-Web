@@ -7,11 +7,13 @@
 ## Purpose
 Run all repository maintenance tasks in the correct order.
 
-This script runs:
-1. Generate AST cache (from Python source files)
-2. Generate tag indices (repository-map and tag-index)
-3. Generate graph metrics (knowledge graph health analysis)
-4. Run janitor health checks
+This script orchestrates the complete repository update workflow:
+1. [[generate_ast.py|Generate AST cache]] (from Python source files)
+2. [[generate_tags.py|Generate tag indices]] (repository-map and tag-index)
+3. [[graph_metrics.py|Generate graph metrics]] (knowledge graph health analysis)
+4. [[janitor.py|Run janitor health checks]]
+
+See also: [[obsidian/graph-metrics-system|Graph Metrics System]]
 
 Usage:
     python update.py

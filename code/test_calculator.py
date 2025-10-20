@@ -1,7 +1,7 @@
 """
 # Calculator Class Tests
 
-**Tags**: #type/code-file #domain/testing #layer/test #category/unit-test
+**Tags**: #type/code-file #domain/testing #domain/testing/integration #layer/test #category/unit-test #domain/ui
 
 ## Purpose
 Unit tests for the Calculator class.

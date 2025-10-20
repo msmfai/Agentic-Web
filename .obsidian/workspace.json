@@ -31,12 +31,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "obsidian/arithmetic-operations.md",
+                "file": "ast-cache/code/operations/log.ast.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "arithmetic-operations"
+              "title": "log.ast"
             }
           }
         ]
@@ -71,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#ast-type/method",
+                "query": "tag:#domain/mathematics/trigonometry",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -187,19 +187,20 @@
   },
   "active": "5f83866c1c58f804",
   "lastOpenFiles": [
-    "obsidian/arithmetic-operations.md",
-    "obsidian/graph-metrics-system.md",
-    "obsidian/graph-metrics-system.md.tmp.4840.1760998965209",
+    "code/operations.py.tmp.39868.1760999559488",
     "ast-cache/code/operations/log.ast.md",
-    "graph_metrics.py.tmp.4840.1760998888436",
-    "graph_metrics.py.tmp.4840.1760998817742",
-    "__pycache__/graph_metrics.cpython-312.pyc",
-    "__pycache__",
-    "main.py.tmp.4840.1760998782519",
-    "update.py.tmp.4840.1760998771959",
-    "janitor.py.tmp.4840.1760998762752",
-    "graph_metrics.py.tmp.4840.1760998751163",
-    "generate_tags.py.tmp.4840.1760998742136",
+    "obsidian/arithmetic-operations.md",
+    "schema.yaml.tmp.39868.1760999444625",
+    "code/operations.py.tmp.39868.1760999415916",
+    "code/calculator.py.tmp.39868.1760999409973",
+    "code/test_operations.py.tmp.39868.1760999401470",
+    "code/test_calculator.py.tmp.39868.1760999394972",
+    "code/operations.py.tmp.39868.1760999369991",
+    "generate_ast.py.tmp.39868.1760999271573",
+    "generate_ast.py.tmp.39868.1760999238319",
+    "update.py.tmp.39868.1760999096240",
+    "README.md.tmp.39868.1760999080906",
+    "obsidian/graph-metrics-system.md",
     "whiteboard/graph-metrics.md",
     "ast-cache/code/test_calculator/TestCalculatorInteractive.test_interactive_quit.ast.md",
     "ast-cache/code/test_operations/TestTrigonometric.test_tan.ast.md",
@@ -221,7 +222,6 @@
     "ast-cache/code/test_operations/TestOperationRegistries.test_operations_registry.ast.md",
     "ast-cache/code/test_operations/TestOperationRegistries.test_operations_functionality.ast.md",
     "ast-cache/code/test_operations/TestOperationRegistries.ast.md",
-    "ast-cache/code/test_operations/TestFactorial.test_factorial_positive.ast.md",
-    "ast-cache/code/test_operations/TestFactorial.test_factorial_non_integer.ast.md"
+    "ast-cache/code/test_operations/TestFactorial.test_factorial_positive.ast.md"
   ]
 }

@@ -10,18 +10,25 @@ tags:
   - category/analytics
   - category/behavioral
   - category/best-practices
+  - category/mixed-concerns
   - category/solid-principles
   - category/unit-test
   - category/validation
   - domain/automation
   - domain/mathematics
   - domain/testing
+  - domain/testing/integration
+  - domain/testing/unit
   - domain/ui
+  - layer/application
   - layer/core
+  - layer/domain
   - layer/entry-point
   - layer/interface
   - layer/test
   - pattern/strategy
+  - pattern/strategy/delegation
+  - pattern/strategy/function-registry
   - purpose/llm-instructions
   - status/deprecated
   - type/ast-node
@@ -36,13 +43,13 @@ tags:
 
 **Auto-generated - do not edit manually**
 
-**Last Updated**: 2025-10-20 23:23:28
+**Last Updated**: 2025-10-20 23:32:47
 
 This file lists every tag currently in use across the repository.
 
 ## Summary
 
-- Total unique tags: 27
+- Total unique tags: 34
 - Total files: 132
 
 ## Type Tags
@@ -57,13 +64,17 @@ This file lists every tag currently in use across the repository.
 ## Domain Tags
 
 - `#domain/automation` (2 files)
-- `#domain/mathematics` (26 files)
+- `#domain/mathematics` (70 files)
 - `#domain/testing` (84 files)
-- `#domain/ui` (10 files)
+- `#domain/testing/integration` (39 files)
+- `#domain/testing/unit` (44 files)
+- `#domain/ui` (49 files)
 
 ## Layer Tags
 
+- `#layer/application` (5 files)
 - `#layer/core` (26 files)
+- `#layer/domain` (25 files)
 - `#layer/entry-point` (3 files)
 - `#layer/interface` (7 files)
 - `#layer/test` (83 files)
@@ -71,12 +82,15 @@ This file lists every tag currently in use across the repository.
 ## Pattern Tags
 
 - `#pattern/strategy` (30 files)
+- `#pattern/strategy/delegation` (5 files)
+- `#pattern/strategy/function-registry` (25 files)
 
 ## Category Tags
 
 - `#category/analytics` (1 files)
 - `#category/behavioral` (1 files)
 - `#category/best-practices` (2 files)
+- `#category/mixed-concerns` (25 files)
 - `#category/solid-principles` (1 files)
 - `#category/unit-test` (83 files)
 - `#category/validation` (1 files)

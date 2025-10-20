@@ -1,7 +1,7 @@
 """
 # Calculator Class
 
-**Tags**: #type/code-file #domain/ui #layer/interface #pattern/strategy
+**Tags**: #type/code-file #domain/ui #layer/interface #layer/application #pattern/strategy #pattern/strategy/delegation
 
 ## Purpose
 Provides user interface for calculator operations.
