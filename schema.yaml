@@ -1,6 +1,7 @@
 # Repository Schema Definition
-# This file defines the frontmatter and tag requirements for all file types
-# Janitor reads this file to validate repository health
+# This file defines the SCAFFOLD frontmatter and tag requirements (project-agnostic)
+# For PROJECT-SPECIFIC tag rules, see project_config/tag_rules.yaml
+# Janitor reads both files to validate repository health
 
 # Python Code Files (.py in code/)
 python:
@@ -125,8 +126,9 @@ markdown-auto-generated:
     - "auto-generated"
 
 ---
-# Tag Hierarchy Guidelines
+# Tag Hierarchy Guidelines (SCAFFOLD DEFAULTS)
 # These are recommendations for subdividing tags as the codebase grows
+# Add project-specific tags in project_config/tag_rules.yaml
 
 tag-hierarchies:
   # Domain tags - what area of functionality

@@ -31,12 +31,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CLAUDE.md",
+                "file": "ast-cache/code/test_operations/TestPowerOperations.test_power.ast.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CLAUDE"
+              "title": "TestPowerOperations.test_power.ast"
             }
           }
         ]
@@ -186,22 +186,27 @@
   },
   "active": "5f83866c1c58f804",
   "lastOpenFiles": [
-    "maintenance_scripts/janitor.py.tmp.41484.1761003628910",
-    "maintenance_scripts/graph_metrics.py.tmp.41484.1761003619496",
-    "maintenance_scripts/generate_tags.py.tmp.41484.1761003610091",
-    "maintenance_scripts/generate_ast.py.tmp.41484.1761003599635",
-    "maintenance_scripts/add_location_tags.py.tmp.41484.1761003589576",
+    "maintenance_scripts/janitor.py.tmp.41484.1761004636759",
+    "maintenance_scripts/generate_tags.py.tmp.41484.1761004621067",
+    "ast-cache/code/test_operations/TestPowerOperations.test_power.ast.md",
+    "maintenance_scripts/generate_tags.py.tmp.41484.1761004493227",
+    "whiteboard/janitor/01-error-tag-index.md",
+    "maintenance_scripts/janitor.py.tmp.41484.1761004413385",
+    "whiteboard/janitor/02-error-getting-started.md",
+    "whiteboard/janitor/01-error-README.md",
+    "obsidian/getting-started.md.tmp.41484.1761004372010",
+    "README.md.tmp.41484.1761004359879",
+    "schema.yaml.tmp.41484.1761004332424",
+    "schema.yaml.tmp.41484.1761004325530",
+    "project_config/README.md.tmp.41484.1761004301299",
+    "maintenance_scripts/janitor.py.tmp.41484.1761004286379",
+    "maintenance_scripts/janitor.py.tmp.41484.1761004262021",
+    "project_config/README.md",
     "maintenance_scripts/whiteboard/janitor/00-summary.md",
-    "maintenance_scripts/whiteboard/janitor",
     "maintenance_scripts/whiteboard/graph-metrics.md",
-    "maintenance_scripts/whiteboard",
     "maintenance_scripts/index/tag-index.md",
     "maintenance_scripts/index/repository-map.md",
-    "maintenance_scripts/index",
-    "maintenance_scripts/ast-cache",
     "CLAUDE.md",
-    "obsidian/architecture-overview.md.tmp.41484.1761003545653",
-    "obsidian/architecture-overview.md.tmp.41484.1761003537674",
     "obsidian/getting-started.md",
     "README.md",
     "whiteboard/janitor/02-error-Untitled.canvas.md",
@@ -217,11 +222,6 @@
     "whiteboard/janitor/11-error-Calculator.ast.md",
     "whiteboard/janitor/10-error-Calculator.ast.md",
     "whiteboard/janitor/09-error-testing-strategy.md",
-    "whiteboard/janitor/08-error-testing-strategy.md",
-    "whiteboard/janitor/07-error-testing-strategy.md",
-    "whiteboard/janitor/06-error-testing-strategy.md",
-    "whiteboard/janitor/05-error-test_operations.md",
-    "whiteboard/janitor/04-error-test_calculator.md",
-    "whiteboard/janitor/03-error-operations.md"
+    "whiteboard/janitor/08-error-testing-strategy.md"
   ]
 }

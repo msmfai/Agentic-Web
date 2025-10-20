@@ -1,7 +1,9 @@
 ---
 tags:
   - type/index
+  - type/entry-point
   - purpose/human-entry-point
+audience: developers, users, contributors
 ---
 
 # Code as Knowledge Graph

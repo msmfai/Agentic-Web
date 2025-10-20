@@ -48,8 +48,14 @@ class RepositoryJanitor:
         self.block_markers: Dict[str, Tuple[Path, int]] = {}  # marker -> (file, lineno)
         self.block_marker_references: List[Tuple[Path, int, str]] = []  # (file, line, marker)
 
-        # Load schema from schema.yaml
+        # Track all wikilinks for link restriction validation
+        self.file_links: Dict[Path, List[Tuple[Path, int]]] = {}  # source -> [(target, lineno), ...]
+
+        # Load schema from schema.yaml (scaffold base types)
         self.schema = self._load_schema()
+
+        # Load project-specific tag rules from project_config/tag_rules.yaml
+        self.project_tag_rules = self._load_project_tag_rules()
 
     def _load_schema(self) -> Dict[str, Any]:
         """Load schema from schema.yaml file."""
@@ -73,6 +79,22 @@ class RepositoryJanitor:
                 return combined
         except Exception as e:
             print(f"ERROR: Failed to load schema.yaml: {e}")
+            return {}
+
+    def _load_project_tag_rules(self) -> Dict[str, Any]:
+        """Load user-defined tag rules from project_config/tag_rules.yaml"""
+        rules_file = self.vault_path / "project_config" / "tag_rules.yaml"
+
+        if not rules_file.exists():
+            # No project tag rules is fine - it's optional
+            return {}
+
+        try:
+            with open(rules_file, 'r', encoding='utf-8') as f:
+                rules = yaml.safe_load(f)
+                return rules or {}
+        except Exception as e:
+            print(f"WARNING: Failed to load project tag rules: {e}")
             return {}
 
     # ==================== SCHEMA DEFINITIONS ====================
@@ -125,7 +147,7 @@ Brief description
     # ==================== PARSING UTILITIES ====================
 
     def parse_frontmatter(self, content: str) -> Tuple[Optional[Dict], str]:
-        """Extract YAML frontmatter and return (frontmatter_dict, remaining_content, format_issues)."""
+        """Extract YAML frontmatter and return (frontmatter_dict, remaining_content)."""
         match = re.match(r'^---\s*\n(.*?)\n---\s*\n(.*)$', content, re.DOTALL)
         if not match:
             return None, content
@@ -133,24 +155,19 @@ Brief description
         yaml_content = match.group(1)
         remaining = match.group(2)
 
-        frontmatter = {}
+        # Use yaml.safe_load to parse all YAML properties properly
+        try:
+            frontmatter = yaml.safe_load(yaml_content) or {}
+        except Exception:
+            # Fall back to old regex-based parsing if YAML parsing fails
+            frontmatter = {}
 
-        # Parse tags - support both inline array and YAML list format
-        # Inline array format: tags: [tag1, tag2, tag3]
-        tags_match_inline = re.search(r'tags:\s*\[(.*?)\]', yaml_content)
-        if tags_match_inline:
-            tags_str = tags_match_inline.group(1)
-            tags = [t.strip().strip('"').strip("'") for t in tags_str.split(',')]
-            frontmatter['tags'] = tags
-            frontmatter['_tag_format'] = 'inline'  # Track format for validation
-        else:
-            # YAML list format: tags:\n  - tag1\n  - tag2
-            tags_match_list = re.search(r'tags:\s*\n((?:\s+-\s+.+\n?)+)', yaml_content)
-            if tags_match_list:
-                tags_str = tags_match_list.group(1)
-                tags = [line.strip().lstrip('-').strip() for line in tags_str.strip().split('\n')]
-                frontmatter['tags'] = tags
-                frontmatter['_tag_format'] = 'yaml-list'  # Track format for validation
+        # Track tag format for validation
+        yaml_content_check = yaml_content.replace('\n', ' ')
+        if 'tags: [' in yaml_content_check or 'tags:[' in yaml_content_check:
+            frontmatter['_tag_format'] = 'inline'
+        elif 'tags:\n' in yaml_content or 'tags: \n' in yaml_content:
+            frontmatter['_tag_format'] = 'yaml-list'
 
         return frontmatter, remaining
 
@@ -548,6 +565,49 @@ Brief description
                         auto_fix_fn=lambda tag=required_tag: self.fix_add_tag(filepath, tag)
                     ))
 
+        # NEW: Validate project-specific tag property requirements
+        self.validate_tag_properties(filepath, frontmatter)
+
+    def validate_tag_properties(self, filepath: Path, frontmatter: dict) -> None:
+        """Validate that files with project-defined tags have required properties."""
+        tags = set(frontmatter.get('tags', []))
+
+        # Skip project tag validation for auto-generated files
+        # These files may have many tags for graph purposes but aren't "real" instances of those tags
+        if 'auto-generated' in tags:
+            return
+
+        # Check each project-defined tag rule
+        for rule_name, rule_config in self.project_tag_rules.items():
+            required_tag = rule_config.get('tag')
+
+            if required_tag in tags:
+                enforcement = rule_config.get('enforcement', 'warning')
+
+                # Validate required properties exist
+                for prop in rule_config.get('required_properties', []):
+                    if prop not in frontmatter:
+                        self.issues.append(Issue(
+                            filepath=filepath,
+                            severity=enforcement,
+                            message=f"Tag '{required_tag}' requires property '{prop}' in frontmatter",
+                            fix_available=True,
+                            fix_description=f"Add '{prop}: FIXME' to frontmatter",
+                            auto_fix_fn=lambda p=prop: self.fix_add_property(filepath, p, 'FIXME')
+                        ))
+
+                # Validate property patterns (if defined)
+                for prop, pattern in rule_config.get('property_patterns', {}).items():
+                    if prop in frontmatter:
+                        value = str(frontmatter[prop])
+                        if not re.match(pattern, value):
+                            self.issues.append(Issue(
+                                filepath=filepath,
+                                severity=enforcement,
+                                message=f"Property '{prop}' value '{value}' doesn't match required pattern: {pattern}",
+                                fix_available=False
+                            ))
+
     # ==================== FIX FUNCTIONS ====================
 
     def fix_add_python_docstring(self, filepath: Path) -> bool:
@@ -634,6 +694,27 @@ tags: [type/FIXME]
 
 '''
         new_content = frontmatter + content
+        filepath.write_text(new_content, encoding='utf-8')
+        return True
+
+    def fix_add_property(self, filepath: Path, property_name: str, default_value: str) -> bool:
+        """Add a missing property to YAML frontmatter."""
+        content = filepath.read_text(encoding='utf-8')
+
+        if not content.startswith('---'):
+            return False
+
+        parts = content.split('---', 2)
+        if len(parts) < 3:
+            return False
+
+        fm_content = parts[1]
+        body = parts[2]
+
+        # Add property to frontmatter (YAML format)
+        new_fm = fm_content.rstrip() + f"\n{property_name}: {default_value}\n"
+        new_content = f"---{new_fm}---{body}"
+
         filepath.write_text(new_content, encoding='utf-8')
         return True
 

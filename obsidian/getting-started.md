@@ -1,8 +1,10 @@
 ---
 tags:
   - type/guide
+  - type/entry-point
   - purpose/onboarding
   - category/tutorial
+audience: new users, beginners
 ---
 
 # Getting Started with the Knowledge Graph

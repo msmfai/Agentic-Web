@@ -1,0 +1,55 @@
+# Project-Specific Tag Property Rules
+#
+# This file defines YOUR project's custom tag requirements.
+# Rules here must be PROGRAMMATICALLY VERIFIABLE by the janitor (a deterministic linter).
+#
+# The janitor validates:
+# - Required frontmatter properties exist
+# - Link restrictions are enforced
+# - Property values match expected patterns (regex)
+#
+# It does NOT validate:
+# - Semantic correctness (e.g., "is this tutorial well-written?")
+# - Content quality
+# - Human judgment calls
+
+# Entry Point Tag - Main entry points to documentation/codebase
+entry-point:
+  tag: "type/entry-point"
+  description: "Main entry points that users start from (README, getting-started, etc.)"
+
+  required_properties:
+    - audience       # Must exist (string value)
+
+  link_restrictions:
+    # Entry points can ONLY be linked from these tag types
+    allowed_inbound_tags:
+      - "type/entry-point"      # Other entry points
+      - "type/index"            # Index/map files
+
+    # Entry points can link to anything
+    allowed_outbound_tags: "*"
+
+  enforcement: "error"
+
+# ============================================================================
+# Add your own custom tags below!
+# ============================================================================
+#
+# Programmatically verifiable rules:
+# - required_properties: Property name must exist in frontmatter
+# - link_restrictions: Linking file must have one of the allowed tags
+# - property_pattern: Property value must match regex (optional)
+#
+# Example:
+#
+# my-tag:
+#   tag: "type/my-type"
+#   required_properties:
+#     - status              # Must have 'status' property
+#   property_patterns:      # Optional: validate property values
+#     status: "^(draft|published|archived)$"  # Must be one of these
+#   link_restrictions:
+#     allowed_inbound_tags:
+#       - "type/index"
+#   enforcement: "error"

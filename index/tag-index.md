@@ -12,6 +12,7 @@ tags:
   - category/best-practices
   - category/code-generation
   - category/mixed-concerns
+  - category/project-setup
   - category/reference
   - category/solid-principles
   - category/tutorial
@@ -38,6 +39,7 @@ tags:
   - pattern/strategy/delegation
   - pattern/strategy/function-registry
   - purpose/architecture
+  - purpose/configuration
   - purpose/human-entry-point
   - purpose/llm-instructions
   - purpose/onboarding
@@ -46,6 +48,7 @@ tags:
   - type/case-study
   - type/code-file
   - type/concept
+  - type/entry-point
   - type/guide
   - type/index
   - type/pattern
@@ -55,14 +58,14 @@ tags:
 
 **Auto-generated - do not edit manually**
 
-**Last Updated**: 2025-10-21 00:40:35
+**Last Updated**: 2025-10-21 00:57:50
 
 This file lists every tag currently in use across the repository.
 
 ## Summary
 
-- Total unique tags: 46
-- Total files: 136
+- Total unique tags: 49
+- Total files: 137
 
 ## Type Tags
 
@@ -70,7 +73,8 @@ This file lists every tag currently in use across the repository.
 - `#type/case-study` (1 files)
 - `#type/code-file` (1 files)
 - `#type/concept` (4 files)
-- `#type/guide` (2 files)
+- `#type/entry-point` (2 files)
+- `#type/guide` (3 files)
 - `#type/index` (3 files)
 - `#type/pattern` (4 files)
 
@@ -105,6 +109,7 @@ This file lists every tag currently in use across the repository.
 - `#category/best-practices` (3 files)
 - `#category/code-generation` (1 files)
 - `#category/mixed-concerns` (24 files)
+- `#category/project-setup` (1 files)
 - `#category/reference` (1 files)
 - `#category/solid-principles` (1 files)
 - `#category/tutorial` (1 files)
@@ -114,6 +119,7 @@ This file lists every tag currently in use across the repository.
 ## Purpose Tags
 
 - `#purpose/architecture` (1 files)
+- `#purpose/configuration` (1 files)
 - `#purpose/human-entry-point` (1 files)
 - `#purpose/llm-instructions` (1 files)
 - `#purpose/onboarding` (1 files)
