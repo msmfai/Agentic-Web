@@ -11,3 +11,6 @@ wheels/
 
 # Whiteboard - temporary working files, not maintainable
 whiteboard/
+
+# AST cache - generated from source
+ast-cache/

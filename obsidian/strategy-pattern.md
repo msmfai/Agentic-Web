@@ -1,5 +1,7 @@
 ---
-tags: [type/pattern, category/behavioral]
+tags:
+  - type/pattern
+  - category/behavioral
 ---
 
 # Strategy Pattern

@@ -1,5 +1,8 @@
 ---
-tags: [type/concept, domain/ui, layer/interface]
+tags:
+  - type/concept
+  - domain/ui
+  - layer/interface
 ---
 
 # Calculator Interface

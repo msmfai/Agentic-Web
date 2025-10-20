@@ -1,0 +1,120 @@
+# Repository Schema Definition
+# This file defines the frontmatter and tag requirements for all file types
+# Janitor reads this file to validate repository health
+
+# Python Code Files (.py in code/)
+python:
+  # Python files use custom markdown format (not YAML frontmatter)
+  # YAML frontmatter can't work because it must be first line, but Python requires """ first
+
+  template: |
+    """
+    # Module Name
+
+    **Tags**: #type/code-file #domain/* #layer/*
+
+    ## Purpose
+    Brief description of the module
+
+    ## Related Documentation
+    - Concept: [[../obsidian/concept-file|Display]]
+
+    ## Dependencies
+    - [[other-file.py|Display]]
+    """
+
+  required_tags:
+    - "type/code-file"
+
+---
+# Markdown Concept Files (.md in obsidian/)
+markdown-concept:
+  template: |
+    ---
+    tags:
+      - type/concept
+      - domain/*
+      - layer/*
+    ---
+
+    # Concept Name
+
+    Description of the concept...
+
+  required_tags:
+    - "type/concept"
+
+---
+# Markdown Pattern Files (.md in obsidian/)
+markdown-pattern:
+  template: |
+    ---
+    tags:
+      - type/pattern
+      - category/*
+    ---
+
+    # Pattern Name
+
+    Description of the pattern...
+
+  required_tags:
+    - "type/pattern"
+
+---
+# Index Files (README.md, CLAUDE.md, etc.)
+markdown-index:
+  template: |
+    ---
+    tags:
+      - type/index
+    ---
+
+    # Index Title
+
+    Content...
+
+  required_tags:
+    - "type/index"
+
+---
+# AST Cache Files (.ast.md in ast-cache/)
+ast-cache:
+  template: |
+    ---
+    tags:
+      - type/ast-node
+      - ast-type/function
+    source_file: ../../../code/file.py
+    block_marker: ^function-name
+    object_type: function
+    ---
+
+    # Object Name
+
+    **Source**: [[../../../code/file.py#^marker|Source]]
+
+  required_tags:
+    - "type/ast-node"
+
+---
+# Auto-Generated Repository Index Files
+markdown-auto-generated:
+  template: |
+    ---
+    tags:
+      - type/index
+      - purpose/project-state  # or purpose/tag-inventory
+      - auto-generated
+    ---
+
+    # File Title
+
+    **Auto-generated - do not edit manually**
+    **Last Updated**: YYYY-MM-DD HH:MM:SS
+
+    Content...
+
+  required_tags:
+    - "type/index"
+    - "auto-generated"

@@ -1,5 +1,6 @@
 ---
-tags: [type/index]
+tags:
+  - type/index
 ---
 
 # Calculator Knowledge Graph

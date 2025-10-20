@@ -1,5 +1,8 @@
 ---
-tags: [type/concept, domain/mathematics, layer/core]
+tags:
+  - type/concept
+  - domain/mathematics
+  - layer/core
 ---
 
 # Arithmetic Operations

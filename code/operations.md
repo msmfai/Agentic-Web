@@ -1,4 +1,5 @@
 ---
-tags: [type/FIXME]
+tags:
+  - type/index
 ---
 

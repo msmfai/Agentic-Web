@@ -16,8 +16,9 @@ Usage:
 import os
 import re
 import sys
+import yaml
 from pathlib import Path
-from typing import Dict, List, Set, Tuple, Optional
+from typing import Dict, List, Set, Tuple, Optional, Any
 from dataclasses import dataclass
 
 
@@ -38,6 +39,36 @@ class RepositoryJanitor:
     def __init__(self, vault_path: Path):
         self.vault_path = vault_path
         self.issues: List[Issue] = []
+        # Track all block markers across repository for reference validation
+        self.block_markers: Dict[str, Tuple[Path, int]] = {}  # marker -> (file, lineno)
+        self.block_marker_references: List[Tuple[Path, int, str]] = []  # (file, line, marker)
+
+        # Load schema from schema.yaml
+        self.schema = self._load_schema()
+
+    def _load_schema(self) -> Dict[str, Any]:
+        """Load schema from schema.yaml file."""
+        schema_file = self.vault_path / "schema.yaml"
+        if not schema_file.exists():
+            print(f"WARNING: schema.yaml not found at {schema_file}")
+            return {}
+
+        try:
+            with open(schema_file, 'r', encoding='utf-8') as f:
+                # YAML file has multiple documents separated by ---
+                # We need to load all of them
+                schema_docs = list(yaml.safe_load_all(f))
+
+                # Combine all documents into single dict
+                combined = {}
+                for doc in schema_docs:
+                    if doc:
+                        combined.update(doc)
+
+                return combined
+        except Exception as e:
+            print(f"ERROR: Failed to load schema.yaml: {e}")
+            return {}
 
     # ==================== SCHEMA DEFINITIONS ====================
 
@@ -70,11 +101,9 @@ class RepositoryJanitor:
 
     PYTHON_DOCSTRING_SCHEMA = """
 \"\"\"
----
-tags: [type/code-file, domain/*, layer/*]
----
-
 # Module Name
+
+**Tags**: #type/code-file #domain/* #layer/*
 
 ## Purpose
 Brief description
@@ -91,7 +120,7 @@ Brief description
     # ==================== PARSING UTILITIES ====================
 
     def parse_frontmatter(self, content: str) -> Tuple[Optional[Dict], str]:
-        """Extract YAML frontmatter and return (frontmatter_dict, remaining_content)."""
+        """Extract YAML frontmatter and return (frontmatter_dict, remaining_content, format_issues)."""
         match = re.match(r'^---\s*\n(.*?)\n---\s*\n(.*)$', content, re.DOTALL)
         if not match:
             return None, content
@@ -101,12 +130,22 @@ Brief description
 
         frontmatter = {}
 
-        # Parse tags
-        tags_match = re.search(r'tags:\s*\[(.*?)\]', yaml_content)
-        if tags_match:
-            tags_str = tags_match.group(1)
+        # Parse tags - support both inline array and YAML list format
+        # Inline array format: tags: [tag1, tag2, tag3]
+        tags_match_inline = re.search(r'tags:\s*\[(.*?)\]', yaml_content)
+        if tags_match_inline:
+            tags_str = tags_match_inline.group(1)
             tags = [t.strip().strip('"').strip("'") for t in tags_str.split(',')]
             frontmatter['tags'] = tags
+            frontmatter['_tag_format'] = 'inline'  # Track format for validation
+        else:
+            # YAML list format: tags:\n  - tag1\n  - tag2
+            tags_match_list = re.search(r'tags:\s*\n((?:\s+-\s+.+\n?)+)', yaml_content)
+            if tags_match_list:
+                tags_str = tags_match_list.group(1)
+                tags = [line.strip().lstrip('-').strip() for line in tags_str.strip().split('\n')]
+                frontmatter['tags'] = tags
+                frontmatter['_tag_format'] = 'yaml-list'  # Track format for validation
 
         return frontmatter, remaining
 
@@ -117,6 +156,203 @@ Brief description
         if match:
             return match.group(1)
         return None
+
+    def parse_python_custom_frontmatter(self, docstring: str) -> Tuple[Optional[Dict], str]:
+        """Parse custom frontmatter format for Python files.
+
+        Expected format:
+        # Module Name
+
+        **Tags**: #tag1 #tag2 #tag3
+
+        ## Purpose
+        Description...
+
+        Returns:
+            (frontmatter_dict, remaining_content)
+        """
+        frontmatter = {}
+
+        # Extract H1 module name
+        h1_match = re.search(r'^#\s+(.+)$', docstring, re.MULTILINE)
+        if h1_match:
+            frontmatter['module_name'] = h1_match.group(1).strip()
+
+        # Extract inline tags (format: **Tags**: #tag1 #tag2 #tag3)
+        tags_match = re.search(r'\*\*Tags\*\*:\s*(.+)$', docstring, re.MULTILINE)
+        if tags_match:
+            tags_line = tags_match.group(1)
+            # Extract all #hashtags
+            tags = re.findall(r'#([\w/-]+)', tags_line)
+            if tags:
+                frontmatter['tags'] = tags
+                frontmatter['_tag_format'] = 'inline-hashtags'
+
+        # Check for required sections
+        has_purpose = bool(re.search(r'^##\s+Purpose', docstring, re.MULTILINE))
+        frontmatter['has_purpose'] = has_purpose
+
+        return frontmatter, docstring
+
+    def validate_block_markers(self, filepath: Path, content: str) -> None:
+        """Validate Obsidian block reference markers in Python file.
+
+        Checks that:
+        - Every function/class/method/constant has a block marker (# ^name)
+        - Block marker naming is consistent with object name
+        - No duplicate block IDs in same file
+        - Collects all markers for cross-reference validation
+        """
+        import ast
+
+        try:
+            tree = ast.parse(content, filename=str(filepath))
+        except SyntaxError as e:
+            self.issues.append(Issue(
+                filepath=filepath,
+                severity='error',
+                message=f"Syntax error in Python file: {e}",
+                fix_available=False
+            ))
+            return
+
+        lines = content.split('\n')
+
+        # Extract all block markers from file (for duplicate detection and registry)
+        file_markers = {}
+        for lineno, line in enumerate(lines, 1):
+            marker_match = re.search(r'#\s*\^(\S+)', line)
+            if marker_match:
+                marker = marker_match.group(1)
+
+                # Check for duplicates within this file
+                if marker in file_markers:
+                    self.issues.append(Issue(
+                        filepath=filepath,
+                        severity='error',
+                        message=f"Duplicate block marker ^{marker} in same file (lines {file_markers[marker]} and {lineno})",
+                        fix_available=False
+                    ))
+                else:
+                    file_markers[marker] = lineno
+
+                    # Check for duplicates across entire repository
+                    if marker in self.block_markers:
+                        other_file, other_line = self.block_markers[marker]
+                        self.issues.append(Issue(
+                            filepath=filepath,
+                            severity='error',
+                            message=f"Duplicate block marker ^{marker} across repository. Also in {other_file}:{other_line}",
+                            fix_available=False
+                        ))
+                    else:
+                        # Register this marker globally
+                        self.block_markers[marker] = (filepath, lineno)
+
+        # Track which objects we've found to detect orphaned markers
+        expected_markers = set()
+
+        # Check all functions, classes, methods, and constants have markers
+        for node in ast.walk(tree):
+            if isinstance(node, ast.FunctionDef):
+                # Determine expected marker name
+                parent_class = None
+                for parent in ast.walk(tree):
+                    if isinstance(parent, ast.ClassDef):
+                        if node in parent.body:
+                            parent_class = parent.name
+                            break
+
+                if parent_class:
+                    expected_marker = f"{parent_class}-{node.name}"
+                    obj_desc = f"method {parent_class}.{node.name}"
+                else:
+                    expected_marker = node.name
+                    obj_desc = f"function {node.name}"
+
+                expected_markers.add(expected_marker)
+
+                # Check if marker exists on this line
+                if node.lineno <= len(lines):
+                    line = lines[node.lineno - 1]
+                    if f"# ^{expected_marker}" not in line:
+                        self.issues.append(Issue(
+                            filepath=filepath,
+                            severity='error',
+                            message=f"Missing block marker for {obj_desc} at line {node.lineno}. Expected: # ^{expected_marker}",
+                            fix_available=False
+                        ))
+                    else:
+                        # Verify the marker name is exactly correct
+                        marker_match = re.search(r'#\s*\^(\S+)', line)
+                        if marker_match:
+                            actual_marker = marker_match.group(1)
+                            if actual_marker != expected_marker:
+                                self.issues.append(Issue(
+                                    filepath=filepath,
+                                    severity='error',
+                                    message=f"Incorrect block marker for {obj_desc} at line {node.lineno}. Found ^{actual_marker}, expected ^{expected_marker}",
+                                    fix_available=False
+                                ))
+
+            elif isinstance(node, ast.ClassDef):
+                expected_marker = node.name
+                obj_desc = f"class {node.name}"
+                expected_markers.add(expected_marker)
+
+                # Check if marker exists on this line
+                if node.lineno <= len(lines):
+                    line = lines[node.lineno - 1]
+                    if f"# ^{expected_marker}" not in line:
+                        self.issues.append(Issue(
+                            filepath=filepath,
+                            severity='error',
+                            message=f"Missing block marker for {obj_desc} at line {node.lineno}. Expected: # ^{expected_marker}",
+                            fix_available=False
+                        ))
+                    else:
+                        # Verify the marker name is exactly correct
+                        marker_match = re.search(r'#\s*\^(\S+)', line)
+                        if marker_match:
+                            actual_marker = marker_match.group(1)
+                            if actual_marker != expected_marker:
+                                self.issues.append(Issue(
+                                    filepath=filepath,
+                                    severity='error',
+                                    message=f"Incorrect block marker for {obj_desc} at line {node.lineno}. Found ^{actual_marker}, expected ^{expected_marker}",
+                                    fix_available=False
+                                ))
+
+            elif isinstance(node, ast.Assign):
+                # Check module-level constants (ALL_CAPS)
+                for target in node.targets:
+                    if isinstance(target, ast.Name):
+                        name = target.id
+                        if name.isupper() and len(name) > 1:
+                            expected_marker = name
+                            obj_desc = f"constant {name}"
+                            expected_markers.add(expected_marker)
+
+                            # Check if marker exists on this line
+                            if node.lineno <= len(lines):
+                                line = lines[node.lineno - 1]
+                                if f"# ^{expected_marker}" not in line:
+                                    self.issues.append(Issue(
+                                        filepath=filepath,
+                                        severity='warning',
+                                        message=f"Missing block marker for {obj_desc} at line {node.lineno}. Expected: # ^{expected_marker}",
+                                        fix_available=False
+                                    ))
+
+        # Check for orphaned markers (markers that don't correspond to any object)
+        for marker in file_markers.keys():
+            if marker not in expected_markers:
+                self.issues.append(Issue(
+                    filepath=filepath,
+                    severity='warning',
+                    message=f"Orphaned block marker ^{marker} at line {file_markers[marker]} does not correspond to any function/class/constant",
+                    fix_available=False
+                ))
 
     # ==================== VALIDATION FUNCTIONS ====================
 
@@ -146,18 +382,44 @@ Brief description
             ))
             return
 
-        # Parse frontmatter from docstring
-        frontmatter, _ = self.parse_frontmatter(docstring)
+        # Parse custom frontmatter from docstring (Python-specific format)
+        frontmatter, _ = self.parse_python_custom_frontmatter(docstring)
         if not frontmatter:
             self.issues.append(Issue(
                 filepath=filepath,
                 severity='error',
-                message="Docstring missing YAML frontmatter",
-                fix_available=True,
-                fix_description="Add frontmatter to existing docstring",
-                auto_fix_fn=lambda: self.fix_add_frontmatter_to_docstring(filepath)
+                message="Docstring missing custom frontmatter (needs # Module Name and **Tags**: line)",
+                fix_available=False
             ))
             return
+
+        # Check for H1 module name
+        if not frontmatter.get('module_name'):
+            self.issues.append(Issue(
+                filepath=filepath,
+                severity='error',
+                message="Docstring missing H1 module name (# Module Name)",
+                fix_available=False
+            ))
+
+        # Check for Tags line
+        if not frontmatter.get('tags'):
+            self.issues.append(Issue(
+                filepath=filepath,
+                severity='error',
+                message="Docstring missing **Tags**: line with #hashtags",
+                fix_available=False
+            ))
+            return
+
+        # Check for Purpose section
+        if not frontmatter.get('has_purpose'):
+            self.issues.append(Issue(
+                filepath=filepath,
+                severity='warning',
+                message="Docstring missing ## Purpose section",
+                fix_available=False
+            ))
 
         # Check required tags
         tags = set(frontmatter.get('tags', []))
@@ -191,6 +453,9 @@ Brief description
                 fix_available=False
             ))
 
+        # Validate block markers
+        self.validate_block_markers(filepath, content)
+
     def validate_markdown_file(self, filepath: Path) -> None:
         """Validate a markdown documentation file."""
         try:
@@ -216,6 +481,15 @@ Brief description
                 auto_fix_fn=lambda: self.fix_add_markdown_frontmatter(filepath)
             ))
             return
+
+        # Check tag format (prefer YAML list for Obsidian compatibility)
+        if frontmatter.get('_tag_format') == 'inline':
+            self.issues.append(Issue(
+                filepath=filepath,
+                severity='warning',
+                message="Tags use inline array format [tag1, tag2]. Obsidian prefers YAML list format for hierarchical tags",
+                fix_available=False
+            ))
 
         # Determine file type from tags
         tags = set(frontmatter.get('tags', []))
@@ -339,20 +613,61 @@ tags: [type/FIXME]
 
     # ==================== MAIN EXECUTION ====================
 
+    def extract_block_marker_references(self, filepath: Path, content: str) -> None:
+        """Extract all block marker references from a file.
+
+        Looks for patterns like:
+        - [[file.py#^marker|Display]]
+        - [[../code/file.py#^marker]]
+        """
+        lines = content.split('\n')
+
+        # Pattern to match [[file#^marker]] or [[file#^marker|display]]
+        pattern = r'\[\[([^\]]+?)#\^([^\]|]+)(?:\|[^\]]+)?\]\]'
+
+        for lineno, line in enumerate(lines, 1):
+            for match in re.finditer(pattern, line):
+                referenced_file = match.group(1)
+                marker = match.group(2)
+                self.block_marker_references.append((filepath, lineno, marker))
+
+    def validate_all_block_marker_references(self) -> None:
+        """Validate that all block marker references point to existing markers."""
+        for ref_file, ref_line, marker in self.block_marker_references:
+            if marker not in self.block_markers:
+                self.issues.append(Issue(
+                    filepath=ref_file,
+                    severity='error',
+                    message=f"Dead block marker reference at line {ref_line}: ^{marker} does not exist in any Python file",
+                    fix_available=False
+                ))
+
     def scan_repository(self) -> None:
         """Scan all files in the repository."""
-        # Scan Python files
+        # Phase 1: Scan Python files and collect block markers
         for py_file in (self.vault_path / 'code').rglob('*.py'):
             self.validate_python_file(py_file)
 
-        # Scan markdown files
+        # Phase 2: Scan markdown files and collect block marker references
         for md_file in self.vault_path.rglob('*.md'):
             # Skip hidden directories and whiteboard folder
             if any(part.startswith('.') for part in md_file.parts):
                 continue
             if 'whiteboard' in md_file.parts:
                 continue
+
+            # Validate markdown file
             self.validate_markdown_file(md_file)
+
+            # Extract block marker references
+            try:
+                content = md_file.read_text(encoding='utf-8')
+                self.extract_block_marker_references(md_file, content)
+            except Exception:
+                pass  # Already reported in validate_markdown_file
+
+        # Phase 3: Validate all block marker references resolve
+        self.validate_all_block_marker_references()
 
     def _get_issue_type_tag(self, issue: Issue) -> str:
         """Determine issue type tag based on the problem."""
@@ -366,6 +681,18 @@ tags: [type/FIXME]
             return "missing-type-tag"
         elif "missing recommended tags" in message:
             return "missing-recommended-tags"
+        elif "inline array format" in message:
+            return "tag-format-warning"
+        elif "missing block marker" in message:
+            return "missing-block-marker"
+        elif "duplicate block marker" in message:
+            return "duplicate-block-marker"
+        elif "incorrect block marker" in message:
+            return "incorrect-block-marker"
+        elif "orphaned block marker" in message:
+            return "orphaned-block-marker"
+        elif "dead block marker reference" in message:
+            return "dead-block-reference"
         elif "docstring" in message:
             return "docstring-issue"
         elif "schema" in message:
@@ -403,6 +730,34 @@ See CLAUDE.md for the complete schema."""
 - Layer tags indicating the architectural layer
 
 See CLAUDE.md for the complete schema and tag hierarchy."""
+
+        elif "inline array format" in message:
+            return """**What's wrong**: Tags are using inline array format: `tags: [tag1, tag2, tag3]`
+
+**What's expected**: For better Obsidian compatibility, especially with hierarchical tags using slashes (like `type/concept`, `domain/mathematics`), use YAML list format:
+
+```yaml
+---
+tags:
+  - type/concept
+  - domain/mathematics
+  - layer/core
+---
+```
+
+**Why**: Obsidian's tag system works best with YAML list format for hierarchical tags. The inline array format may not properly parse nested tags with slashes.
+
+**How to fix**: Convert from:
+```yaml
+tags: [type/concept, domain/mathematics]
+```
+
+To:
+```yaml
+tags:
+  - type/concept
+  - domain/mathematics
+```"""
 
         elif "missing required tag" in message:
             tag_match = re.search(r"Missing required tag: (.+)$", issue.message)

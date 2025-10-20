@@ -1,5 +1,7 @@
 ---
-tags: [type/pattern, category/solid-principles]
+tags:
+  - type/pattern
+  - category/solid-principles
 ---
 
 # Single Responsibility Principle

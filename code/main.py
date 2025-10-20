@@ -1,12 +1,7 @@
-"""---
-tags: [type/code-file, domain/FIXME, layer/FIXME]
----
-
----
-tags: [type/code-file, domain/ui, layer/entry-point]
----
-
+"""
 # Main Entry Point
+
+**Tags**: #type/code-file #domain/ui #layer/entry-point
 
 ## Purpose
 Application entry point for the calculator.
@@ -21,7 +16,7 @@ Initializes and launches the calculator interface.
 from calculator import Calculator
 
 
-def main():
+def main():  # ^main
     """
     Main entry point for the calculator application.
 

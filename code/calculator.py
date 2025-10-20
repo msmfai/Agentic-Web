@@ -1,12 +1,7 @@
-"""---
-tags: [type/code-file, domain/FIXME, layer/FIXME]
----
-
----
-tags: [type/code-file, domain/ui, layer/interface, pattern/strategy]
----
-
+"""
 # Calculator Class
+
+**Tags**: #type/code-file #domain/ui #layer/interface #pattern/strategy
 
 ## Purpose
 Provides user interface for calculator operations.
@@ -24,14 +19,14 @@ from typing import Optional
 import operations
 
 
-class Calculator:
+class Calculator:  # ^Calculator
     """
     A simple calculator that performs basic arithmetic operations.
 
     Implements: [[calculator-interface|Calculator Interface]]
     """
 
-    def calculate(self, a: float, b: float, operation: str) -> float:
+    def calculate(self, a: float, b: float, operation: str) -> float:  # ^Calculator-calculate
         """
         Perform a calculation using the specified operation.
 
@@ -55,7 +50,7 @@ class Calculator:
         operation_func = operations.OPERATIONS[operation]
         return operation_func(a, b)
 
-    def run_interactive(self) -> None:
+    def run_interactive(self) -> None:  # ^Calculator-run_interactive
         """
         Run the calculator in interactive mode.
 
@@ -63,7 +58,8 @@ class Calculator:
         Implements: [[calculator-interface|Calculator Interface]]
         """
         print("Calculator - Interactive Mode")
-        print("Available operations: +, -, *, /")
+        print("Available operations: +, -, *, /, !")
+        print("Use ! for factorial (e.g., 5 !)")
         print("Type 'quit' to exit\n")
 
         while True:
@@ -85,7 +81,7 @@ class Calculator:
             except Exception as e:
                 print(f"Error: {e}\n")
 
-    def _parse_and_calculate(self, expression: str) -> Optional[float]:
+    def _parse_and_calculate(self, expression: str) -> Optional[float]:  # ^Calculator-_parse_and_calculate
         """
         Parse a string expression and calculate the result.
 
@@ -93,8 +89,23 @@ class Calculator:
         """
         parts = expression.split()
 
+        # Check for unary operation (e.g., "5 !")
+        if len(parts) == 2:
+            try:
+                n = float(parts[0])
+                operation = parts[1]
+            except ValueError:
+                raise ValueError("Invalid number provided")
+
+            if operation in operations.UNARY_OPERATIONS:
+                operation_func = operations.UNARY_OPERATIONS[operation]
+                return operation_func(n)
+            else:
+                raise ValueError(f"Invalid unary operation: {operation}")
+
+        # Check for binary operation (e.g., "5 + 3")
         if len(parts) != 3:
-            raise ValueError("Invalid format. Use: number operation number")
+            raise ValueError("Invalid format. Use: number operation number (or: number unary_operation)")
 
         try:
             a = float(parts[0])
