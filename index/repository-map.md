@@ -9,7 +9,7 @@ tags:
 
 **Auto-generated - do not edit manually**
 
-**Last Updated**: 2025-10-21 00:08:08
+**Last Updated**: 2025-10-21 00:31:47
 
 ## Current Scale
 
@@ -19,7 +19,7 @@ tags:
 - Case studies: 1
 - Index files: 3
 - AST cache nodes: 110
-- Other markdown: 0
+- Other markdown: 2
 
 ## Active Domains
 

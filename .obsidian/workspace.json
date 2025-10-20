@@ -31,12 +31,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ast-cache/code/test_operations/TestTrigonometric.test_asin_domain_error.ast.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TestTrigonometric.test_asin_domain_error.ast"
+              "title": "README"
             }
           }
         ]
@@ -92,8 +92,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -185,8 +184,18 @@
       "bases:Create new base": false
     }
   },
-  "active": "5f83866c1c58f804",
+  "active": "2338fd467724e071",
   "lastOpenFiles": [
+    "whiteboard/janitor/02-error-Untitled.canvas.md",
+    "whiteboard/janitor/01-error-2025-10-21.md",
+    "README.md.tmp.41484.1761003012141",
+    "README.md.tmp.41484.1761002963454",
+    "index/Untitled.canvas.md",
+    "main.py",
+    "Untitled.canvas",
+    "2025-10-21.md",
+    "obsidian/architecture-overview.md",
+    "ast-cache/code/test_operations/TestTrigonometric.test_asin_domain_error.ast.md",
     "janitor.py.tmp.39868.1761000544559",
     "janitor.py.tmp.39868.1761000532039",
     "whiteboard/janitor/14-error-Calculator.run_interactive.ast.md",
@@ -208,20 +217,11 @@
     "code/test_calculator.py.tmp.39868.1761000449484",
     "code/calculator.py.tmp.39868.1761000438336",
     "code/operations.py.tmp.39868.1761000427588",
-    "generate_ast.py.tmp.39868.1761000416050",
-    "schema.yaml.tmp.39868.1761000401178",
-    "generate_ast.py.tmp.39868.1761000285864",
-    "ast-cache/code/test_operations/TestTrigonometric.test_asin_domain_error.ast.md",
-    "schema.yaml.tmp.39868.1761000271252",
     "obsidian/tag-inheritance.md",
     "ast-cache/code/operations/log.ast.md",
     "obsidian/arithmetic-operations.md",
     "obsidian/graph-metrics-system.md",
     "whiteboard/graph-metrics.md",
-    "ast-cache/code/test_calculator/TestCalculatorInteractive.test_interactive_quit.ast.md",
-    "ast-cache/code/test_operations/TestTrigonometric.test_tan.ast.md",
-    "ast-cache/code/test_operations/TestTrigonometric.test_cos.ast.md",
-    "ast-cache/code/test_operations/TestTrigonometric.test_sin.ast.md",
-    "ast-cache/code/test_operations/TestTrigonometric.test_atan.ast.md"
+    "ast-cache/code/test_calculator/TestCalculatorInteractive.test_interactive_quit.ast.md"
   ]
 }

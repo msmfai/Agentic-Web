@@ -12,7 +12,9 @@ tags:
   - category/best-practices
   - category/code-generation
   - category/mixed-concerns
+  - category/reference
   - category/solid-principles
+  - category/tutorial
   - category/unit-test
   - category/validation
   - domain/automation
@@ -35,12 +37,16 @@ tags:
   - pattern/strategy
   - pattern/strategy/delegation
   - pattern/strategy/function-registry
+  - purpose/architecture
+  - purpose/human-entry-point
   - purpose/llm-instructions
+  - purpose/onboarding
   - status/deprecated
   - type/ast-node
   - type/case-study
   - type/code-file
   - type/concept
+  - type/guide
   - type/index
   - type/pattern
 ---
@@ -49,14 +55,14 @@ tags:
 
 **Auto-generated - do not edit manually**
 
-**Last Updated**: 2025-10-21 00:08:08
+**Last Updated**: 2025-10-21 00:31:47
 
 This file lists every tag currently in use across the repository.
 
 ## Summary
 
-- Total unique tags: 40
-- Total files: 134
+- Total unique tags: 46
+- Total files: 136
 
 ## Type Tags
 
@@ -64,6 +70,7 @@ This file lists every tag currently in use across the repository.
 - `#type/case-study` (1 files)
 - `#type/code-file` (1 files)
 - `#type/concept` (4 files)
+- `#type/guide` (2 files)
 - `#type/index` (3 files)
 - `#type/pattern` (4 files)
 
@@ -98,13 +105,18 @@ This file lists every tag currently in use across the repository.
 - `#category/best-practices` (3 files)
 - `#category/code-generation` (1 files)
 - `#category/mixed-concerns` (24 files)
+- `#category/reference` (1 files)
 - `#category/solid-principles` (1 files)
+- `#category/tutorial` (1 files)
 - `#category/unit-test` (81 files)
 - `#category/validation` (1 files)
 
 ## Purpose Tags
 
+- `#purpose/architecture` (1 files)
+- `#purpose/human-entry-point` (1 files)
 - `#purpose/llm-instructions` (1 files)
+- `#purpose/onboarding` (1 files)
 
 ## Ast-Type Tags
 
