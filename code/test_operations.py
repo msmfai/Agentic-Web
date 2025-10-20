@@ -1,7 +1,8 @@
 """
 # Operations Module Tests
 
-**Tags**: #type/code-file #domain/testing #domain/testing/unit #layer/test #category/unit-test #domain/mathematics
+**File Tags**: #type/code-file
+**Inheritable Tags**: #location/code-file/code/test_operations.py #domain/testing #domain/testing/unit #layer/test #category/unit-test #domain/mathematics
 
 ## Purpose
 Unit tests for the operations module.

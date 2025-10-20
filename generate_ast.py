@@ -410,10 +410,13 @@ class ASTGenerator:
         return False
 
     def _extract_python_tags(self, source: str) -> List[str]:
-        """Extract tags from Python source file docstring.
+        """Extract inheritable tags from Python source file docstring.
 
-        Parses inline hashtags format: #tag1 #tag2 #tag3
-        Returns list of tags without # prefix.
+        Python docstrings should have two tag lines:
+        - **File Tags**: #type/code-file (only for the .py file)
+        - **Inheritable Tags**: #domain/* #layer/* (for AST nodes)
+
+        Returns ONLY the inheritable tags (without # prefix).
         """
         # Extract module docstring (first triple-quoted string)
         match = re.match(r'^\s*"""(.*?)"""\s*\n', source, re.DOTALL)
@@ -422,9 +425,21 @@ class ASTGenerator:
 
         docstring = match.group(1)
 
-        # Extract all inline hashtags (format: #word or #word/word or #word-word)
-        tags = re.findall(r'#([\w/-]+)', docstring)
-        return tags
+        # Look for "Inheritable Tags:" line specifically
+        inheritable_match = re.search(r'\*\*Inheritable Tags\*\*:\s*([^\n]+)', docstring)
+        if inheritable_match:
+            tag_line = inheritable_match.group(1)
+            # Extract hashtags from this line only (allow dots for file extensions)
+            tags = re.findall(r'#([\w/.-]+)', tag_line)
+            return tags
+
+        # Fallback: if no explicit "Inheritable Tags:" line, extract all tags and filter
+        all_tags = re.findall(r'#([\w/.-]+)', docstring)
+        inheritable_tags = [
+            tag for tag in all_tags
+            if not tag.startswith('type/')
+        ]
+        return inheritable_tags
 
     def _extract_function_calls(self, node: ast.FunctionDef) -> List[str]:
         """Extract names of functions called within this function."""

@@ -183,15 +183,36 @@ Brief description
         if h1_match:
             frontmatter['module_name'] = h1_match.group(1).strip()
 
-        # Extract inline tags (format: **Tags**: #tag1 #tag2 #tag3)
-        tags_match = re.search(r'\*\*Tags\*\*:\s*(.+)$', docstring, re.MULTILINE)
-        if tags_match:
-            tags_line = tags_match.group(1)
-            # Extract all #hashtags
-            tags = re.findall(r'#([\w/-]+)', tags_line)
-            if tags:
-                frontmatter['tags'] = tags
+        # Extract inline tags - supports both old and new formats:
+        # Old: **Tags**: #tag1 #tag2 #tag3
+        # New: **File Tags**: #tag1
+        #      **Inheritable Tags**: #tag2 #tag3
+
+        all_tags = []
+
+        # Try new format first (File Tags + Inheritable Tags)
+        file_tags_match = re.search(r'\*\*File Tags\*\*:\s*(.+)$', docstring, re.MULTILINE)
+        inheritable_tags_match = re.search(r'\*\*Inheritable Tags\*\*:\s*(.+)$', docstring, re.MULTILINE)
+
+        if file_tags_match or inheritable_tags_match:
+            # New format detected
+            if file_tags_match:
+                file_tags = re.findall(r'#([\w/.-]+)', file_tags_match.group(1))
+                all_tags.extend(file_tags)
+            if inheritable_tags_match:
+                inheritable_tags = re.findall(r'#([\w/.-]+)', inheritable_tags_match.group(1))
+                all_tags.extend(inheritable_tags)
+            frontmatter['_tag_format'] = 'split-tags'
+        else:
+            # Fallback to old format (**Tags**: #tag1 #tag2 #tag3)
+            tags_match = re.search(r'\*\*Tags\*\*:\s*(.+)$', docstring, re.MULTILINE)
+            if tags_match:
+                tags_line = tags_match.group(1)
+                all_tags = re.findall(r'#([\w/.-]+)', tags_line)
                 frontmatter['_tag_format'] = 'inline-hashtags'
+
+        if all_tags:
+            frontmatter['tags'] = all_tags
 
         # Check for required sections
         has_purpose = bool(re.search(r'^##\s+Purpose', docstring, re.MULTILINE))
@@ -407,12 +428,12 @@ Brief description
                 fix_available=False
             ))
 
-        # Check for Tags line
+        # Check for Tags line (either old or new format)
         if not frontmatter.get('tags'):
             self.issues.append(Issue(
                 filepath=filepath,
                 severity='error',
-                message="Docstring missing **Tags**: line with #hashtags",
+                message="Docstring missing tags (need either **Tags**: OR **File Tags**:/**Inheritable Tags**: with #hashtags)",
                 fix_available=False
             ))
             return

@@ -1,7 +1,8 @@
 """
 # Main Entry Point
 
-**Tags**: #type/code-file #domain/ui #layer/entry-point
+**File Tags**: #type/code-file
+**Inheritable Tags**: #location/code-file/code/main.py #domain/ui #layer/entry-point
 
 ## Purpose
 Application entry point for the calculator.

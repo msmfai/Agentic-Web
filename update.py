@@ -2,18 +2,20 @@
 """
 # Repository Update Workflow
 
-**Tags**: #type/code-file #domain/automation #layer/infrastructure #category/orchestration
+**File Tags**: #type/code-file
+**Inheritable Tags**: #domain/automation #layer/infrastructure #category/orchestration
 
 ## Purpose
-Run all repository maintenance tasks in the correct order.
+Simple orchestrator that runs repository maintenance scripts in sequence.
 
-This script orchestrates the complete repository update workflow:
-1. [[generate_ast.py|Generate AST cache]] (from Python source files)
-2. [[generate_tags.py|Generate tag indices]] (repository-map and tag-index)
-3. [[graph_metrics.py|Generate graph metrics]] (knowledge graph health analysis)
-4. [[janitor.py|Run janitor health checks]]
+This is a pure container - all actual logic lives in the individual scripts.
 
-See also: [[obsidian/graph-metrics-system|Graph Metrics System]]
+Workflow:
+1. [[add_location_tags.py]] - Add location tags to Python files
+2. [[generate_ast.py]] - Generate AST cache from Python source
+3. [[generate_tags.py]] - Generate tag indices (repository-map, tag-index)
+4. [[graph_metrics.py]] - Analyze knowledge graph health
+5. [[janitor.py]] - Run repository health checks
 
 Usage:
     python update.py
@@ -24,56 +26,31 @@ import subprocess
 import sys
 from pathlib import Path
 
-
-def run_command(description: str, command: list[str]) -> bool:
-    """Run a command and return True if successful."""
-    print()
-    print("=" * 60)
-    print(description)
-    print("=" * 60)
-    print()
-
-    try:
-        result = subprocess.run(command, check=True, cwd=Path(__file__).parent)
-        return result.returncode == 0
-    except subprocess.CalledProcessError as e:
-        print(f"\nFAILED: {description}")
-        print(f"Error: {e}")
-        return False
+# Workflow: list of (script_name, is_critical)
+# Critical scripts stop the workflow on failure
+# Non-critical scripts continue even if they fail
+WORKFLOW = [
+    ("add_location_tags.py", True),
+    ("generate_ast.py", True),
+    ("generate_tags.py", True),
+    ("graph_metrics.py", False),  # Metrics are informational
+    ("janitor.py", True),
+]
 
 
 def main():
-    print()
-    print("=" * 60)
-    print("Repository Update & Validation")
-    print("=" * 60)
+    """Run all maintenance scripts in sequence."""
+    root = Path(__file__).parent
 
-    # Step 1: Generate AST cache
-    if not run_command("Step 1: Generate AST Cache", ["uv", "run", "generate_ast.py"]):
-        print("\nAST generation failed. Stopping.")
-        sys.exit(1)
-
-    # Step 2: Generate tag indices
-    if not run_command("Step 2: Generate Tag Indices", ["uv", "run", "generate_tags.py"]):
-        print("\nTag index generation failed. Stopping.")
-        sys.exit(1)
-
-    # Step 3: Generate graph metrics
-    if not run_command("Step 3: Generate Graph Metrics", ["uv", "run", "graph_metrics.py"]):
-        print("\nGraph metrics generation failed. Continuing anyway.")
-        # Don't exit - metrics are informational, not blocking
-
-    # Step 4: Run janitor health checks
-    if not run_command("Step 4: Run Health Checks", ["uv", "run", "janitor.py"]):
-        print("\nHealth checks failed. Repository may have issues.")
-        sys.exit(1)
-
-    # Success
-    print()
-    print("=" * 60)
-    print("All tasks completed successfully!")
-    print("=" * 60)
-    print()
+    for script, is_critical in WORKFLOW:
+        try:
+            subprocess.run(["uv", "run", script], check=True, cwd=root)
+        except subprocess.CalledProcessError:
+            if is_critical:
+                print(f"\n{script} failed (critical). Stopping workflow.")
+                sys.exit(1)
+            else:
+                print(f"\n{script} failed (non-critical). Continuing...")
 
 
 if __name__ == "__main__":

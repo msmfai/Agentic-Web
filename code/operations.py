@@ -1,7 +1,8 @@
 """
 # Operations Module
 
-**Tags**: #type/code-file #domain/mathematics #layer/core #layer/domain #pattern/strategy #pattern/strategy/function-registry #category/mixed-concerns
+**File Tags**: #type/code-file
+**Inheritable Tags**: #location/code-file/code/operations.py #domain/mathematics #layer/core #layer/domain #pattern/strategy #pattern/strategy/function-registry #category/mixed-concerns
 
 ## Purpose
 Implements arithmetic and scientific operations using the Strategy Pattern.

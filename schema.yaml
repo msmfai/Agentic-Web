@@ -11,7 +11,8 @@ python:
     """
     # Module Name
 
-    **Tags**: #type/code-file #domain/* #layer/*
+    **File Tags**: #type/code-file
+    **Inheritable Tags**: #domain/* #layer/* #pattern/*
 
     ## Purpose
     Brief description of the module
@@ -25,6 +26,10 @@ python:
 
   required_tags:
     - "type/code-file"
+
+  # Two separate tag lines in Python docstrings:
+  # - "File Tags:" - Apply only to the .py file itself (not inherited)
+  # - "Inheritable Tags:" - Inherited by all AST cache nodes for functions/classes
 
 ---
 # Markdown Concept Files (.md in obsidian/)

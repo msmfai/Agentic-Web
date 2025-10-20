@@ -88,7 +88,13 @@ class GraphMetricsAnalyzer:
         return []
 
     def parse_python_docstring_tags(self, content: str) -> List[str]:
-        """Extract tags from Python custom frontmatter format."""
+        """Extract tags from Python custom frontmatter format.
+
+        Supports both old and new formats:
+        - Old: **Tags**: #tag1 #tag2 #tag3
+        - New: **File Tags**: #tag1
+               **Inheritable Tags**: #tag2 #tag3
+        """
         # Skip shebang line if present
         lines = content.split('\n', 1)
         if lines[0].startswith('#!'):
@@ -101,12 +107,28 @@ class GraphMetricsAnalyzer:
             return []
 
         docstring = match.group(1)
-        tags_match = re.search(r'\*\*Tags\*\*:\s*(.+)$', docstring, re.MULTILINE)
-        if not tags_match:
-            return []
+        all_tags = []
 
-        tags_line = tags_match.group(1)
-        tags = re.findall(r'#([\w/-]+)', tags_line)
+        # Try new format first (File Tags + Inheritable Tags)
+        file_tags_match = re.search(r'\*\*File Tags\*\*:\s*(.+)$', docstring, re.MULTILINE)
+        inheritable_tags_match = re.search(r'\*\*Inheritable Tags\*\*:\s*(.+)$', docstring, re.MULTILINE)
+
+        if file_tags_match or inheritable_tags_match:
+            # New format detected
+            if file_tags_match:
+                file_tags = re.findall(r'#([\w/.-]+)', file_tags_match.group(1))
+                all_tags.extend(file_tags)
+            if inheritable_tags_match:
+                inheritable_tags = re.findall(r'#([\w/.-]+)', inheritable_tags_match.group(1))
+                all_tags.extend(inheritable_tags)
+        else:
+            # Fallback to old format (**Tags**: #tag1 #tag2 #tag3)
+            tags_match = re.search(r'\*\*Tags\*\*:\s*(.+)$', docstring, re.MULTILINE)
+            if tags_match:
+                tags_line = tags_match.group(1)
+                all_tags = re.findall(r'#([\w/.-]+)', tags_line)
+
+        tags = all_tags
         return tags
 
     def count_wikilinks(self, content: str) -> int:

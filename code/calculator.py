@@ -1,7 +1,8 @@
 """
 # Calculator Class
 
-**Tags**: #type/code-file #domain/ui #layer/interface #layer/application #pattern/strategy #pattern/strategy/delegation
+**File Tags**: #type/code-file
+**Inheritable Tags**: #location/code-file/code/calculator.py #domain/ui #layer/interface #layer/application #pattern/strategy #pattern/strategy/delegation
 
 ## Purpose
 Provides user interface for calculator operations.

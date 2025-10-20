@@ -27,6 +27,11 @@ tags:
   - layer/entry-point
   - layer/interface
   - layer/test
+  - location/code-file/code/calculator.py
+  - location/code-file/code/main.py
+  - location/code-file/code/operations.py
+  - location/code-file/code/test_calculator.py
+  - location/code-file/code/test_operations.py
   - pattern/strategy
   - pattern/strategy/delegation
   - pattern/strategy/function-registry
@@ -44,20 +49,20 @@ tags:
 
 **Auto-generated - do not edit manually**
 
-**Last Updated**: 2025-10-20 23:41:56
+**Last Updated**: 2025-10-21 00:08:08
 
 This file lists every tag currently in use across the repository.
 
 ## Summary
 
-- Total unique tags: 35
-- Total files: 133
+- Total unique tags: 40
+- Total files: 134
 
 ## Type Tags
 
 - `#type/ast-node` (110 files)
 - `#type/case-study` (1 files)
-- `#type/code-file` (116 files)
+- `#type/code-file` (1 files)
 - `#type/concept` (4 files)
 - `#type/index` (3 files)
 - `#type/pattern` (4 files)
@@ -65,26 +70,26 @@ This file lists every tag currently in use across the repository.
 ## Domain Tags
 
 - `#domain/automation` (3 files)
-- `#domain/mathematics` (70 files)
-- `#domain/testing` (84 files)
-- `#domain/testing/integration` (39 files)
-- `#domain/testing/unit` (44 files)
-- `#domain/ui` (49 files)
+- `#domain/mathematics` (68 files)
+- `#domain/testing` (82 files)
+- `#domain/testing/integration` (38 files)
+- `#domain/testing/unit` (43 files)
+- `#domain/ui` (46 files)
 
 ## Layer Tags
 
-- `#layer/application` (5 files)
-- `#layer/core` (26 files)
-- `#layer/domain` (25 files)
-- `#layer/entry-point` (3 files)
-- `#layer/interface` (7 files)
-- `#layer/test` (83 files)
+- `#layer/application` (4 files)
+- `#layer/core` (25 files)
+- `#layer/domain` (24 files)
+- `#layer/entry-point` (2 files)
+- `#layer/interface` (6 files)
+- `#layer/test` (81 files)
 
 ## Pattern Tags
 
-- `#pattern/strategy` (30 files)
-- `#pattern/strategy/delegation` (5 files)
-- `#pattern/strategy/function-registry` (25 files)
+- `#pattern/strategy` (28 files)
+- `#pattern/strategy/delegation` (4 files)
+- `#pattern/strategy/function-registry` (24 files)
 
 ## Category Tags
 
@@ -92,9 +97,9 @@ This file lists every tag currently in use across the repository.
 - `#category/behavioral` (1 files)
 - `#category/best-practices` (3 files)
 - `#category/code-generation` (1 files)
-- `#category/mixed-concerns` (25 files)
+- `#category/mixed-concerns` (24 files)
 - `#category/solid-principles` (1 files)
-- `#category/unit-test` (83 files)
+- `#category/unit-test` (81 files)
 - `#category/validation` (1 files)
 
 ## Purpose Tags
