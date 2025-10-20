@@ -31,12 +31,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ast-cache/code/operations/log.ast.md",
+                "file": "ast-cache/code/test_operations/TestTrigonometric.test_asin_domain_error.ast.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "log.ast"
+              "title": "TestTrigonometric.test_asin_domain_error.ast"
             }
           }
         ]
@@ -71,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#domain/mathematics/trigonometry",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -185,21 +185,21 @@
       "bases:Create new base": false
     }
   },
-  "active": "5f83866c1c58f804",
+  "active": "2338fd467724e071",
   "lastOpenFiles": [
-    "code/operations.py.tmp.39868.1760999559488",
+    "obsidian/tag-inheritance.md",
+    "generate_ast.py.tmp.39868.1761000105117",
+    "generate_ast.py.tmp.39868.1761000010133",
     "ast-cache/code/operations/log.ast.md",
+    "generate_ast.py.tmp.39868.1760999881373",
+    "generate_ast.py.tmp.39868.1760999870572",
+    "generate_ast.py.tmp.39868.1760999862725",
+    "generate_ast.py.tmp.39868.1760999850592",
+    "generate_ast.py.tmp.39868.1760999834300",
+    "generate_ast.py.tmp.39868.1760999813740",
+    "generate_ast.py.tmp.39868.1760999807631",
+    "generate_ast.py.tmp.39868.1760999796269",
     "obsidian/arithmetic-operations.md",
-    "schema.yaml.tmp.39868.1760999444625",
-    "code/operations.py.tmp.39868.1760999415916",
-    "code/calculator.py.tmp.39868.1760999409973",
-    "code/test_operations.py.tmp.39868.1760999401470",
-    "code/test_calculator.py.tmp.39868.1760999394972",
-    "code/operations.py.tmp.39868.1760999369991",
-    "generate_ast.py.tmp.39868.1760999271573",
-    "generate_ast.py.tmp.39868.1760999238319",
-    "update.py.tmp.39868.1760999096240",
-    "README.md.tmp.39868.1760999080906",
     "obsidian/graph-metrics-system.md",
     "whiteboard/graph-metrics.md",
     "ast-cache/code/test_calculator/TestCalculatorInteractive.test_interactive_quit.ast.md",
@@ -221,7 +221,6 @@
     "ast-cache/code/test_operations/TestOperationRegistries.test_unary_operations_functionality.ast.md",
     "ast-cache/code/test_operations/TestOperationRegistries.test_operations_registry.ast.md",
     "ast-cache/code/test_operations/TestOperationRegistries.test_operations_functionality.ast.md",
-    "ast-cache/code/test_operations/TestOperationRegistries.ast.md",
-    "ast-cache/code/test_operations/TestFactorial.test_factorial_positive.ast.md"
+    "ast-cache/code/test_operations/TestOperationRegistries.ast.md"
   ]
 }

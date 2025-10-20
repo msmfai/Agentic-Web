@@ -340,7 +340,8 @@ class ASTGenerator:
             "is_schematic": is_schematic,
             "wikilinks": wikilinks,
             "calls": calls,
-            "lineno": node.lineno
+            "lineno": node.lineno,
+            "end_lineno": node.end_lineno if hasattr(node, 'end_lineno') else node.lineno
         }
 
     def _extract_class(self, node: ast.ClassDef, source: str) -> Dict[str, Any]:
@@ -366,7 +367,8 @@ class ASTGenerator:
             "wikilinks": wikilinks,
             "methods": methods,
             "bases": bases,
-            "lineno": node.lineno
+            "lineno": node.lineno,
+            "end_lineno": node.end_lineno if hasattr(node, 'end_lineno') else node.lineno
         }
 
     def _extract_constant(self, node: ast.Assign, name: str, source: str) -> Dict[str, Any]:
@@ -380,7 +382,8 @@ class ASTGenerator:
             "type": "constant",
             "parent_class": None,
             "value": value_str[:100],  # Truncate long values
-            "lineno": node.lineno
+            "lineno": node.lineno,
+            "end_lineno": node.end_lineno if hasattr(node, 'end_lineno') else node.lineno
         }
 
     def _extract_wikilinks(self, text: str) -> List[str]:
@@ -437,6 +440,19 @@ class ASTGenerator:
 
         return list(set(calls))  # Remove duplicates
 
+    def _extract_source_lines(self, py_file: Path, start_line: int, end_line: int) -> str:
+        """Extract specific lines from source file with line numbers."""
+        source_lines = py_file.read_text(encoding='utf-8').splitlines()
+
+        # Extract the relevant lines (convert to 0-indexed)
+        extracted = []
+        for i in range(start_line - 1, min(end_line, len(source_lines))):
+            line_num = i + 1
+            line_content = source_lines[i]
+            extracted.append(f"{line_num:4d} | {line_content}")
+
+        return '\n'.join(extracted)
+
     def _generate_object_markdown(self, py_file: Path, obj: Dict[str, Any],
                                   all_objects: List[Dict[str, Any]],
                                   source_tags: List[str]) -> str:
@@ -445,6 +461,13 @@ class ASTGenerator:
 
         # Link to source using block reference
         source_link = f"[[../../../code/{rel_path}#^{obj['marker']}|Source]]"
+
+        # Extract source code with line numbers
+        source_code = self._extract_source_lines(
+            py_file,
+            obj['lineno'],
+            obj.get('end_lineno', obj['lineno'])
+        )
 
         # Determine tags
         tags = ["type/ast-node", f"ast-type/{obj['type']}"]
@@ -461,10 +484,22 @@ class ASTGenerator:
         ]
         for tag in tags:
             lines.append(f"  - {tag}")
+        # Separate AST-specific tags from inherited tags
+        ast_tags = ["type/ast-node", f"ast-type/{obj['type']}"]
+        if obj.get('is_schematic'):
+            ast_tags.append("status/schematic")
+
+        # Format line number range
+        line_range = f"{obj['lineno']}"
+        if obj.get('end_lineno') and obj['end_lineno'] != obj['lineno']:
+            line_range = f"{obj['lineno']}-{obj['end_lineno']}"
+
         lines.extend([
             f"source_file: ../../../code/{rel_path}",
             f"block_marker: ^{obj['marker']}",
             f"object_type: {obj['type']}",
+            f"line_start: {obj['lineno']}",
+            f"line_end: {obj.get('end_lineno', obj['lineno'])}",
             "---",
             "",
             "> [!WARNING] Generated Code - Do Not Edit",
@@ -472,10 +507,19 @@ class ASTGenerator:
             "",
             f"# {obj['name']}",
             "",
-            f"**Source**: {source_link}",
+            f"**Source**: {source_link} (lines {line_range})",
             f"**Type**: {obj['type']}",
             ""
         ])
+
+        # Brief tag inheritance note (no links to avoid graph clutter)
+        if source_tags:
+            lines.extend([
+                f"**Tags**: {len(source_tags)} inherited from module + {len(ast_tags)} AST-specific",
+                ""
+            ])
+        else:
+            lines.append("")
 
         # Type-specific information
         if obj['type'] == 'function' or obj['type'] == 'method':
@@ -492,6 +536,14 @@ class ASTGenerator:
                 lines.append("")
                 lines.append(obj['docstring'])
                 lines.append("")
+
+            # Source code with line numbers
+            lines.append("## Source Code")
+            lines.append("")
+            lines.append(f"```python")
+            lines.append(source_code)
+            lines.append("```")
+            lines.append("")
 
             # Function calls
             if obj.get('calls'):
@@ -522,6 +574,14 @@ class ASTGenerator:
                 lines.append(obj['docstring'])
                 lines.append("")
 
+            # Source code with line numbers
+            lines.append("## Source Code")
+            lines.append("")
+            lines.append(f"```python")
+            lines.append(source_code)
+            lines.append("```")
+            lines.append("")
+
             # Methods
             if obj.get('methods'):
                 lines.append("## Methods")
@@ -533,6 +593,14 @@ class ASTGenerator:
 
         elif obj['type'] == 'constant':
             lines.append(f"**Value**: `{obj.get('value', 'N/A')}`")
+            lines.append("")
+
+            # Source code with line numbers
+            lines.append("## Source Code")
+            lines.append("")
+            lines.append(f"```python")
+            lines.append(source_code)
+            lines.append("```")
             lines.append("")
 
         # Wikilinks in docstring

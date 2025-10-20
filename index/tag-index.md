@@ -10,6 +10,7 @@ tags:
   - category/analytics
   - category/behavioral
   - category/best-practices
+  - category/code-generation
   - category/mixed-concerns
   - category/solid-principles
   - category/unit-test
@@ -43,27 +44,27 @@ tags:
 
 **Auto-generated - do not edit manually**
 
-**Last Updated**: 2025-10-20 23:32:47
+**Last Updated**: 2025-10-20 23:41:56
 
 This file lists every tag currently in use across the repository.
 
 ## Summary
 
-- Total unique tags: 34
-- Total files: 132
+- Total unique tags: 35
+- Total files: 133
 
 ## Type Tags
 
 - `#type/ast-node` (110 files)
 - `#type/case-study` (1 files)
 - `#type/code-file` (116 files)
-- `#type/concept` (3 files)
+- `#type/concept` (4 files)
 - `#type/index` (3 files)
 - `#type/pattern` (4 files)
 
 ## Domain Tags
 
-- `#domain/automation` (2 files)
+- `#domain/automation` (3 files)
 - `#domain/mathematics` (70 files)
 - `#domain/testing` (84 files)
 - `#domain/testing/integration` (39 files)
@@ -89,7 +90,8 @@ This file lists every tag currently in use across the repository.
 
 - `#category/analytics` (1 files)
 - `#category/behavioral` (1 files)
-- `#category/best-practices` (2 files)
+- `#category/best-practices` (3 files)
+- `#category/code-generation` (1 files)
 - `#category/mixed-concerns` (25 files)
 - `#category/solid-principles` (1 files)
 - `#category/unit-test` (83 files)

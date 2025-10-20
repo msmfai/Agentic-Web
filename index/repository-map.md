@@ -9,12 +9,12 @@ tags:
 
 **Auto-generated - do not edit manually**
 
-**Last Updated**: 2025-10-20 23:32:47
+**Last Updated**: 2025-10-20 23:41:56
 
 ## Current Scale
 
 - Python files: 11
-- Concept docs: 3
+- Concept docs: 4
 - Pattern docs: 4
 - Case studies: 1
 - Index files: 3
@@ -23,7 +23,7 @@ tags:
 
 ## Active Domains
 
-- `#domain/automation` (2 files): [[../obsidian/case-study-janitor-guided-fixes|case-study-janitor-guided-fixes.md]], [[../obsidian/graph-metrics-system|graph-metrics-system.md]]
+- `#domain/automation` (3 files): [[../obsidian/case-study-janitor-guided-fixes|case-study-janitor-guided-fixes.md]], [[../obsidian/graph-metrics-system|graph-metrics-system.md]], [[../obsidian/tag-inheritance|tag-inheritance.md]]
 - `#domain/mathematics` (70 files): [[../code/operations.py|operations.py]], [[../code/test_operations.py|test_operations.py]], [[../obsidian/arithmetic-operations|arithmetic-operations.md]] (+67 more)
 - `#domain/testing` (84 files): [[../code/test_calculator.py|test_calculator.py]], [[../code/test_operations.py|test_operations.py]], [[../obsidian/testing-strategy|testing-strategy.md]] (+81 more)
 - `#domain/testing/integration` (39 files): [[../code/test_calculator.py|test_calculator.py]], [[../ast-cache/code/test_calculator/TestCalculatorBasic.ast.md|TestCalculatorBasic.ast]], [[../ast-cache/code/test_calculator/TestCalculatorBasic.setUp.ast.md|TestCalculatorBasic.setUp.ast]] (+36 more)

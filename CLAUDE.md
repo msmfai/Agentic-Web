@@ -94,6 +94,16 @@ Grep pattern: '#pattern/strategy'
 - These ARE indexed by Obsidian and searchable via Grep
 - Use them as the "tag search interface" for Python code
 
+**⚠️ CRITICAL - Tag Inheritance Limitation:**
+
+AST cache files inherit ALL tags from the module-level docstring. This means:
+- Every function in a module gets the same tags
+- Cannot tag individual functions differently
+- Specific subdomain tags (like `#domain/mathematics/trigonometry`) should ONLY be used on focused modules
+- Mixed-concern modules should use broad tags (e.g., `#domain/mathematics` + `#category/mixed-concerns`)
+
+See [[obsidian/tag-inheritance|Tag Inheritance]] for complete explanation and gotchas.
+
 **When to use tags vs direct file access:**
 
 Use **direct file access** when:
