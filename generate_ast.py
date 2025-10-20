@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 """
+# AST Cache Generator
+
+**Tags**: #type/code-file #domain/automation #layer/infrastructure #category/code-generation
+
+## Purpose
 Generate AST cache for Python files in the repository.
 
 This script:

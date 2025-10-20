@@ -57,10 +57,16 @@ class Calculator:  # ^Calculator
         Continuously prompts user for calculations until they exit.
         Implements: [[calculator-interface|Calculator Interface]]
         """
-        print("Calculator - Interactive Mode")
-        print("Available operations: +, -, *, /, !")
-        print("Use ! for factorial (e.g., 5 !)")
-        print("Type 'quit' to exit\n")
+        print("Scientific Calculator - Interactive Mode")
+        print("\nBasic operations: +, -, *, /")
+        print("Power: ^ or ** (e.g., 2 ^ 3)")
+        print("Factorial: ! (e.g., 5 !)")
+        print("\nTrigonometric (radians): sin, cos, tan, asin, acos, atan")
+        print("Exponential/Log: exp, ln, log10, sqrt, cbrt")
+        print("Logarithm with base: log (e.g., 8 log 2)")
+        print("Constants: pi, e (e.g., pi)")
+        print("Angle conversion: rad (deg→rad), deg (rad→deg)")
+        print("\nType 'quit' to exit\n")
 
         while True:
             try:

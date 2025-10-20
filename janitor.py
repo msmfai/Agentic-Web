@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 """
-Repository Health Janitor
+# Repository Health Janitor
 
-Validates and automatically fixes issues in the Obsidian knowledge graph repository:
-- Checks all files have required YAML frontmatter tags
-- Validates Python file docstring schema
-- Ensures markdown files are in obsidian/ folder
+**Tags**: #type/code-file #domain/automation #layer/infrastructure #category/validation
+
+## Purpose
+Validate and automatically fix issues in the Obsidian knowledge graph repository.
+
+Checks:
+- All files have required YAML frontmatter tags
+- Python file docstring schema compliance
+- Markdown files are in correct folders
 
 Usage:
     python janitor.py              # Check for issues

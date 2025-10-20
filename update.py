@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
 """
-Update Repository Index and Validate Health
+# Repository Update Workflow
 
-This script runs all repository maintenance tasks in the correct order:
+**Tags**: #type/code-file #domain/automation #layer/infrastructure #category/orchestration
+
+## Purpose
+Run all repository maintenance tasks in the correct order.
+
+This script runs:
 1. Generate AST cache (from Python source files)
 2. Generate tag indices (repository-map and tag-index)
-3. Run janitor health checks
+3. Generate graph metrics (knowledge graph health analysis)
+4. Run janitor health checks
 
 Usage:
     python update.py
@@ -50,8 +56,13 @@ def main():
         print("\nTag index generation failed. Stopping.")
         sys.exit(1)
 
-    # Step 3: Run janitor health checks
-    if not run_command("Step 3: Run Health Checks", ["uv", "run", "janitor.py"]):
+    # Step 3: Generate graph metrics
+    if not run_command("Step 3: Generate Graph Metrics", ["uv", "run", "graph_metrics.py"]):
+        print("\nGraph metrics generation failed. Continuing anyway.")
+        # Don't exit - metrics are informational, not blocking
+
+    # Step 4: Run janitor health checks
+    if not run_command("Step 4: Run Health Checks", ["uv", "run", "janitor.py"]):
         print("\nHealth checks failed. Repository may have issues.")
         sys.exit(1)
 

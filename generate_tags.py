@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 """
+# Tag Index Generator
+
+**Tags**: #type/code-file #domain/automation #layer/infrastructure #category/indexing
+
+## Purpose
 Generate Tag Index for Obsidian Knowledge Graph
 
 This script scans all files in the repository and generates:
