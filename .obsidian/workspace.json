@@ -1,0 +1,200 @@
+{
+  "main": {
+    "id": "f5fd21f1d294cae1",
+    "type": "split",
+    "children": [
+      {
+        "id": "82a34baefe31a5ba",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "03454a23e4a3021e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "code/calculator.py",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "calculator"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8f1669a8be4f2532",
+    "type": "split",
+    "children": [
+      {
+        "id": "1b4b977fd7cf5965",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a16babd7c4b6ec16",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "a209a304b79abbdb",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "5a6e2ccabc29b92d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "0ffe9e2413638d71",
+    "type": "split",
+    "children": [
+      {
+        "id": "b13c3b52c0051d8f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e37d0eb532bfdde0",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "866606c2b5aa68c5",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "2996e6fc17812486",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "edb2049bd529260b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "03454a23e4a3021e",
+  "lastOpenFiles": [
+    "obsidian/user-input-validation.md",
+    "obsidian/strategy-pattern.md",
+    "obsidian/single-responsibility.md",
+    "obsidian/README.md",
+    "obsidian/calculator-interface.md",
+    "obsidian/arithmetic-operations.md",
+    "obsidian",
+    "strategy-pattern.md",
+    "single-responsibility.md",
+    "user-input-validation.md",
+    "calculator-interface.md",
+    "arithmetic-operations.md",
+    "patterns/single-responsibility.md.tmp.19488.1760983620088",
+    "patterns/strategy-pattern.md.tmp.19488.1760983611711",
+    "concepts/user-input-validation.md.tmp.19488.1760983603795",
+    "concepts/calculator-interface.md.tmp.19488.1760983593809",
+    "concepts/arithmetic-operations.md.tmp.19488.1760983585458",
+    "code/main.py.tmp.19488.1760983569295",
+    "code/calculator.py.tmp.19488.1760983557769",
+    "code/operations.py.tmp.19488.1760983537356",
+    "reorganize.py",
+    "concepts/arithmetic-operations.md",
+    "code/operations.md",
+    "README.md",
+    "patterns/single-responsibility.md",
+    "patterns/strategy-pattern.md",
+    "concepts/user-input-validation.md",
+    "concepts/calculator-interface.md"
+  ]
+}
