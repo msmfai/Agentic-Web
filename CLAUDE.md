@@ -159,9 +159,9 @@ python main.py
 **Check repository health**:
 
 ```bash
-uv run janitor.py              # Scan for issues
-uv run janitor.py --fix        # Auto-fix issues (with confirmation)
-uv run janitor.py --fix --yes  # Auto-fix without confirmation
+python maintenance_scripts/janitor.py              # Scan for issues
+python maintenance_scripts/janitor.py --fix        # Auto-fix issues (with confirmation)
+python maintenance_scripts/janitor.py --fix --yes  # Auto-fix without confirmation
 ```
 
 The janitor validates against [[schema.yaml]]:
@@ -199,7 +199,7 @@ This runs all steps automatically: AST generation → Tag indices → Health che
 1. **Regenerate AST Cache** (if code was modified):
 
    ```bash
-   uv run generate_ast.py
+   python maintenance_scripts/generate_ast.py
    ```
 
    This creates searchable AST markdown files that inherit tags from Python source files.
@@ -207,7 +207,7 @@ This runs all steps automatically: AST generation → Tag indices → Health che
 2. **Regenerate Tag Index** (if files/tags changed):
 
    ```bash
-   uv run generate_tags.py
+   python maintenance_scripts/generate_tags.py
    ```
 
    This updates `index/repository-map.md` and `index/tag-index.md` with current project state.
@@ -215,7 +215,7 @@ This runs all steps automatically: AST generation → Tag indices → Health che
 3. **Run Repository Health Check**:
 
    ```bash
-   uv run janitor.py
+   python maintenance_scripts/janitor.py
    ```
 
    The janitor validates:

@@ -185,7 +185,7 @@ See [[tag-inheritance|Tag Inheritance]] for complete details.
 ### Generation
 
 ```bash
-uv run generate_ast.py
+python maintenance_scripts/generate_ast.py
 ```
 
 Run this after modifying Python files or changing tags.
@@ -259,7 +259,7 @@ Two main indices in `index/`:
 ### Generation
 
 ```bash
-uv run generate_tags.py
+python maintenance_scripts/generate_tags.py
 ```
 
 Run after adding/removing files or changing tags.
@@ -280,10 +280,11 @@ Based on [[../schema.yaml|schema.yaml]]:
 ### Auto-Fix Capabilities
 
 ```bash
-uv run janitor.py --fix
+python maintenance_scripts/janitor.py --fix
 ```
 
 Can automatically:
+
 - Add missing tags
 - Standardize frontmatter format
 - Regenerate AST cache
@@ -315,7 +316,7 @@ The [[graph-metrics-system|Graph Metrics System]] tracks graph evolution:
 ### Generation
 
 ```bash
-uv run graph_metrics.py
+python maintenance_scripts/graph_metrics.py
 ```
 
 Outputs JSON metrics for tracking over time.
@@ -428,7 +429,7 @@ See [[../CLAUDE.md#Adding New Documentation|Adding New Documentation in CLAUDE.m
 1. Choose domain name (e.g., `#domain/visualization`)
 2. Tag relevant files with new domain
 3. Optionally create concept document explaining the domain
-4. Run `uv run generate_tags.py` to update indices
+4. Run `python maintenance_scripts/generate_tags.py` to update indices
 5. New domain appears in [[../index/repository-map|Repository Map]]
 
 ### Adding New Patterns

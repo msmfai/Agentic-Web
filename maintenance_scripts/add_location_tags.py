@@ -91,7 +91,8 @@ def add_location_tag_to_file(filepath: Path, root_dir: Path) -> bool:
 
 
 def main():
-    root_dir = Path(__file__).parent
+    # Script is in maintenance_scripts/, root is parent
+    root_dir = Path(__file__).parent.parent
     code_dir = root_dir / "code"
 
     print("=" * 60)

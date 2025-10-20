@@ -11,11 +11,11 @@ Simple orchestrator that runs repository maintenance scripts in sequence.
 This is a pure container - all actual logic lives in the individual scripts.
 
 Workflow:
-1. [[add_location_tags.py]] - Add location tags to Python files
-2. [[generate_ast.py]] - Generate AST cache from Python source
-3. [[generate_tags.py]] - Generate tag indices (repository-map, tag-index)
-4. [[graph_metrics.py]] - Analyze knowledge graph health
-5. [[janitor.py]] - Run repository health checks
+1. [[maintenance_scripts/add_location_tags.py]] - Add location tags to Python files
+2. [[maintenance_scripts/generate_ast.py]] - Generate AST cache from Python source
+3. [[maintenance_scripts/generate_tags.py]] - Generate tag indices (repository-map, tag-index)
+4. [[maintenance_scripts/graph_metrics.py]] - Analyze knowledge graph health
+5. [[maintenance_scripts/janitor.py]] - Run repository health checks
 
 Usage:
     python update.py
@@ -30,11 +30,11 @@ from pathlib import Path
 # Critical scripts stop the workflow on failure
 # Non-critical scripts continue even if they fail
 WORKFLOW = [
-    ("add_location_tags.py", True),
-    ("generate_ast.py", True),
-    ("generate_tags.py", True),
-    ("graph_metrics.py", False),  # Metrics are informational
-    ("janitor.py", True),
+    ("maintenance_scripts/add_location_tags.py", True),
+    ("maintenance_scripts/generate_ast.py", True),
+    ("maintenance_scripts/generate_tags.py", True),
+    ("maintenance_scripts/graph_metrics.py", False),  # Metrics are informational
+    ("maintenance_scripts/janitor.py", True),
 ]
 
 
@@ -43,8 +43,9 @@ def main():
     root = Path(__file__).parent
 
     for script, is_critical in WORKFLOW:
+        script_path = root / script
         try:
-            subprocess.run(["uv", "run", script], check=True, cwd=root)
+            subprocess.run([sys.executable, str(script_path)], check=True, cwd=root)
         except subprocess.CalledProcessError:
             if is_critical:
                 print(f"\n{script} failed (critical). Stopping workflow.")

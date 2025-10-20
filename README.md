@@ -162,6 +162,7 @@ All interconnected through wikilinks. All navigable as a knowledge graph.
 
 ```bash
 uv run update.py      # Complete update workflow (runs all the tools below):
+                      #   - add_location_tags.py (Location tags for Python files)
                       #   - generate_ast.py (AST cache from Python files)
                       #   - generate_tags.py (Repository map + tag index)
                       #   - graph_metrics.py (Graph statistics)
@@ -171,8 +172,8 @@ uv run update.py      # Complete update workflow (runs all the tools below):
 Individual tools (usually not needed - use `update.py` instead):
 
 ```bash
-uv run janitor.py --fix  # Fix issues with confirmation prompts
-uv run generate_ast.py   # Regenerate AST cache only
+python maintenance_scripts/janitor.py --fix  # Fix issues with confirmation prompts
+python maintenance_scripts/generate_ast.py   # Regenerate AST cache only
 ```
 
 ## Learn More

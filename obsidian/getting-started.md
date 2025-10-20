@@ -235,7 +235,7 @@ Code files mentioning "Strategy Pattern"
 ### AST cache is out of date
 
 ```bash
-uv run generate_ast.py
+python maintenance_scripts/generate_ast.py
 ```
 
 ## Next Steps

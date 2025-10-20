@@ -1046,7 +1046,8 @@ def main():
     parser.add_argument('--yes', '-y', action='store_true', help='Auto-confirm fixes')
     args = parser.parse_args()
 
-    vault_path = Path(__file__).parent
+    # Script is in maintenance_scripts/, root is parent
+    vault_path = Path(__file__).parent.parent
     janitor = RepositoryJanitor(vault_path)
 
     print("Scanning repository...\n")

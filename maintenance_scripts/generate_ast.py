@@ -636,7 +636,8 @@ class ASTGenerator:
 def main():
     import sys
 
-    root_dir = Path(__file__).parent
+    # Script is in maintenance_scripts/, root is parent
+    root_dir = Path(__file__).parent.parent
 
     # Parse arguments
     clean = "--clean" in sys.argv
