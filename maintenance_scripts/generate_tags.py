@@ -2,7 +2,7 @@
 """
 # Tag Index Generator
 
-**Tags**: #type/code-file #domain/automation #layer/infrastructure #category/indexing
+**Tags**: #type/code-file #domain/automation #layer/infrastructure #category/infrastructure
 
 ## Purpose
 Generate Tag Index for Obsidian Knowledge Graph

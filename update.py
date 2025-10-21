@@ -3,7 +3,7 @@
 # Repository Update Workflow
 
 **File Tags**: #type/code-file
-**Inheritable Tags**: #domain/automation #layer/infrastructure #category/orchestration
+**Inheritable Tags**: #domain/automation #layer/infrastructure #category/infrastructure
 
 ## Purpose
 Simple orchestrator that runs repository maintenance scripts in sequence.

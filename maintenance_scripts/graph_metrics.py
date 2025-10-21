@@ -2,7 +2,7 @@
 """
 # Knowledge Graph Metrics Analyzer
 
-**Tags**: #type/code-file #domain/automation #layer/infrastructure #category/analytics
+**Tags**: #type/code-file #domain/automation #layer/infrastructure #category/infrastructure
 
 ## Purpose
 Analyze knowledge graph for potential scaling pathologies.
@@ -186,8 +186,16 @@ class GraphMetricsAnalyzer:
         for tag, files in self.tags_to_files.items():
             file_count = len(files)
 
-            # Skip auto-generated and infrastructure tags
-            if tag in ['auto-generated', 'type/index', 'type/ast-node', 'purpose/llm-instructions']:
+            # Skip auto-generated, infrastructure, and structural metadata tags
+            skip_tags = [
+                'auto-generated',
+                'type/index',
+                'type/ast-node',
+                'purpose/llm-instructions',
+            ]
+
+            # Skip location tags (structural metadata, not semantic)
+            if tag in skip_tags or tag.startswith('location/'):
                 continue
 
             if file_count >= self.OVERSIZED_TAG_THRESHOLD:
@@ -305,6 +313,8 @@ class GraphMetricsAnalyzer:
             "## ⚠️ Oversized Tags",
             "",
             f"Tags with ≥{self.OVERSIZED_TAG_THRESHOLD} files may benefit from hierarchical subdivision.",
+            "",
+            "**Note**: `location/*` tags are excluded from this analysis - they are structural metadata for AST cache navigation, not semantic tags.",
             "",
         ])
 

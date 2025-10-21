@@ -9,7 +9,7 @@ tags:
 
 **Auto-generated - do not edit manually**
 
-**Last Updated**: 2025-10-21 12:03:36
+**Last Updated**: 2025-10-21 12:41:26
 
 ## Current Scale
 
@@ -29,7 +29,7 @@ tags:
 - `#domain/mathematics` (91 files): [[obsidian/arithmetic-operations.md|arithmetic-operations.md]], [[obsidian/mathematical-structures.md|mathematical-structures.md]], [[ast-cache/code/operations/acos.ast.md|acos.ast]] (+88 more)
 - `#domain/plugin-system` (47 files): [[ast-cache/code/calculator/Calculator.ast.md|Calculator.ast]], [[ast-cache/code/calculator/Calculator.calculate.ast.md|Calculator.calculate.ast]], [[ast-cache/code/calculator/Calculator.run_interactive.ast.md|Calculator.run_interactive.ast]] (+44 more)
 - `#domain/statistics` (34 files): [[ast-cache/code/test_statistics/TestMean.ast.md|TestMean.ast]], [[ast-cache/code/test_statistics/TestMean.test_mean_basic.ast.md|TestMean.test_mean_basic.ast]], [[ast-cache/code/test_statistics/TestMean.test_mean_empty_list.ast.md|TestMean.test_mean_empty_list.ast]] (+31 more)
-- `#domain/testing` (264 files): [[obsidian/testing-strategy.md|testing-strategy.md]], [[ast-cache/code/test_calculator/TestCalculatorBasic.ast.md|TestCalculatorBasic.ast]], [[ast-cache/code/test_calculator/TestCalculatorBasic.setUp.ast.md|TestCalculatorBasic.setUp.ast]] (+261 more)
+- `#domain/testing` (1 files): [[obsidian/testing-strategy.md|testing-strategy.md]]
 - `#domain/testing/integration` (62 files): [[ast-cache/code/test_calculator/TestCalculatorBasic.ast.md|TestCalculatorBasic.ast]], [[ast-cache/code/test_calculator/TestCalculatorBasic.setUp.ast.md|TestCalculatorBasic.setUp.ast]], [[ast-cache/code/test_calculator/TestCalculatorBasic.test_basic_addition.ast.md|TestCalculatorBasic.test_basic_addition.ast]] (+59 more)
 - `#domain/testing/unit` (201 files): [[ast-cache/code/test_finance/TestCompoundInterest.ast.md|TestCompoundInterest.ast]], [[ast-cache/code/test_finance/TestCompoundInterest.test_compound_interest_annual.ast.md|TestCompoundInterest.test_compound_interest_annual.ast]], [[ast-cache/code/test_finance/TestCompoundInterest.test_compound_interest_continuous.ast.md|TestCompoundInterest.test_compound_interest_continuous.ast]] (+198 more)
 - `#domain/ui` (49 files): [[obsidian/calculator-interface.md|calculator-interface.md]], [[obsidian/user-input-validation.md|user-input-validation.md]], [[ast-cache/code/calculator/Calculator.ast.md|Calculator.ast]] (+46 more)

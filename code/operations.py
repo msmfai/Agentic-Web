@@ -2,11 +2,16 @@
 # Operations Module
 
 **File Tags**: #type/code-file
-**Inheritable Tags**: #location/code-file/code/operations.py #domain/mathematics #layer/core #layer/domain #pattern/strategy #pattern/strategy/function-registry #category/mixed-concerns
+**Inheritable Tags**: #location/code-file/code/operations.py #domain/mathematics #layer/core #layer/domain #pattern/strategy #pattern/strategy/function-registry
 
 ## Purpose
 Implements arithmetic and scientific operations using the Strategy Pattern.
 Each operation is a self-contained function that can be called independently.
+
+Includes three mathematical subdomains:
+- Arithmetic operations (add, subtract, multiply, divide, factorial)
+- Trigonometric functions (sin, cos, tan, asin, acos, atan, angle conversion)
+- Exponential/logarithmic functions (exp, ln, log10, log, power, sqrt, cbrt, constants)
 
 ## Related Documentation
 - Concept: [[arithmetic-operations|Arithmetic Operations]]
@@ -23,6 +28,7 @@ def add(a: float, b: float) -> float:  # ^add
     """
     Add two numbers together.
 
+    Tags: #domain/mathematics/arithmetic
     Related: [[arithmetic-operations|Arithmetic Operations]]
     """
     return a + b
@@ -32,6 +38,7 @@ def subtract(a: float, b: float) -> float:  # ^subtract
     """
     Subtract b from a.
 
+    Tags: #domain/mathematics/arithmetic
     Related: [[arithmetic-operations|Arithmetic Operations]]
     """
     return a - b
@@ -41,6 +48,7 @@ def multiply(a: float, b: float) -> float:  # ^multiply
     """
     Multiply two numbers.
 
+    Tags: #domain/mathematics/arithmetic
     Related: [[arithmetic-operations|Arithmetic Operations]]
     """
     return a * b
@@ -51,6 +59,7 @@ def divide(a: float, b: float) -> float:  # ^divide
     Divide a by b.
 
     Raises ValueError if b is zero.
+    Tags: #domain/mathematics/arithmetic
     Related: [[arithmetic-operations|Arithmetic Operations]]
     Related: [[user-input-validation|User Input Validation]]
     """
@@ -64,6 +73,7 @@ def factorial(n: float) -> float:  # ^factorial
     Calculate the factorial of n.
 
     Raises ValueError if n is negative or not an integer.
+    Tags: #domain/mathematics/arithmetic
     Related: [[arithmetic-operations|Arithmetic Operations]]
     Related: [[user-input-validation|User Input Validation]]
     """
@@ -99,7 +109,7 @@ def sin(x: float) -> float:  # ^sin
     """
     Calculate sine of x (x in radians).
 
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/trigonometry
     """
     return math.sin(x)
 
@@ -108,7 +118,7 @@ def cos(x: float) -> float:  # ^cos
     """
     Calculate cosine of x (x in radians).
 
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/trigonometry
     """
     return math.cos(x)
 
@@ -117,7 +127,7 @@ def tan(x: float) -> float:  # ^tan
     """
     Calculate tangent of x (x in radians).
 
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/trigonometry
     """
     return math.tan(x)
 
@@ -127,7 +137,7 @@ def asin(x: float) -> float:  # ^asin
     Calculate arcsine of x, returns result in radians.
 
     Raises ValueError if x is not in range [-1, 1].
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/trigonometry
     Related: [[user-input-validation|User Input Validation]]
     """
     if x < -1 or x > 1:
@@ -140,7 +150,7 @@ def acos(x: float) -> float:  # ^acos
     Calculate arccosine of x, returns result in radians.
 
     Raises ValueError if x is not in range [-1, 1].
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/trigonometry
     Related: [[user-input-validation|User Input Validation]]
     """
     if x < -1 or x > 1:
@@ -152,7 +162,7 @@ def atan(x: float) -> float:  # ^atan
     """
     Calculate arctangent of x, returns result in radians.
 
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/trigonometry
     """
     return math.atan(x)
 
@@ -162,7 +172,7 @@ def exp(x: float) -> float:  # ^exp
     """
     Calculate e raised to the power of x.
 
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/exponential
     """
     return math.exp(x)
 
@@ -172,7 +182,7 @@ def ln(x: float) -> float:  # ^ln
     Calculate natural logarithm (base e) of x.
 
     Raises ValueError if x <= 0.
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/exponential
     Related: [[user-input-validation|User Input Validation]]
     """
     if x <= 0:
@@ -185,7 +195,7 @@ def log10(x: float) -> float:  # ^log10
     Calculate base-10 logarithm of x.
 
     Raises ValueError if x <= 0.
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/exponential
     Related: [[user-input-validation|User Input Validation]]
     """
     if x <= 0:
@@ -198,7 +208,7 @@ def log(x: float, base: float) -> float:  # ^log
     Calculate logarithm of x with custom base.
 
     Raises ValueError if x <= 0 or base <= 0 or base == 1.
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/exponential
     Related: [[user-input-validation|User Input Validation]]
     """
     if x <= 0:
@@ -213,7 +223,7 @@ def power(a: float, b: float) -> float:  # ^power
     """
     Calculate a raised to the power of b.
 
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/exponential
     """
     return math.pow(a, b)
 
@@ -223,7 +233,7 @@ def sqrt(x: float) -> float:  # ^sqrt
     Calculate square root of x.
 
     Raises ValueError if x < 0.
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/exponential
     Related: [[user-input-validation|User Input Validation]]
     """
     if x < 0:
@@ -235,7 +245,7 @@ def cbrt(x: float) -> float:  # ^cbrt
     """
     Calculate cube root of x.
 
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/exponential
     """
     return math.copysign(abs(x) ** (1/3), x)
 
@@ -245,7 +255,7 @@ def deg_to_rad(degrees: float) -> float:  # ^deg_to_rad
     """
     Convert degrees to radians.
 
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/trigonometry
     """
     return math.radians(degrees)
 
@@ -254,7 +264,7 @@ def rad_to_deg(radians: float) -> float:  # ^rad_to_deg
     """
     Convert radians to degrees.
 
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/trigonometry
     """
     return math.degrees(radians)
 
@@ -264,7 +274,7 @@ def pi_const(_: float = 0) -> float:  # ^pi_const
     """
     Return the value of pi.
 
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/exponential
     """
     return math.pi
 
@@ -273,7 +283,7 @@ def e_const(_: float = 0) -> float:  # ^e_const
     """
     Return the value of e (Euler's number).
 
-    Related: [[arithmetic-operations|Arithmetic Operations]]
+    Tags: #domain/mathematics/exponential
     """
     return math.e
 

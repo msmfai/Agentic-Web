@@ -2,7 +2,7 @@
 # Calculator Class Tests
 
 **File Tags**: #type/code-file
-**Inheritable Tags**: #location/code-file/code/test_calculator.py #domain/testing #domain/testing/integration #layer/test #category/unit-test #domain/ui
+**Inheritable Tags**: #location/code-file/code/test_calculator.py #domain/testing/integration #layer/test #domain/ui
 
 ## Purpose
 Unit tests for the Calculator class.

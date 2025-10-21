@@ -2,7 +2,7 @@
 # Plugin Integration Tests
 
 **File Tags**: #type/code-file
-**Inheritable Tags**: #location/code-file/code/test_plugin_integration.py #domain/plugin-system #domain/testing #domain/testing/integration #layer/test #category/integration-test
+**Inheritable Tags**: #location/code-file/code/test_plugin_integration.py #domain/plugin-system #domain/testing/integration #layer/test
 
 ## Purpose
 Integration tests for the plugin system integration with the calculator.

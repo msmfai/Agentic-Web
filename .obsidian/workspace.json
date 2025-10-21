@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#pattern/strategy",
+                "query": "read",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -163,23 +163,26 @@
       "bases:Create new base": false
     }
   },
-  "active": "a209a304b79abbdb",
+  "active": "3009194352e5084b",
   "lastOpenFiles": [
-    "CLAUDE.md.tmp.10360.1761044576756",
-    "CLAUDE.md.tmp.10360.1761044551879",
+    "code/operations.py.tmp.41940.1761046598398",
+    "code/operations.py.tmp.41940.1761046561111",
+    "code/operations.py.tmp.41940.1761046554259",
+    "code/operations.py.tmp.41940.1761046519753",
+    "code/operations.py.tmp.41940.1761046512601",
+    "code/test_operations.py.tmp.41940.1761046171744",
+    "code/test_operations.py.tmp.41940.1761046159990",
+    "code/test_operations.py.tmp.41940.1761046149108",
+    "code/test_operations.py.tmp.41940.1761046133302",
+    "code/test_operations.py.tmp.41940.1761046115280",
+    "code/test_operations.py.tmp.41940.1761046108587",
+    "whiteboard/tag-system-refactoring-plan.md",
+    "obsidian/architecture-overview.md",
+    "whiteboard/test-report.md",
     "whiteboard/janitor/12-error-CLAUDE.md",
     "whiteboard/janitor/10-error-case-study-janitor-guided-fixes.md",
     "whiteboard/janitor/09-error-case-study-janitor-guided-fixes.md",
     "whiteboard/janitor/08-error-case-study-janitor-guided-fixes.md",
-    "maintenance_scripts/janitor.py.tmp.10360.1761044468492",
-    "obsidian/sednGuHkI",
-    "obsidian/sedxGHhNq",
-    "obsidian/sedqw9R6n",
-    "obsidian/sedV3lTJc",
-    "obsidian/sed4Eiu0m",
-    "sedMugCt6",
-    "maintenance_scripts/generate_ast.py.tmp.10360.1761044224954",
-    "maintenance_scripts/generate_ast.py.tmp.10360.1761044214451",
     "whiteboard/janitor/66-error-PLUGIN_OPERATIONS.ast.md",
     "whiteboard/janitor/65-error-PLUGIN_OPERATIONS.ast.md",
     "whiteboard/janitor/64-error-mode.ast.md",
@@ -198,9 +201,6 @@
     "whiteboard/janitor/34-error-irr.ast.md",
     "whiteboard/janitor/33-error-irr.ast.md",
     "whiteboard/janitor/32-error-future_value.ast.md",
-    "whiteboard/janitor/31-error-future_value.ast.md",
-    "whiteboard/janitor/30-error-compound_interest.ast.md",
-    "whiteboard/janitor/29-error-compound_interest.ast.md",
     "Untitled.canvas"
   ]
 }

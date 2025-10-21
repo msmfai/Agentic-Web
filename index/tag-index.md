@@ -12,14 +12,11 @@ tags:
   - category/best-practices
   - category/code-generation
   - category/data-structures
-  - category/integration-test
-  - category/mixed-concerns
   - category/project-setup
   - category/reference
   - category/solid-principles
   - category/theory
   - category/tutorial
-  - category/unit-test
   - category/validation
   - domain/automation
   - domain/finance
@@ -79,13 +76,13 @@ tags:
 
 **Auto-generated - do not edit manually**
 
-**Last Updated**: 2025-10-21 12:03:36
+**Last Updated**: 2025-10-21 12:41:26
 
 This file lists every tag currently in use across the repository.
 
 ## Summary
 
-- Total unique tags: 70
+- Total unique tags: 67
 - Total files: 387
 
 ## Type Tags
@@ -106,7 +103,7 @@ This file lists every tag currently in use across the repository.
 - `#domain/mathematics` (91 files)
 - `#domain/plugin-system` (47 files)
 - `#domain/statistics` (34 files)
-- `#domain/testing` (264 files)
+- `#domain/testing` (1 files)
 - `#domain/testing/integration` (62 files)
 - `#domain/testing/unit` (201 files)
 - `#domain/ui` (49 files)
@@ -139,14 +136,11 @@ This file lists every tag currently in use across the repository.
 - `#category/best-practices` (3 files)
 - `#category/code-generation` (1 files)
 - `#category/data-structures` (1 files)
-- `#category/integration-test` (24 files)
-- `#category/mixed-concerns` (24 files)
 - `#category/project-setup` (1 files)
 - `#category/reference` (1 files)
 - `#category/solid-principles` (1 files)
 - `#category/theory` (1 files)
 - `#category/tutorial` (1 files)
-- `#category/unit-test` (239 files)
 - `#category/validation` (1 files)
 
 ## Purpose Tags

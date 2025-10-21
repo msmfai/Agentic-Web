@@ -2,7 +2,7 @@
 # Statistics Plugin Tests
 
 **File Tags**: #type/code-file
-**Inheritable Tags**: #location/code-file/code/test_statistics.py #domain/statistics #domain/testing #domain/testing/unit #layer/test #category/unit-test
+**Inheritable Tags**: #location/code-file/code/test_statistics.py #domain/statistics #domain/testing/unit #layer/test
 
 ## Purpose
 Unit tests for the statistics plugin operations.

@@ -2,7 +2,7 @@
 # Operations Module Tests
 
 **File Tags**: #type/code-file
-**Inheritable Tags**: #location/code-file/code/test_operations.py #domain/testing #domain/testing/unit #layer/test #category/unit-test #domain/mathematics
+**Inheritable Tags**: #location/code-file/code/test_operations.py #domain/testing/unit #layer/test #domain/mathematics
 
 ## Purpose
 Unit tests for the operations module.
@@ -25,6 +25,7 @@ class TestBasicArithmetic(unittest.TestCase):  # ^TestBasicArithmetic
     """
     Test basic arithmetic operations.
 
+    Tags: #domain/mathematics/arithmetic
     Related: [[code/operations.py|Operations Module]]
     Related: [[arithmetic-operations|Arithmetic Operations]]
     """
@@ -67,6 +68,7 @@ class TestFactorial(unittest.TestCase):  # ^TestFactorial
     """
     Test factorial operation.
 
+    Tags: #domain/mathematics/arithmetic
     Related: [[code/operations.py|Operations Module]]
     """
 
@@ -94,6 +96,7 @@ class TestTrigonometric(unittest.TestCase):  # ^TestTrigonometric
     """
     Test trigonometric functions.
 
+    Tags: #domain/mathematics/trigonometry
     Related: [[code/operations.py|Operations Module]]
     """
 
@@ -160,6 +163,7 @@ class TestExponentialLogarithmic(unittest.TestCase):  # ^TestExponentialLogarith
     """
     Test exponential and logarithmic functions.
 
+    Tags: #domain/mathematics/exponential
     Related: [[code/operations.py|Operations Module]]
     """
 
@@ -237,6 +241,7 @@ class TestPowerOperations(unittest.TestCase):  # ^TestPowerOperations
     """
     Test power and root operations.
 
+    Tags: #domain/mathematics/exponential
     Related: [[code/operations.py|Operations Module]]
     """
 
@@ -275,6 +280,7 @@ class TestAngleConversion(unittest.TestCase):  # ^TestAngleConversion
     """
     Test angle conversion functions.
 
+    Tags: #domain/mathematics/trigonometry
     Related: [[code/operations.py|Operations Module]]
     """
 
@@ -299,6 +305,7 @@ class TestConstants(unittest.TestCase):  # ^TestConstants
     """
     Test mathematical constants.
 
+    Tags: #domain/mathematics/exponential
     Related: [[code/operations.py|Operations Module]]
     """
 

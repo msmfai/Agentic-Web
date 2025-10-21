@@ -4,7 +4,11 @@
       "Bash(done)",
       "Bash(find:*)",
       "Bash(xargs -0 sed -i 's|\\[\\[\\.\\.\\/obsidian\\/testing-strategy|[[../obsidian/testing-strategy.md|g')",
-      "Bash(xargs:*)"
+      "Bash(xargs:*)",
+      "Bash(uv run:*)",
+      "Bash(for:*)",
+      "Bash(do echo \"=== $f ===\")",
+      "Bash(head:*)"
     ],
     "deny": [],
     "ask": []
