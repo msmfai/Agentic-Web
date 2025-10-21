@@ -13,11 +13,11 @@ Integrates with plugin system to support extensible operations.
 - Concept: [[calculator-interface|Calculator Interface]]
 - Concept: [[user-input-validation|User Input Validation]]
 - Pattern: [[single-responsibility|Single Responsibility Principle]]
-- Pattern: [[../obsidian/plugin-architecture|Plugin Architecture]]
+- Pattern: [[obsidian/plugin-architecture.md|Plugin Architecture]]
 
 ## Dependencies
-- [[operations.py|Operations Module]]
-- [[plugin_system.py|Plugin System]]
+- [[code/operations.py|Operations Module]]
+- [[code/plugin_system.py|Plugin System]]
 """
 from typing import Optional, Dict, Callable
 import operations
@@ -30,7 +30,7 @@ class Calculator:  # ^Calculator
     Supports extensibility through the plugin system.
 
     Implements: [[calculator-interface|Calculator Interface]]
-    Integrates: [[plugin_system.py|Plugin System]]
+    Integrates: [[code/plugin_system.py|Plugin System]]
     """
 
     def __init__(self):  # ^Calculator-__init__
@@ -42,8 +42,8 @@ class Calculator:  # ^Calculator
         """
         Get all available operations (built-in + plugin operations).
 
-        Related: [[plugin_system.py|Plugin System]]
-        Related: [[operations.py|Operations Module]]
+        Related: [[code/plugin_system.py|Plugin System]]
+        Related: [[code/operations.py|Operations Module]]
         """
         all_ops = operations.OPERATIONS.copy()
         plugin_ops = self.plugin_system.get_all_operations()
@@ -54,8 +54,8 @@ class Calculator:  # ^Calculator
         """
         Get all available unary operations (built-in + plugin unary operations).
 
-        Related: [[plugin_system.py|Plugin System]]
-        Related: [[operations.py|Operations Module]]
+        Related: [[code/plugin_system.py|Plugin System]]
+        Related: [[code/operations.py|Operations Module]]
         """
         return operations.UNARY_OPERATIONS.copy()
 
@@ -74,9 +74,9 @@ class Calculator:  # ^Calculator
         Raises:
             ValueError: If operation is invalid or calculation fails
 
-        Related: [[operations.py|Operations Module]]
+        Related: [[code/operations.py|Operations Module]]
         Related: [[user-input-validation|User Input Validation]]
-        Related: [[plugin_system.py|Plugin System]]
+        Related: [[code/plugin_system.py|Plugin System]]
         """
         all_operations = self._get_all_operations()
 
@@ -143,7 +143,7 @@ class Calculator:  # ^Calculator
         - !enable <plugin>: Enable a plugin
         - !disable <plugin>: Disable a plugin
 
-        Related: [[plugin_system.py|Plugin System]]
+        Related: [[code/plugin_system.py|Plugin System]]
         """
         parts = command.split()
         cmd = parts[0].lower()

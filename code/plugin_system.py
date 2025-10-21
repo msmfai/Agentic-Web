@@ -9,11 +9,11 @@ Provides hot-reloadable plugin infrastructure for extending calculator operation
 Plugins can be loaded, unloaded, and reloaded at runtime without restarting the calculator.
 
 ## Related Documentation
-- Pattern: [[../obsidian/plugin-architecture|Plugin Architecture]]
-- Pattern: [[../obsidian/strategy-pattern|Strategy Pattern]]
+- Pattern: [[obsidian/plugin-architecture.md|Plugin Architecture]]
+- Pattern: [[obsidian/strategy-pattern.md|Strategy Pattern]]
 
 ## Used By
-- [[calculator.py|Calculator Class]]
+- [[code/calculator.py|Calculator Class]]
 """
 from typing import Dict, Callable, List, Optional, Any
 import importlib
@@ -26,7 +26,7 @@ class PluginMetadata:  # ^PluginMetadata
     """
     Metadata about a loaded plugin.
 
-    Related: [[../obsidian/plugin-architecture|Plugin Architecture]]
+    Related: [[obsidian/plugin-architecture.md|Plugin Architecture]]
     """
     def __init__(self, name: str, module_path: str, operations: Dict[str, Callable]):  # ^PluginMetadata-__init__
         self.name = name
@@ -42,8 +42,8 @@ class PluginSystem:  # ^PluginSystem
     Implements hot-reloading by tracking module state and supporting
     runtime load/unload operations.
 
-    Related: [[../obsidian/plugin-architecture|Plugin Architecture]]
-    Related: [[../obsidian/strategy-pattern|Strategy Pattern]]
+    Related: [[obsidian/plugin-architecture.md|Plugin Architecture]]
+    Related: [[obsidian/strategy-pattern.md|Strategy Pattern]]
     """
 
     def __init__(self):  # ^PluginSystem-__init__
@@ -55,7 +55,7 @@ class PluginSystem:  # ^PluginSystem
         """
         Register a callback to be notified when plugins change.
 
-        Implements: [[../obsidian/plugin-architecture|Observer Pattern]]
+        Implements: [[obsidian/plugin-architecture.md|Observer Pattern]]
         """
         self._observers.append(callback)
 
@@ -63,7 +63,7 @@ class PluginSystem:  # ^PluginSystem
         """
         Notify all observers of a plugin event.
 
-        Related: [[../obsidian/plugin-architecture|Observer Pattern]]
+        Related: [[obsidian/plugin-architecture.md|Observer Pattern]]
         """
         for callback in self._observers:
             callback(event, plugin_name)
@@ -79,7 +79,7 @@ class PluginSystem:  # ^PluginSystem
         Returns:
             True if loaded successfully, False otherwise
 
-        Related: [[../obsidian/plugin-architecture|Plugin Architecture]]
+        Related: [[obsidian/plugin-architecture.md|Plugin Architecture]]
         """
         try:
             # Determine plugin path
@@ -127,7 +127,7 @@ class PluginSystem:  # ^PluginSystem
         Returns:
             True if unloaded successfully, False otherwise
 
-        Related: [[../obsidian/plugin-architecture|Plugin Architecture]]
+        Related: [[obsidian/plugin-architecture.md|Plugin Architecture]]
         """
         if plugin_name not in self.plugins:
             return False
@@ -153,7 +153,7 @@ class PluginSystem:  # ^PluginSystem
         Returns:
             True if reloaded successfully, False otherwise
 
-        Related: [[../obsidian/plugin-architecture|Plugin Architecture]]
+        Related: [[obsidian/plugin-architecture.md|Plugin Architecture]]
         """
         if plugin_name not in self.plugins:
             return False
@@ -169,8 +169,8 @@ class PluginSystem:  # ^PluginSystem
         Returns:
             Dictionary mapping operation names to functions
 
-        Related: [[../obsidian/strategy-pattern|Strategy Pattern]]
-        Related: [[../obsidian/plugin-architecture|Plugin Architecture]]
+        Related: [[obsidian/strategy-pattern.md|Strategy Pattern]]
+        Related: [[obsidian/plugin-architecture.md|Plugin Architecture]]
         """
         operations = {}
         for plugin in self.plugins.values():
@@ -188,7 +188,7 @@ class PluginSystem:  # ^PluginSystem
         Returns:
             Dictionary mapping operation names to functions
 
-        Related: [[../obsidian/plugin-architecture|Plugin Architecture]]
+        Related: [[obsidian/plugin-architecture.md|Plugin Architecture]]
         """
         if plugin_name not in self.plugins:
             return {}
@@ -244,7 +244,7 @@ class PluginSystem:  # ^PluginSystem
         Returns:
             Number of plugins successfully loaded
 
-        Related: [[../obsidian/plugin-architecture|Plugin Architecture]]
+        Related: [[obsidian/plugin-architecture.md|Plugin Architecture]]
         """
         plugins_dir = Path(__file__).parent / "plugins"
 

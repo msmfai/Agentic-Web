@@ -14,7 +14,7 @@ Each operation is a self-contained function that can be called independently.
 - Pattern: [[single-responsibility|Single Responsibility Principle]]
 
 ## Used By
-- [[calculator.py|Calculator Class]]
+- [[code/calculator.py|Calculator Class]]
 """
 import math
 

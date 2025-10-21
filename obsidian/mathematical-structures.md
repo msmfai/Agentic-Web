@@ -32,8 +32,8 @@ Mathematical structures are specialized data organizations and computational pat
 - Aggregation (sum, min, max)
 
 **Related implementations**:
-- [[../code/plugins/statistics.py|Statistics Plugin]]
-- [[../code/plugins/finance.py|Finance Plugin]]
+- [[code/plugins/statistics.py|Statistics Plugin]]
+- [[code/plugins/finance.py|Finance Plugin]]
 
 ### Vectors
 
@@ -52,7 +52,7 @@ Mathematical structures are specialized data organizations and computational pat
 - Magnitude: ||**v**|| = √(Σvᵢ²)
 
 **Planned implementation**:
-- [[../code/plugins/linear_algebra.py|Linear Algebra Plugin]] (not yet created)
+- [[code/plugins/linear_algebra.py|Linear Algebra Plugin]] (not yet created)
 
 ### Matrices
 
@@ -70,7 +70,7 @@ Mathematical structures are specialized data organizations and computational pat
 - Transpose: (**Aᵀ**)ᵢⱼ = aⱼᵢ
 
 **Planned implementation**:
-- [[../code/plugins/linear_algebra.py|Linear Algebra Plugin]] (not yet created)
+- [[code/plugins/linear_algebra.py|Linear Algebra Plugin]] (not yet created)
 
 ### Statistical Distributions
 
@@ -97,7 +97,7 @@ Mathematical structures are specialized data organizations and computational pat
 - Standard deviation: σ = √(variance)
 
 **Related implementation**:
-- [[../code/plugins/statistics.py|Statistics Plugin]]
+- [[code/plugins/statistics.py|Statistics Plugin]]
 
 ### Cash Flow Sequences
 
@@ -117,7 +117,7 @@ Mathematical structures are specialized data organizations and computational pat
 - IRR: Solve for r where NPV(r) = 0
 
 **Related implementation**:
-- [[../code/plugins/finance.py|Finance Plugin]]
+- [[code/plugins/finance.py|Finance Plugin]]
 
 ## Computational Patterns
 
@@ -138,7 +138,7 @@ Mathematical structures are specialized data organizations and computational pat
 - Derivative stability check
 
 **Related implementation**:
-- [[../code/plugins/finance.py#^irr|IRR Function]]
+- [[code/plugins/finance.py#^irr|IRR Function]]
 
 ### Reduction Operations
 
@@ -156,8 +156,8 @@ Mathematical structures are specialized data organizations and computational pat
 - Handle edge cases (empty lists, single values)
 
 **Related implementations**:
-- [[../code/plugins/statistics.py#^mean|Mean Function]]
-- [[../code/plugins/statistics.py#^range_stat|Range Function]]
+- [[code/plugins/statistics.py#^mean|Mean Function]]
+- [[code/plugins/statistics.py#^range_stat|Range Function]]
 
 ### Element-wise Transformations
 
@@ -175,8 +175,8 @@ Mathematical structures are specialized data organizations and computational pat
 - Consider memory vs. performance trade-offs
 
 **Related implementations**:
-- [[../code/plugins/statistics.py#^variance|Variance Function]]
-- [[../code/plugins/finance.py#^npv|NPV Function]]
+- [[code/plugins/statistics.py#^variance|Variance Function]]
+- [[code/plugins/finance.py#^npv|NPV Function]]
 
 ## Numerical Considerations
 
@@ -212,9 +212,9 @@ Mathematical structures are specialized data organizations and computational pat
 - [[testing-strategy.md|Testing Strategy]] - How mathematical functions are tested (not yet created)
 
 **Implementations**:
-- [[../code/plugins/statistics.py|Statistics Plugin]] - Statistical measures
-- [[../code/plugins/finance.py|Finance Plugin]] - Financial mathematics
-- [[../code/plugins/linear_algebra.py|Linear Algebra Plugin]] - Vector/matrix operations (planned)
+- [[code/plugins/statistics.py|Statistics Plugin]] - Statistical measures
+- [[code/plugins/finance.py|Finance Plugin]] - Financial mathematics
+- [[code/plugins/linear_algebra.py|Linear Algebra Plugin]] - Vector/matrix operations (planned)
 
 **Related Concepts**:
 - [[arithmetic-operations.md|Arithmetic Operations]] - Basic mathematical operations (not yet created)

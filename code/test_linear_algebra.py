@@ -10,8 +10,8 @@ Unit tests for the linear algebra plugin operations including vector operations
 (multiply, transpose, determinant).
 
 ## Related Documentation
-- Pattern: [[../obsidian/testing-strategy|Testing Strategy]]
-- Implementation: [[plugins/linear_algebra.py|Linear Algebra Plugin]]
+- Pattern: [[obsidian/testing-strategy.md|Testing Strategy]]
+- Implementation: [[code/plugins/linear_algebra.py|Linear Algebra Plugin]]
 
 ## Test Coverage
 Tests all linear algebra functions: dot_product, cross_product, magnitude,
@@ -26,7 +26,7 @@ class TestDotProduct(unittest.TestCase):  # ^TestDotProduct
     """
     Tests for the dot product function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_dot_product_basic(self):  # ^TestDotProduct-test_dot_product_basic
@@ -62,7 +62,7 @@ class TestCrossProduct(unittest.TestCase):  # ^TestCrossProduct
     """
     Tests for the cross product function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_cross_product_basic(self):  # ^TestCrossProduct-test_cross_product_basic
@@ -104,7 +104,7 @@ class TestMagnitude(unittest.TestCase):  # ^TestMagnitude
     """
     Tests for the magnitude function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_magnitude_3_4(self):  # ^TestMagnitude-test_magnitude_3_4
@@ -132,7 +132,7 @@ class TestNormalize(unittest.TestCase):  # ^TestNormalize
     """
     Tests for the normalize function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_normalize_basic(self):  # ^TestNormalize-test_normalize_basic
@@ -165,7 +165,7 @@ class TestMatrixMultiply(unittest.TestCase):  # ^TestMatrixMultiply
     """
     Tests for the matrix multiplication function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_matrix_multiply_basic(self):  # ^TestMatrixMultiply-test_matrix_multiply_basic
@@ -186,23 +186,23 @@ class TestMatrixMultiply(unittest.TestCase):  # ^TestMatrixMultiply
 
     def test_matrix_multiply_non_square(self):  # ^TestMatrixMultiply-test_matrix_multiply_non_square
         """Test multiplication of non-square matrices."""
-        m1 = [[1, 2, 3]]  # 1×3
+        m1 = [[1, 2, 3],]  # 1×3
         m2 = [[4], [5], [6]]  # 3×1
         result = linear_algebra.matrix_multiply(m1, m2)
-        # [[1*4 + 2*5 + 3*6]] = [[32]]
-        self.assertEqual(result, [[32]])
+        # Result: [1*4 + 2*5 + 3*6] = [32]
+        self.assertEqual(result, [[32],])
 
     def test_matrix_multiply_incompatible_dimensions(self):  # ^TestMatrixMultiply-test_matrix_multiply_incompatible_dimensions
         """Test matrix multiply raises error on incompatible dimensions."""
-        m1 = [[1, 2]]  # 1×2
-        m2 = [[3, 4, 5]]  # 1×3
+        m1 = [[1, 2],]  # 1x2 matrix
+        m2 = [[3, 4, 5],]  # 1x3 matrix
         with self.assertRaises(ValueError):
             linear_algebra.matrix_multiply(m1, m2)
 
     def test_matrix_multiply_empty(self):  # ^TestMatrixMultiply-test_matrix_multiply_empty
         """Test matrix multiply raises error on empty matrix."""
         with self.assertRaises(ValueError):
-            linear_algebra.matrix_multiply([], [[1]])
+            linear_algebra.matrix_multiply([], [1])
 
     def test_matrix_multiply_non_rectangular(self):  # ^TestMatrixMultiply-test_matrix_multiply_non_rectangular
         """Test matrix multiply raises error on non-rectangular matrix."""
@@ -216,7 +216,7 @@ class TestTranspose(unittest.TestCase):  # ^TestTranspose
     """
     Tests for the transpose function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_transpose_square(self):  # ^TestTranspose-test_transpose_square
@@ -234,7 +234,7 @@ class TestTranspose(unittest.TestCase):  # ^TestTranspose
 
     def test_transpose_row_vector(self):  # ^TestTranspose-test_transpose_row_vector
         """Test transpose of row vector to column vector."""
-        m = [[1, 2, 3]]  # 1×3
+        m = [[1, 2, 3],]  # 1×3
         result = linear_algebra.transpose(m)
         self.assertEqual(result, [[1], [2], [3]])  # 3×1
 
@@ -266,7 +266,7 @@ class TestDeterminant(unittest.TestCase):  # ^TestDeterminant
     """
     Tests for the determinant function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_determinant_2x2(self):  # ^TestDeterminant-test_determinant_2x2

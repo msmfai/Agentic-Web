@@ -164,14 +164,13 @@ class TagScanner:
 
         # Determine the directory the file is in
         try:
-            # Files in obsidian/ - use relative path from index/
+            # Files in obsidian/ - use root-relative path
             if filepath.parent == obsidian_dir:
-                return f"[[../obsidian/{filepath.stem}|{filepath.name}]]"
+                return f"[[obsidian/{filepath.stem}.md|{filepath.name}]]"
 
-            # Files elsewhere - use relative path from index/
+            # Files elsewhere - use root-relative path
             # Convert to posix for consistent wikilinks
-            rel_from_index = Path("..") / rel_path
-            link_path = rel_from_index.as_posix()
+            link_path = rel_path.as_posix()
 
             # Use stem for .ast.md files, otherwise use name
             display = filepath.stem if filepath.suffix == '.md' and '.ast' in filepath.stem else filepath.name
@@ -264,7 +263,7 @@ class TagScanner:
         lines.extend([
             "## Complete Tag Inventory",
             "",
-            "See [[tag-index|Complete Tag Index]] for exhaustive list of all tags.",
+            "See [[index/tag-index.md|Complete Tag Index]] for exhaustive list of all tags.",
             "",
             "**Note**: The tag index file contains all repository tags in its frontmatter, making it part of the graph through tags rather than wikilinks.",
             "",

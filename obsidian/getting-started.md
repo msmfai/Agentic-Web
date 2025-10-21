@@ -93,7 +93,7 @@ Shows only documentation files
 Let's trace a concept from documentation → implementation:
 
 1. Open [[arithmetic-operations|Arithmetic Operations]] (concept doc)
-2. Click the link to `[[../code/operations.py|Operations Module]]`
+2. Click the link to `[[code/operations.py|Operations Module]]`
 3. You're now viewing the Python code
 4. Scroll through the docstring to see links back to concepts
 5. Notice the `#domain/mathematics` and `#layer/core` tags
@@ -162,7 +162,7 @@ The `ast-cache/` folder contains auto-generated markdown files representing ever
 
 ### "What design patterns are used?"
 
-1. Check [[../index/repository-map|Repository Map]] → "Implemented Patterns" section
+1. Check [[index/repository-map.md|Repository Map]] → "Implemented Patterns" section
 2. Or search tags for `#pattern/`
 3. Click pattern docs like [[strategy-pattern|Strategy Pattern]] to learn more
 
@@ -245,7 +245,7 @@ python maintenance_scripts/generate_ast.py
 Now that you're oriented:
 
 - **Understand the architecture**: [[architecture-overview|Architecture Overview]]
-- **See project status**: [[../index/repository-map|Repository Map]]
+- **See project status**: [[index/repository-map.md|Repository Map]]
 - **Learn about tags**: [[tag-inheritance|Tag Inheritance]]
 - **Read a case study**: [[case-study-janitor-guided-fixes|Janitor-Guided Fixes]]
 - **Explore graph metrics**: [[graph-metrics-system|Graph Metrics]]
@@ -255,7 +255,7 @@ Now that you're oriented:
 - [Obsidian Documentation](https://help.obsidian.md/)
 - [Custom File Extensions Plugin](https://github.com/MeepTech/obsidian-custom-file-extensions-plugin)
 - [[README.md|Repository README]]
-- [[../CLAUDE.md|LLM Instructions]] (for understanding how Claude Code uses this system)
+- [[CLAUDE.md|LLM Instructions]] (for understanding how Claude Code uses this system)
 
 ---
 

@@ -8,8 +8,8 @@
 Provides statistical operations for data analysis including measures of central tendency and dispersion.
 
 ## Related Documentation
-- Pattern: [[../../obsidian/plugin-architecture|Plugin Architecture]]
-- Concept: [[../../obsidian/mathematical-structures|Mathematical Structures]]
+- Pattern: [[obsidian/plugin-architecture.md|Plugin Architecture]]
+- Concept: [[obsidian/mathematical-structures.md|Mathematical Structures]]
 
 ## Plugin Interface
 Exports PLUGIN_OPERATIONS dictionary for dynamic loading by the plugin system.
@@ -34,7 +34,7 @@ def mean(values: List[float]) -> float:  # ^mean
     Raises:
         ValueError: If the list is empty
 
-    Related: [[../../obsidian/mathematical-structures|Mathematical Structures]]
+    Related: [[obsidian/mathematical-structures.md|Mathematical Structures]]
     """
     if not values:
         raise ValueError("Cannot calculate mean of empty list")
@@ -55,7 +55,7 @@ def median(values: List[float]) -> float:  # ^median
     Raises:
         ValueError: If the list is empty
 
-    Related: [[../../obsidian/mathematical-structures|Mathematical Structures]]
+    Related: [[obsidian/mathematical-structures.md|Mathematical Structures]]
     """
     if not values:
         raise ValueError("Cannot calculate median of empty list")
@@ -84,7 +84,7 @@ def mode(values: List[float]) -> float:  # ^mode
     Raises:
         ValueError: If the list is empty or has no unique mode
 
-    Related: [[../../obsidian/mathematical-structures|Mathematical Structures]]
+    Related: [[obsidian/mathematical-structures.md|Mathematical Structures]]
     """
     if not values:
         raise ValueError("Cannot calculate mode of empty list")
@@ -116,7 +116,7 @@ def variance(values: List[float], sample: bool = True) -> float:  # ^variance
     Raises:
         ValueError: If the list is empty or has only one element (for sample variance)
 
-    Related: [[../../obsidian/mathematical-structures|Mathematical Structures]]
+    Related: [[obsidian/mathematical-structures.md|Mathematical Structures]]
     """
     if not values:
         raise ValueError("Cannot calculate variance of empty list")
@@ -145,7 +145,7 @@ def stddev(values: List[float], sample: bool = True) -> float:  # ^stddev
     Raises:
         ValueError: If the list is empty or has only one element (for sample std dev)
 
-    Related: [[../../obsidian/mathematical-structures|Mathematical Structures]]
+    Related: [[obsidian/mathematical-structures.md|Mathematical Structures]]
     """
     return math.sqrt(variance(values, sample))
 
@@ -163,7 +163,7 @@ def range_stat(values: List[float]) -> float:  # ^range_stat
     Raises:
         ValueError: If the list is empty
 
-    Related: [[../../obsidian/mathematical-structures|Mathematical Structures]]
+    Related: [[obsidian/mathematical-structures.md|Mathematical Structures]]
     """
     if not values:
         raise ValueError("Cannot calculate range of empty list")

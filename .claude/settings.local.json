@@ -1,11 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(uv run:*)",
-      "Bash(python -m pytest code/test_*.py -v)",
-      "Bash(python:*)",
-      "Bash(git mv:*)",
-      "Bash(mkdir:*)"
-    ]
+      "Bash(done)",
+      "Bash(find:*)",
+      "Bash(xargs -0 sed -i 's|\\[\\[\\.\\.\\/obsidian\\/testing-strategy|[[../obsidian/testing-strategy.md|g')",
+      "Bash(xargs:*)"
+    ],
+    "deny": [],
+    "ask": []
   }
 }

@@ -8,8 +8,8 @@
 Unit tests for the statistics plugin operations.
 
 ## Related Documentation
-- Pattern: [[../obsidian/testing-strategy|Testing Strategy]]
-- Implementation: [[plugins/statistics.py|Statistics Plugin]]
+- Pattern: [[obsidian/testing-strategy.md|Testing Strategy]]
+- Implementation: [[code/plugins/statistics.py|Statistics Plugin]]
 
 ## Test Coverage
 Tests all statistical functions: mean, median, mode, variance, stddev, range
@@ -22,7 +22,7 @@ class TestMean(unittest.TestCase):  # ^TestMean
     """
     Tests for the mean (average) function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_mean_basic(self):  # ^TestMean-test_mean_basic
@@ -50,7 +50,7 @@ class TestMedian(unittest.TestCase):  # ^TestMedian
     """
     Tests for the median function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_median_odd_count(self):  # ^TestMedian-test_median_odd_count
@@ -78,7 +78,7 @@ class TestMode(unittest.TestCase):  # ^TestMode
     """
     Tests for the mode function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_mode_single_mode(self):  # ^TestMode-test_mode_single_mode
@@ -106,7 +106,7 @@ class TestVariance(unittest.TestCase):  # ^TestVariance
     """
     Tests for the variance function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_variance_sample(self):  # ^TestVariance-test_variance_sample
@@ -134,7 +134,7 @@ class TestStdDev(unittest.TestCase):  # ^TestStdDev
     """
     Tests for the standard deviation function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_stddev_sample(self):  # ^TestStdDev-test_stddev_sample
@@ -152,7 +152,7 @@ class TestRange(unittest.TestCase):  # ^TestRange
     """
     Tests for the range function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_range_basic(self):  # ^TestRange-test_range_basic

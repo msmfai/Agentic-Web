@@ -63,9 +63,9 @@ To experience the full knowledge graph with visual navigation:
 4. **Start Exploring**
    - Open Graph View (graph icon in left sidebar)
    - Try these starting points:
-     - [[obsidian/getting-started|Getting Started Guide]] - Detailed tutorial and workflows
-     - [[obsidian/architecture-overview|Architecture Overview]] - How this system works
-     - [[index/repository-map|Repository Map]] - What's in this repository
+     - [[obsidian/getting-started.md|Getting Started Guide]] - Detailed tutorial and workflows
+     - [[obsidian/architecture-overview.md|Architecture Overview]] - How this system works
+     - [[index/repository-map.md|Repository Map]] - What's in this repository
      - [[code/main.py|main.py]] - Entry point to the calculator code
    - Try graph filters like `tag:` followed by `#domain/mathematics` or `#type/code-file`
 
@@ -201,9 +201,9 @@ python maintenance_scripts/generate_ast.py   # Regenerate AST cache only
 ## Learn More
 
 - **Philosophy**: Why unify code and docs? See [[CLAUDE#Philosophy|CLAUDE.md Philosophy section]]
-- **Tag System**: How tags work in detail → [[obsidian/tag-inheritance|Tag Inheritance]]
-- **Real Example**: See a complete workflow → [[obsidian/case-study-janitor-guided-fixes|Case Study: Janitor-Guided Fixes]]
-- **Graph Metrics**: How we measure the graph → [[obsidian/graph-metrics-system|Graph Metrics System]]
+- **Tag System**: How tags work in detail → [[obsidian/tag-inheritance.md|Tag Inheritance]]
+- **Real Example**: See a complete workflow → [[obsidian/case-study-janitor-guided-fixes.md|Case Study: Janitor-Guided Fixes]]
+- **Graph Metrics**: How we measure the graph → [[obsidian/graph-metrics-system.md|Graph Metrics System]]
 
 ## Status
 

@@ -9,8 +9,8 @@ Provides unit conversion operations for length, weight, and temperature.
 Supports conversions between metric and imperial systems.
 
 ## Related Documentation
-- Pattern: [[../../obsidian/plugin-architecture|Plugin Architecture]]
-- Concept: [[../../obsidian/dimensional-analysis|Dimensional Analysis]]
+- Pattern: [[obsidian/plugin-architecture.md|Plugin Architecture]]
+- Concept: [[obsidian/dimensional-analysis.md|Dimensional Analysis]]
 
 ## Plugin Interface
 Exports PLUGIN_OPERATIONS dictionary for dynamic loading by the plugin system.
@@ -34,7 +34,7 @@ def meters_to_feet(meters: float) -> float:  # ^meters_to_feet
     Returns:
         Length in feet
 
-    Related: [[../../obsidian/dimensional-analysis|Dimensional Analysis]]
+    Related: [[obsidian/dimensional-analysis.md|Dimensional Analysis]]
     """
     if meters < 0:
         raise ValueError("Length cannot be negative")
@@ -53,7 +53,7 @@ def feet_to_meters(feet: float) -> float:  # ^feet_to_meters
     Returns:
         Length in meters
 
-    Related: [[../../obsidian/dimensional-analysis|Dimensional Analysis]]
+    Related: [[obsidian/dimensional-analysis.md|Dimensional Analysis]]
     """
     if feet < 0:
         raise ValueError("Length cannot be negative")
@@ -72,7 +72,7 @@ def km_to_miles(km: float) -> float:  # ^km_to_miles
     Returns:
         Distance in miles
 
-    Related: [[../../obsidian/dimensional-analysis|Dimensional Analysis]]
+    Related: [[obsidian/dimensional-analysis.md|Dimensional Analysis]]
     """
     if km < 0:
         raise ValueError("Distance cannot be negative")
@@ -91,7 +91,7 @@ def miles_to_km(miles: float) -> float:  # ^miles_to_km
     Returns:
         Distance in kilometers
 
-    Related: [[../../obsidian/dimensional-analysis|Dimensional Analysis]]
+    Related: [[obsidian/dimensional-analysis.md|Dimensional Analysis]]
     """
     if miles < 0:
         raise ValueError("Distance cannot be negative")
@@ -110,7 +110,7 @@ def inches_to_cm(inches: float) -> float:  # ^inches_to_cm
     Returns:
         Length in centimeters
 
-    Related: [[../../obsidian/dimensional-analysis|Dimensional Analysis]]
+    Related: [[obsidian/dimensional-analysis.md|Dimensional Analysis]]
     """
     if inches < 0:
         raise ValueError("Length cannot be negative")
@@ -129,7 +129,7 @@ def cm_to_inches(cm: float) -> float:  # ^cm_to_inches
     Returns:
         Length in inches
 
-    Related: [[../../obsidian/dimensional-analysis|Dimensional Analysis]]
+    Related: [[obsidian/dimensional-analysis.md|Dimensional Analysis]]
     """
     if cm < 0:
         raise ValueError("Length cannot be negative")
@@ -150,7 +150,7 @@ def kg_to_lbs(kg: float) -> float:  # ^kg_to_lbs
     Returns:
         Weight in pounds
 
-    Related: [[../../obsidian/dimensional-analysis|Dimensional Analysis]]
+    Related: [[obsidian/dimensional-analysis.md|Dimensional Analysis]]
     """
     if kg < 0:
         raise ValueError("Weight cannot be negative")
@@ -169,7 +169,7 @@ def lbs_to_kg(lbs: float) -> float:  # ^lbs_to_kg
     Returns:
         Weight in kilograms
 
-    Related: [[../../obsidian/dimensional-analysis|Dimensional Analysis]]
+    Related: [[obsidian/dimensional-analysis.md|Dimensional Analysis]]
     """
     if lbs < 0:
         raise ValueError("Weight cannot be negative")
@@ -188,7 +188,7 @@ def grams_to_oz(grams: float) -> float:  # ^grams_to_oz
     Returns:
         Weight in ounces
 
-    Related: [[../../obsidian/dimensional-analysis|Dimensional Analysis]]
+    Related: [[obsidian/dimensional-analysis.md|Dimensional Analysis]]
     """
     if grams < 0:
         raise ValueError("Weight cannot be negative")
@@ -207,7 +207,7 @@ def oz_to_grams(oz: float) -> float:  # ^oz_to_grams
     Returns:
         Weight in grams
 
-    Related: [[../../obsidian/dimensional-analysis|Dimensional Analysis]]
+    Related: [[obsidian/dimensional-analysis.md|Dimensional Analysis]]
     """
     if oz < 0:
         raise ValueError("Weight cannot be negative")
@@ -228,7 +228,7 @@ def celsius_to_fahrenheit(celsius: float) -> float:  # ^celsius_to_fahrenheit
     Returns:
         Temperature in Fahrenheit
 
-    Related: [[../../obsidian/dimensional-analysis|Dimensional Analysis]]
+    Related: [[obsidian/dimensional-analysis.md|Dimensional Analysis]]
     """
     if celsius < -273.15:
         raise ValueError("Temperature cannot be below absolute zero (-273.15°C)")
@@ -247,7 +247,7 @@ def fahrenheit_to_celsius(fahrenheit: float) -> float:  # ^fahrenheit_to_celsius
     Returns:
         Temperature in Celsius
 
-    Related: [[../../obsidian/dimensional-analysis|Dimensional Analysis]]
+    Related: [[obsidian/dimensional-analysis.md|Dimensional Analysis]]
     """
     if fahrenheit < -459.67:
         raise ValueError("Temperature cannot be below absolute zero (-459.67°F)")
@@ -266,7 +266,7 @@ def celsius_to_kelvin(celsius: float) -> float:  # ^celsius_to_kelvin
     Returns:
         Temperature in Kelvin
 
-    Related: [[../../obsidian/dimensional-analysis|Dimensional Analysis]]
+    Related: [[obsidian/dimensional-analysis.md|Dimensional Analysis]]
     """
     if celsius < -273.15:
         raise ValueError("Temperature cannot be below absolute zero (-273.15°C)")
@@ -285,7 +285,7 @@ def kelvin_to_celsius(kelvin: float) -> float:  # ^kelvin_to_celsius
     Returns:
         Temperature in Celsius
 
-    Related: [[../../obsidian/dimensional-analysis|Dimensional Analysis]]
+    Related: [[obsidian/dimensional-analysis.md|Dimensional Analysis]]
     """
     if kelvin < 0:
         raise ValueError("Temperature cannot be below absolute zero (0 K)")

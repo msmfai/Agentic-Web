@@ -9,12 +9,12 @@ Unit tests for the operations module.
 Tests all arithmetic and scientific operations including edge cases and error handling.
 
 ## Related Documentation
-- Tests: [[operations.py|Operations Module]]
+- Tests: [[code/operations.py|Operations Module]]
 - Concept: [[arithmetic-operations|Arithmetic Operations]]
 - Pattern: [[user-input-validation|User Input Validation]]
 
 ## Dependencies
-- [[operations.py|Operations Module]]
+- [[code/operations.py|Operations Module]]
 """
 import unittest
 import math
@@ -25,7 +25,7 @@ class TestBasicArithmetic(unittest.TestCase):  # ^TestBasicArithmetic
     """
     Test basic arithmetic operations.
 
-    Related: [[operations.py|Operations Module]]
+    Related: [[code/operations.py|Operations Module]]
     Related: [[arithmetic-operations|Arithmetic Operations]]
     """
 
@@ -67,7 +67,7 @@ class TestFactorial(unittest.TestCase):  # ^TestFactorial
     """
     Test factorial operation.
 
-    Related: [[operations.py|Operations Module]]
+    Related: [[code/operations.py|Operations Module]]
     """
 
     def test_factorial_positive(self):  # ^TestFactorial-test_factorial_positive
@@ -94,7 +94,7 @@ class TestTrigonometric(unittest.TestCase):  # ^TestTrigonometric
     """
     Test trigonometric functions.
 
-    Related: [[operations.py|Operations Module]]
+    Related: [[code/operations.py|Operations Module]]
     """
 
     def test_sin(self):  # ^TestTrigonometric-test_sin
@@ -160,7 +160,7 @@ class TestExponentialLogarithmic(unittest.TestCase):  # ^TestExponentialLogarith
     """
     Test exponential and logarithmic functions.
 
-    Related: [[operations.py|Operations Module]]
+    Related: [[code/operations.py|Operations Module]]
     """
 
     def test_exp(self):  # ^TestExponentialLogarithmic-test_exp
@@ -237,7 +237,7 @@ class TestPowerOperations(unittest.TestCase):  # ^TestPowerOperations
     """
     Test power and root operations.
 
-    Related: [[operations.py|Operations Module]]
+    Related: [[code/operations.py|Operations Module]]
     """
 
     def test_power(self):  # ^TestPowerOperations-test_power
@@ -275,7 +275,7 @@ class TestAngleConversion(unittest.TestCase):  # ^TestAngleConversion
     """
     Test angle conversion functions.
 
-    Related: [[operations.py|Operations Module]]
+    Related: [[code/operations.py|Operations Module]]
     """
 
     def test_deg_to_rad(self):  # ^TestAngleConversion-test_deg_to_rad
@@ -299,7 +299,7 @@ class TestConstants(unittest.TestCase):  # ^TestConstants
     """
     Test mathematical constants.
 
-    Related: [[operations.py|Operations Module]]
+    Related: [[code/operations.py|Operations Module]]
     """
 
     def test_pi_const(self):  # ^TestConstants-test_pi_const
@@ -319,7 +319,7 @@ class TestOperationRegistries(unittest.TestCase):  # ^TestOperationRegistries
     """
     Test operation registry dictionaries.
 
-    Related: [[operations.py|Operations Module]]
+    Related: [[code/operations.py|Operations Module]]
     Related: [[strategy-pattern|Strategy Pattern]]
     """
 

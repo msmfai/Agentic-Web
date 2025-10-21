@@ -17,14 +17,14 @@ A calculator application organized as an Obsidian knowledge graph, where code fi
 
 ### Concepts
 
-- [[concepts/calculator-interface|Calculator Interface]]
-- [[concepts/arithmetic-operations|Arithmetic Operations]]
-- [[concepts/user-input-validation|User Input Validation]]
+- [[obsidian/calculator-interface.md|Calculator Interface]]
+- [[obsidian/arithmetic-operations.md|Arithmetic Operations]]
+- [[obsidian/user-input-validation.md|User Input Validation]]
 
 ### Design Patterns
 
-- [[patterns/strategy-pattern|Strategy Pattern]]
-- [[patterns/single-responsibility|Single Responsibility Principle]]
+- [[obsidian/strategy-pattern.md|Strategy Pattern]]
+- [[obsidian/single-responsibility.md|Single Responsibility Principle]]
 
 ## Setup: Making .py Files Participate in the Graph
 

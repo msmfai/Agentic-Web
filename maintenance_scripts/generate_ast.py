@@ -473,9 +473,18 @@ class ASTGenerator:
                                   source_tags: List[str]) -> str:
         """Generate Markdown for a single Python object."""
         rel_path = py_file.relative_to(self.code_dir)
+        rel_path_posix = rel_path.as_posix()  # Convert to forward slashes
 
-        # Link to source using block reference
-        source_link = f"[[../../../code/{rel_path}#^{obj['marker']}|Source]]"
+        # Calculate relative path from AST file back to source
+        # AST file is at: ast-cache/code/{rel_path_without_ext}/{obj_name}.ast.md
+        # Example: for code/plugins/finance.py → ast-cache/code/plugins/finance/{obj}.ast.md
+        # AST parent dir depth = 2 (ast-cache, code) + parts in rel_path without extension
+        rel_path_no_ext = rel_path.with_suffix('')
+        ast_parent_depth = 2 + len(rel_path_no_ext.parts)
+        back_to_root = "../" * ast_parent_depth
+
+        # Link to source using block reference (root-relative)
+        source_link = f"[[{back_to_root}code/{rel_path_posix}#^{obj['marker']}|Source]]"
 
         # Extract source code with line numbers
         source_code = self._extract_source_lines(
@@ -510,7 +519,7 @@ class ASTGenerator:
             line_range = f"{obj['lineno']}-{obj['end_lineno']}"
 
         lines.extend([
-            f"source_file: ../../../code/{rel_path}",
+            f"source_file: {back_to_root}code/{rel_path_posix}",
             f"block_marker: ^{obj['marker']}",
             f"object_type: {obj['type']}",
             f"line_start: {obj['lineno']}",
@@ -518,7 +527,7 @@ class ASTGenerator:
             "---",
             "",
             "> [!WARNING] Generated Code - Do Not Edit",
-            f"> This file is auto-generated. Please edit the source code block in [[../../../code/{rel_path}#^{obj['marker']}]] and run `uv run update.py` to regenerate.",
+            f"> This file is auto-generated. Please edit the source code block in [[{back_to_root}code/{rel_path_posix}#^{obj['marker']}]] and run `uv run update.py` to regenerate.",
             "",
             f"# {obj['name']}",
             "",

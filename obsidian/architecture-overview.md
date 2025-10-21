@@ -56,7 +56,7 @@ What area of functionality?
 - `#domain/mathematics/trigonometry` - Specific subdomain
 - `#domain/testing/unit` vs `#domain/testing/integration`
 
-See [[../index/repository-map|Repository Map]] for current domains.
+See [[index/repository-map.md|Repository Map]] for current domains.
 
 ### Layer Tags (`#layer/*`)
 
@@ -137,7 +137,7 @@ obsidian_idea_demonstration/
 
 The `obsidian/` folder has no subdirectories by design:
 
-- **Simpler paths**: `[[calculator-interface]]` vs `[[concepts/domain/calculator-interface]]`
+- **Simpler paths**: `[[obsidian/calculator-interface.md]]` vs old nested structure like `concepts/domain/calculator-interface`
 - **No premature categorization**: Don't force a single hierarchy
 - **Tag-based discovery**: Use `#type/concept` + `#domain/mathematics` instead of `/concepts/math/`
 - **Easier refactoring**: Rename files without breaking nested path references
@@ -200,7 +200,7 @@ From Python files in `code/`:
 
 ```python
 """
-Related: [[../obsidian/arithmetic-operations|Arithmetic Operations]]
+Related: [[obsidian/arithmetic-operations.md|Arithmetic Operations]]
 Dependencies: [[calculator.py|Calculator Class]]  # Same directory
 """
 ```
@@ -208,7 +208,7 @@ Dependencies: [[calculator.py|Calculator Class]]  # Same directory
 From markdown files in `obsidian/`:
 
 ```markdown
-Implementation: [[../code/operations.py|Operations Module]]
+Implementation: [[code/operations.py|Operations Module]]
 Related: [[calculator-interface|Calculator Interface]]  # Same directory
 ```
 
@@ -219,19 +219,19 @@ Related: [[calculator-interface|Calculator Interface]]  # Same directory
 **Concept links**: Code → conceptual documentation
 
 ```python
-"""Implements [[../obsidian/arithmetic-operations|basic arithmetic operations]]."""
+"""Implements [[obsidian/arithmetic-operations.md|basic arithmetic operations]]."""
 ```
 
 **Pattern links**: Code → design pattern rationale
 
 ```python
-"""Uses [[../obsidian/strategy-pattern|Strategy Pattern]] for operation dispatch."""
+"""Uses [[obsidian/strategy-pattern.md|Strategy Pattern]] for operation dispatch."""
 ```
 
 **Implementation links**: Concept → code
 
 ```markdown
-See implementation in [[../code/operations.py#add|add function]]
+See implementation in [[code/operations.py#add|add function]]
 ```
 
 **Cross-reference links**: Between related documentation
@@ -246,12 +246,12 @@ Related: [[single-responsibility|Single Responsibility Principle]]
 
 Two main indices in `index/`:
 
-1. **[[../index/repository-map|Repository Map]]** - High-level project state
+1. **[[index/repository-map.md|Repository Map]]** - High-level project state
    - File counts by type
    - Active domains, layers, patterns
    - Tag summaries with file lists
 
-2. **[[../index/tag-index|Tag Index]]** - Complete tag inventory
+2. **[[index/tag-index.md|Tag Index]]** - Complete tag inventory
    - Every tag in the repository
    - All files with each tag
    - Embedded in graph via tag frontmatter
@@ -270,7 +270,7 @@ The janitor (`janitor.py`) validates repository consistency:
 
 ### Validation Schema
 
-Based on [[../schema.yaml|schema.yaml]]:
+Based on [[schema.yaml|schema.yaml]]:
 
 - **Python files**: Must have H1 header, inline hashtags, `#type/code-file` tag
 - **Markdown files**: Must have YAML frontmatter with required tags
@@ -325,11 +325,11 @@ Outputs JSON metrics for tracking over time.
 
 ### Strategy Pattern
 
-**Where**: [[../code/calculator.py|Calculator]] delegates operations
+**Where**: [[code/calculator.py|Calculator]] delegates operations
 
 **Why**: Extensible - add new operations without modifying calculator
 
-**Implementation**: Function registry in [[../code/operations.py|operations.py]]
+**Implementation**: Function registry in [[code/operations.py|operations.py]]
 
 See [[strategy-pattern|Strategy Pattern]] for details.
 
@@ -339,7 +339,7 @@ See [[strategy-pattern|Strategy Pattern]] for details.
 
 **Why**: Testable, reusable, composable
 
-**Implementation**: [[../code/operations.py|operations.py]] exports individual functions
+**Implementation**: [[code/operations.py|operations.py]] exports individual functions
 
 See [[single-responsibility|Single Responsibility Principle]] for details.
 
@@ -382,7 +382,7 @@ User clicks ast-cache/code/operations/add.ast.md
     ↓
 Sees source code, docstring, signature
     ↓
-Follows wikilink to source: [[../../code/operations.py|operations.py]]
+Follows wikilink to source: [[code/operations.py|operations.py]]
     ↓
 Views actual Python file in graph
 ```
@@ -413,7 +413,7 @@ User can explore "why" and "how" in any direction
    - Wikilinks to related concepts
 3. Run `uv run update.py`
 
-See [[../CLAUDE.md#Adding New Code|Adding New Code in CLAUDE.md]]
+See [[CLAUDE.md#Adding New Code|Adding New Code in CLAUDE.md]]
 
 ### Adding New Documentation
 
@@ -422,7 +422,7 @@ See [[../CLAUDE.md#Adding New Code|Adding New Code in CLAUDE.md]]
 3. Use wikilinks to connect to code and other docs
 4. Run `uv run update.py`
 
-See [[../CLAUDE.md#Adding New Documentation|Adding New Documentation in CLAUDE.md]]
+See [[CLAUDE.md#Adding New Documentation|Adding New Documentation in CLAUDE.md]]
 
 ### Adding New Domains
 
@@ -430,7 +430,7 @@ See [[../CLAUDE.md#Adding New Documentation|Adding New Documentation in CLAUDE.m
 2. Tag relevant files with new domain
 3. Optionally create concept document explaining the domain
 4. Run `python maintenance_scripts/generate_tags.py` to update indices
-5. New domain appears in [[../index/repository-map|Repository Map]]
+5. New domain appears in [[index/repository-map.md|Repository Map]]
 
 ### Adding New Patterns
 
@@ -497,8 +497,8 @@ Potential enhancements:
 ## Learn More
 
 - **Tag details**: [[tag-inheritance|Tag Inheritance]]
-- **Current state**: [[../index/repository-map|Repository Map]]
-- **All tags**: [[../index/tag-index|Tag Index]]
+- **Current state**: [[index/repository-map.md|Repository Map]]
+- **All tags**: [[index/tag-index.md|Tag Index]]
 - **Validation**: [[case-study-janitor-guided-fixes|Janitor Case Study]]
 - **Metrics**: [[graph-metrics-system|Graph Metrics System]]
 - **Setup**: [[getting-started|Getting Started Guide]]

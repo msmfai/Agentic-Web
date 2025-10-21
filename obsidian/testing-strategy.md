@@ -15,8 +15,8 @@ This document describes the testing approach for the calculator application. The
 
 ### Test Files
 
-- **[[../code/test_operations.py|test_operations.py]]** - Tests for the operations module
-- **[[../code/test_calculator.py|test_calculator.py]]** - Tests for the Calculator class
+- **[[code/test_operations.py|test_operations.py]]** - Tests for the operations module
+- **[[code/test_calculator.py|test_calculator.py]]** - Tests for the Calculator class
 
 ### Test Structure
 
@@ -35,7 +35,7 @@ TestClass (one per logical grouping)
 **Purpose**: Test individual functions and methods in isolation.
 
 **Coverage**:
-- All arithmetic operations ([[../code/operations.py#^add|add]], [[../code/operations.py#^subtract|subtract]], [[../code/operations.py#^multiply|multiply]], [[../code/operations.py#^divide|divide]])
+- All arithmetic operations ([[code/operations.py#^add|add]], [[code/operations.py#^subtract|subtract]], [[code/operations.py#^multiply|multiply]], [[code/operations.py#^divide|divide]])
 - Scientific functions (trigonometric, logarithmic, exponential)
 - Power operations and roots
 - Angle conversions
@@ -224,8 +224,8 @@ Every test method includes a docstring explaining:
 
 ## Related Documentation
 
-- Implementation: [[../code/operations.py|Operations Module]]
-- Implementation: [[../code/calculator.py|Calculator Class]]
+- Implementation: [[code/operations.py|Operations Module]]
+- Implementation: [[code/calculator.py|Calculator Class]]
 - Pattern: [[strategy-pattern|Strategy Pattern]]
 - Validation: [[user-input-validation|User Input Validation]]
 - Concepts: [[arithmetic-operations|Arithmetic Operations]]

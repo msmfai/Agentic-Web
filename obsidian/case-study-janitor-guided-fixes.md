@@ -20,7 +20,7 @@ After implementing a custom AST cache system and Obsidian integration, the repos
 
 ### Phase 1: Janitor Detection
 
-The [[janitor.py]] validation system was enhanced to:
+The [[maintenance_scripts/janitor.py]] validation system was enhanced to:
 
 1. **Parse both tag formats** (inline array and YAML list)
 2. **Flag inline format as warning** with clear explanation
@@ -47,7 +47,7 @@ tags: [janitor-issue, janitor-issue/tag-format-warning, severity/warning]
 
 # Issue #1: calculator.py
 
-**File**: [[code\calculator.py|calculator.py]]
+**File**: [[code/calculator.py|calculator.py]]
 **Severity**: WARNING
 
 ## Problem
@@ -178,10 +178,10 @@ New issue type added:
 
 ## Related
 
-- [[janitor.py|Janitor Implementation]]
-- [[generate_ast.py|AST Generator]]
-- [[python-superset-design.md|Python Superset Design]]
-- [[ast-cache-system.md|AST Cache System]]
+- [[maintenance_scripts/janitor.py|Janitor Implementation]]
+- [[maintenance_scripts/generate_ast.py|AST Generator]]
+- Python Superset Design (documentation not yet created)
+- AST Cache System (documentation not yet created)
 
 ## Tags Explanation
 

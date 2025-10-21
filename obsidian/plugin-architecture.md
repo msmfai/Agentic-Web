@@ -74,15 +74,15 @@ Plugins are **injected** into the calculator at runtime rather than being hard-c
 
 ## Implementation
 
-- Core: [[../code/plugin_system.py|Plugin System]]
-- Integration: [[../code/calculator.py|Calculator Class]]
+- Core: [[code/plugin_system.py|Plugin System]]
+- Integration: [[code/calculator.py|Calculator Class]]
 
 ## Example Plugins
 
-- [[../code/plugins/statistics.py|Statistics Plugin]] - Mean, median, mode, standard deviation
-- [[../code/plugins/finance.py|Finance Plugin]] - Compound interest, NPV, amortization
-- [[../code/plugins/linear_algebra.py|Linear Algebra Plugin]] - Vector operations, dot product
-- [[../code/plugins/units.py|Unit Conversion Plugin]] - Length, weight, temperature conversions
+- [[code/plugins/statistics.py|Statistics Plugin]] - Mean, median, mode, standard deviation
+- [[code/plugins/finance.py|Finance Plugin]] - Compound interest, NPV, amortization
+- [[code/plugins/linear_algebra.py|Linear Algebra Plugin]] - Vector operations, dot product
+- [[code/plugins/units.py|Unit Conversion Plugin]] - Length, weight, temperature conversions
 
 ## Trade-offs
 

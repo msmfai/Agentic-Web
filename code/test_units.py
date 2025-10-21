@@ -9,9 +9,9 @@ Unit tests for the unit conversion plugin operations including length, weight,
 and temperature conversions.
 
 ## Related Documentation
-- Pattern: [[../obsidian/testing-strategy|Testing Strategy]]
-- Implementation: [[plugins/units.py|Unit Conversion Plugin]]
-- Concept: [[../obsidian/dimensional-analysis|Dimensional Analysis]]
+- Pattern: [[obsidian/testing-strategy.md|Testing Strategy]]
+- Implementation: [[code/plugins/units.py|Unit Conversion Plugin]]
+- Concept: [[obsidian/dimensional-analysis.md|Dimensional Analysis]]
 
 ## Test Coverage
 Tests all conversion functions: length (meters/feet, km/miles, inches/cm),
@@ -25,7 +25,7 @@ class TestLengthConversions(unittest.TestCase):  # ^TestLengthConversions
     """
     Tests for length conversion functions.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_meters_to_feet(self):  # ^TestLengthConversions-test_meters_to_feet
@@ -96,7 +96,7 @@ class TestWeightConversions(unittest.TestCase):  # ^TestWeightConversions
     """
     Tests for weight conversion functions.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_kg_to_lbs(self):  # ^TestWeightConversions-test_kg_to_lbs
@@ -148,7 +148,7 @@ class TestTemperatureConversions(unittest.TestCase):  # ^TestTemperatureConversi
     """
     Tests for temperature conversion functions.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_celsius_to_fahrenheit_freezing(self):  # ^TestTemperatureConversions-test_celsius_to_fahrenheit_freezing
@@ -232,7 +232,7 @@ class TestConversionInverses(unittest.TestCase):  # ^TestConversionInverses
     """
     Tests that conversion functions are proper inverses.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_all_length_roundtrips(self):  # ^TestConversionInverses-test_all_length_roundtrips

@@ -104,7 +104,7 @@ Dimensional analysis is a method for converting between different units of measu
 - 1 kilometer = 0.621371 miles
 - 1 inch = 2.54 centimeters (exact)
 
-**Implementation**: [[../code/plugins/units.py|Unit Conversion Plugin]]
+**Implementation**: [[code/plugins/units.py|Unit Conversion Plugin]]
 
 **Pattern**: Simple multiplication by constant factor
 
@@ -126,7 +126,7 @@ meters = feet × 0.3048
 - **Weight**: Force due to gravity (technically newtons)
 - In common usage, "weight" refers to mass
 
-**Implementation**: [[../code/plugins/units.py#^kg_to_lbs|kg_to_lbs Function]]
+**Implementation**: [[code/plugins/units.py#^kg_to_lbs|kg_to_lbs Function]]
 
 **Pattern**: Simple multiplication by constant factor
 
@@ -161,7 +161,7 @@ K = °C + 273.15
 - -273.15°C
 - -459.67°F
 
-**Implementation**: [[../code/plugins/units.py#^celsius_to_fahrenheit|Temperature Conversions]]
+**Implementation**: [[code/plugins/units.py#^celsius_to_fahrenheit|Temperature Conversions]]
 
 ## Mathematical Properties
 
@@ -265,7 +265,7 @@ def unit_a_to_unit_b(value: float) -> float:
 - Plugin-compatible
 - Testable
 
-**Implementation**: [[../code/plugins/units.py|Unit Conversion Plugin]]
+**Implementation**: [[code/plugins/units.py|Unit Conversion Plugin]]
 
 ### Bidirectional Conversions
 
@@ -327,14 +327,14 @@ Every conversion has an inverse:
 - Edge cases (absolute zero, zero values)
 - Invalid inputs (negative lengths, sub-zero temps)
 
-**Implementation**: [[../code/test_units.py|Unit Conversion Tests]]
+**Implementation**: [[code/test_units.py|Unit Conversion Tests]]
 
 ## Related Documentation
 
 **Implementations**:
 
-- [[../code/plugins/units.py|Unit Conversion Plugin]]
-- [[../code/test_units.py|Unit Conversion Tests]] (to be created)
+- [[code/plugins/units.py|Unit Conversion Plugin]]
+- [[code/test_units.py|Unit Conversion Tests]] (to be created)
 
 **Patterns**:
 
@@ -343,4 +343,4 @@ Every conversion has an inverse:
 
 **Related Domains**:
 
-- [[../code/plugins/finance.py|Finance Plugin]] - Also deals with conversions (currency, time value)
+- [[code/plugins/finance.py|Finance Plugin]] - Also deals with conversions (currency, time value)

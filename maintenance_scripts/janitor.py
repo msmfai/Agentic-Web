@@ -829,6 +829,11 @@ tags: [type/FIXME]
         if code_path.exists():
             return code_path.resolve()
 
+        # 4. Vault root for files like CLAUDE.md, schema.yaml, update.py
+        root_path = self.vault_path / link
+        if root_path.exists():
+            return root_path.resolve()
+
         # If we get here, return the "expected" path for error reporting
         # Default to same directory if no extension, otherwise use as-is
         if '.' not in link:

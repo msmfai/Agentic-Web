@@ -9,8 +9,8 @@ Unit tests for the finance plugin operations including compound interest,
 present/future value, loan payments, NPV, and IRR calculations.
 
 ## Related Documentation
-- Pattern: [[../obsidian/testing-strategy|Testing Strategy]]
-- Implementation: [[plugins/finance.py|Finance Plugin]]
+- Pattern: [[obsidian/testing-strategy.md|Testing Strategy]]
+- Implementation: [[code/plugins/finance.py|Finance Plugin]]
 
 ## Test Coverage
 Tests all financial functions: compound_interest, present_value, future_value,
@@ -25,7 +25,7 @@ class TestCompoundInterest(unittest.TestCase):  # ^TestCompoundInterest
     """
     Tests for the compound interest function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_compound_interest_annual(self):  # ^TestCompoundInterest-test_compound_interest_annual
@@ -76,7 +76,7 @@ class TestPresentValue(unittest.TestCase):  # ^TestPresentValue
     """
     Tests for the present value function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_present_value_basic(self):  # ^TestPresentValue-test_present_value_basic
@@ -111,7 +111,7 @@ class TestFutureValue(unittest.TestCase):  # ^TestFutureValue
     """
     Tests for the future value function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_future_value_basic(self):  # ^TestFutureValue-test_future_value_basic
@@ -149,7 +149,7 @@ class TestLoanPayment(unittest.TestCase):  # ^TestLoanPayment
     """
     Tests for the loan payment function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_loan_payment_basic(self):  # ^TestLoanPayment-test_loan_payment_basic
@@ -195,7 +195,7 @@ class TestNPV(unittest.TestCase):  # ^TestNPV
     """
     Tests for the Net Present Value function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_npv_basic(self):  # ^TestNPV-test_npv_basic
@@ -238,7 +238,7 @@ class TestIRR(unittest.TestCase):  # ^TestIRR
     """
     Tests for the Internal Rate of Return function.
 
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_irr_basic(self):  # ^TestIRR-test_irr_basic

@@ -158,9 +158,9 @@ The current system uses Python docstring inline hashtags because:
 
 ## Related
 
-- Implementation: [[../generate_ast.py|AST Generator]]
-- Tag system: [[../CLAUDE.md#Tag System|CLAUDE.md Tag System]]
-- Schema: [[../schema.yaml|Schema Definition]]
+- Implementation: [[maintenance_scripts/generate_ast.py|AST Generator]]
+- Tag system: [[CLAUDE.md#Tag System|CLAUDE.md Tag System]]
+- Schema: [[schema.yaml|Schema Definition]]
 
 ## Gotchas for LLMs
 

@@ -10,8 +10,8 @@ cross product, magnitude, normalization) and matrix operations (multiplication,
 transpose, determinant).
 
 ## Related Documentation
-- Pattern: [[../../obsidian/plugin-architecture|Plugin Architecture]]
-- Concept: [[../../obsidian/mathematical-structures|Mathematical Structures]]
+- Pattern: [[obsidian/plugin-architecture.md|Plugin Architecture]]
+- Concept: [[obsidian/mathematical-structures.md|Mathematical Structures]]
 
 ## Plugin Interface
 Exports PLUGIN_OPERATIONS dictionary for dynamic loading by the plugin system.
@@ -39,7 +39,7 @@ def dot_product(v1: List[float], v2: List[float]) -> float:  # ^dot_product
     Raises:
         ValueError: If vectors have different dimensions
 
-    Related: [[../../obsidian/mathematical-structures|Mathematical Structures]]
+    Related: [[obsidian/mathematical-structures.md|Mathematical Structures]]
     """
     if len(v1) != len(v2):
         raise ValueError("Vectors must have the same dimension")
@@ -65,7 +65,7 @@ def cross_product(v1: List[float], v2: List[float]) -> List[float]:  # ^cross_pr
     Raises:
         ValueError: If vectors are not 3-dimensional
 
-    Related: [[../../obsidian/mathematical-structures|Mathematical Structures]]
+    Related: [[obsidian/mathematical-structures.md|Mathematical Structures]]
     """
     if len(v1) != 3 or len(v2) != 3:
         raise ValueError("Cross product requires 3D vectors")
@@ -92,7 +92,7 @@ def magnitude(v: List[float]) -> float:  # ^magnitude
     Raises:
         ValueError: If vector is empty
 
-    Related: [[../../obsidian/mathematical-structures|Mathematical Structures]]
+    Related: [[obsidian/mathematical-structures.md|Mathematical Structures]]
     """
     if not v:
         raise ValueError("Vector cannot be empty")
@@ -115,7 +115,7 @@ def normalize(v: List[float]) -> List[float]:  # ^normalize
     Raises:
         ValueError: If vector is zero (cannot normalize)
 
-    Related: [[../../obsidian/mathematical-structures|Mathematical Structures]]
+    Related: [[obsidian/mathematical-structures.md|Mathematical Structures]]
     """
     mag = magnitude(v)
     if mag == 0:
@@ -140,7 +140,7 @@ def matrix_multiply(m1: List[List[float]], m2: List[List[float]]) -> List[List[f
     Raises:
         ValueError: If matrix dimensions incompatible
 
-    Related: [[../../obsidian/mathematical-structures|Mathematical Structures]]
+    Related: [[obsidian/mathematical-structures.md|Mathematical Structures]]
     """
     if not m1 or not m1[0]:
         raise ValueError("First matrix cannot be empty")
@@ -189,7 +189,7 @@ def transpose(m: List[List[float]]) -> List[List[float]]:  # ^transpose
     Raises:
         ValueError: If matrix is empty or not rectangular
 
-    Related: [[../../obsidian/mathematical-structures|Mathematical Structures]]
+    Related: [[obsidian/mathematical-structures.md|Mathematical Structures]]
     """
     if not m or not m[0]:
         raise ValueError("Matrix cannot be empty")
@@ -226,7 +226,7 @@ def determinant(m: List[List[float]]) -> float:  # ^determinant
     Raises:
         ValueError: If matrix is not 2×2 or 3×3, or not square
 
-    Related: [[../../obsidian/mathematical-structures|Mathematical Structures]]
+    Related: [[obsidian/mathematical-structures.md|Mathematical Structures]]
     """
     if not m or not m[0]:
         raise ValueError("Matrix cannot be empty")

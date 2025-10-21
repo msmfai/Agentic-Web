@@ -97,7 +97,7 @@ The analyzer scans:
 
 ### Core Script
 
-[[../graph_metrics.py|graph_metrics.py]] - Knowledge graph analyzer
+[[maintenance_scripts/graph_metrics.py|graph_metrics.py]] - Knowledge graph analyzer
 
 **Key classes**:
 - `GraphMetricsAnalyzer` - Main analysis engine
@@ -195,11 +195,11 @@ Test files naturally cluster:
 ### Infrastructure Tags
 
 Infrastructure scripts use specific categories:
-- `#category/code-generation` - [[../generate_ast.py]]
-- `#category/indexing` - [[../generate_tags.py]]
-- `#category/analytics` - [[../graph_metrics.py]]
-- `#category/validation` - [[../janitor.py]]
-- `#category/orchestration` - [[../update.py]]
+- `#category/code-generation` - [[maintenance_scripts/generate_ast.py]]
+- `#category/indexing` - [[maintenance_scripts/generate_tags.py]]
+- `#category/analytics` - [[maintenance_scripts/graph_metrics.py]]
+- `#category/validation` - [[maintenance_scripts/janitor.py]]
+- `#category/orchestration` - [[update.py]]
 
 **Small counts are fine** - each category has 1-2 files by design
 
@@ -250,10 +250,10 @@ cp whiteboard/graph-metrics.md whiteboard/archive/graph-metrics-2025-10-20.md
 
 ## Related Documentation
 
-- Implementation: [[../graph_metrics.py|Graph Metrics Analyzer]]
-- Workflow: [[../update.py|Update Workflow]]
-- Tag System: [[../CLAUDE.md#Tag System|CLAUDE.md - Tag System]]
-- Validation: [[../janitor.py|Repository Health Janitor]]
+- Implementation: [[maintenance_scripts/graph_metrics.py|Graph Metrics Analyzer]]
+- Workflow: [[update.py|Update Workflow]]
+- Tag System: [[CLAUDE.md#Tag System|CLAUDE.md - Tag System]]
+- Validation: [[maintenance_scripts/janitor.py|Repository Health Janitor]]
 
 ## Philosophy
 

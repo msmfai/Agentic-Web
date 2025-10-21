@@ -12,7 +12,7 @@ Initializes and launches the calculator interface.
 - Concept: [[calculator-interface|Calculator Interface]]
 
 ## Dependencies
-- [[calculator.py|Calculator Class]]
+- [[code/calculator.py|Calculator Class]]
 """
 from calculator import Calculator
 
@@ -22,7 +22,7 @@ def main():  # ^main
     Main entry point for the calculator application.
 
     Creates a calculator instance and runs it in interactive mode.
-    Related: [[calculator.py|Calculator Class]]
+    Related: [[code/calculator.py|Calculator Class]]
     """
     calc = Calculator()
     calc.run_interactive()

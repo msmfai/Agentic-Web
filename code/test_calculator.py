@@ -9,14 +9,14 @@ Unit tests for the Calculator class.
 Tests the calculator interface, input parsing, and integration with operations.
 
 ## Related Documentation
-- Tests: [[calculator.py|Calculator Class]]
+- Tests: [[code/calculator.py|Calculator Class]]
 - Concept: [[calculator-interface|Calculator Interface]]
 - Concept: [[user-input-validation|User Input Validation]]
 - Pattern: [[strategy-pattern|Strategy Pattern]]
 
 ## Dependencies
-- [[calculator.py|Calculator Class]]
-- [[operations.py|Operations Module]]
+- [[code/calculator.py|Calculator Class]]
+- [[code/operations.py|Operations Module]]
 """
 import unittest
 from unittest.mock import patch, MagicMock
@@ -29,7 +29,7 @@ class TestCalculatorBasic(unittest.TestCase):  # ^TestCalculatorBasic
     """
     Test basic calculator functionality.
 
-    Related: [[calculator.py|Calculator Class]]
+    Related: [[code/calculator.py|Calculator Class]]
     """
 
     def setUp(self):  # ^TestCalculatorBasic-setUp
@@ -86,7 +86,7 @@ class TestCalculatorParsing(unittest.TestCase):  # ^TestCalculatorParsing
     """
     Test calculator input parsing functionality.
 
-    Related: [[calculator.py|Calculator Class]]
+    Related: [[code/calculator.py|Calculator Class]]
     Related: [[user-input-validation|User Input Validation]]
     """
 
@@ -218,7 +218,7 @@ class TestCalculatorInteractive(unittest.TestCase):  # ^TestCalculatorInteractiv
     """
     Test calculator interactive mode.
 
-    Related: [[calculator.py|Calculator Class]]
+    Related: [[code/calculator.py|Calculator Class]]
     Related: [[calculator-interface|Calculator Interface]]
     """
 
@@ -288,8 +288,8 @@ class TestCalculatorIntegration(unittest.TestCase):  # ^TestCalculatorIntegratio
     """
     Integration tests combining calculator and operations.
 
-    Related: [[calculator.py|Calculator Class]]
-    Related: [[operations.py|Operations Module]]
+    Related: [[code/calculator.py|Calculator Class]]
+    Related: [[code/operations.py|Operations Module]]
     Related: [[strategy-pattern|Strategy Pattern]]
     """
 

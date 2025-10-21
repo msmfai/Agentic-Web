@@ -9,10 +9,10 @@ Integration tests for the plugin system integration with the calculator.
 Tests auto-discovery, operation registration, hot-reloading, and enable/disable functionality.
 
 ## Related Documentation
-- Pattern: [[../obsidian/plugin-architecture|Plugin Architecture]]
-- Pattern: [[../obsidian/testing-strategy|Testing Strategy]]
-- Implementation: [[plugin_system.py|Plugin System]]
-- Implementation: [[calculator.py|Calculator Class]]
+- Pattern: [[obsidian/plugin-architecture.md|Plugin Architecture]]
+- Pattern: [[obsidian/testing-strategy.md|Testing Strategy]]
+- Implementation: [[code/plugin_system.py|Plugin System]]
+- Implementation: [[code/calculator.py|Calculator Class]]
 
 ## Test Coverage
 Tests plugin auto-discovery, operation merging, hot-reload, enable/disable toggles
@@ -27,8 +27,8 @@ class TestPluginAutoDiscovery(unittest.TestCase):  # ^TestPluginAutoDiscovery
     """
     Tests for plugin auto-discovery functionality.
 
-    Related: [[../obsidian/plugin-architecture|Plugin Architecture]]
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/plugin-architecture.md|Plugin Architecture]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_auto_discovery_loads_all_plugins(self):  # ^TestPluginAutoDiscovery-test_auto_discovery_loads_all_plugins
@@ -55,8 +55,8 @@ class TestCalculatorPluginIntegration(unittest.TestCase):  # ^TestCalculatorPlug
     """
     Tests for calculator integration with plugin system.
 
-    Related: [[../obsidian/plugin-architecture|Plugin Architecture]]
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/plugin-architecture.md|Plugin Architecture]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_calculator_initializes_with_plugins(self):  # ^TestCalculatorPluginIntegration-test_calculator_initializes_with_plugins
@@ -129,8 +129,8 @@ class TestPluginEnableDisable(unittest.TestCase):  # ^TestPluginEnableDisable
     """
     Tests for plugin enable/disable functionality.
 
-    Related: [[../obsidian/plugin-architecture|Plugin Architecture]]
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/plugin-architecture.md|Plugin Architecture]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_disable_plugin(self):  # ^TestPluginEnableDisable-test_disable_plugin
@@ -177,8 +177,8 @@ class TestPluginReload(unittest.TestCase):  # ^TestPluginReload
     """
     Tests for plugin hot-reload functionality.
 
-    Related: [[../obsidian/plugin-architecture|Plugin Architecture]]
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/plugin-architecture.md|Plugin Architecture]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_reload_plugin_success(self):  # ^TestPluginReload-test_reload_plugin_success
@@ -224,8 +224,8 @@ class TestPluginOperationsFromAllPlugins(unittest.TestCase):  # ^TestPluginOpera
     """
     Tests for retrieving operations from all plugins.
 
-    Related: [[../obsidian/plugin-architecture|Plugin Architecture]]
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/plugin-architecture.md|Plugin Architecture]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     def test_get_all_operations_includes_all_plugins(self):  # ^TestPluginOperationsFromAllPlugins-test_get_all_operations_includes_all_plugins
@@ -274,8 +274,8 @@ class TestCalculatorPluginCommands(unittest.TestCase):  # ^TestCalculatorPluginC
     """
     Tests for calculator plugin management commands.
 
-    Related: [[../obsidian/plugin-architecture|Plugin Architecture]]
-    Related: [[../obsidian/testing-strategy|Testing Strategy]]
+    Related: [[obsidian/plugin-architecture.md|Plugin Architecture]]
+    Related: [[obsidian/testing-strategy.md|Testing Strategy]]
     """
 
     @patch('builtins.print')

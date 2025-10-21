@@ -9,8 +9,8 @@ Provides financial mathematics operations including compound interest,
 present/future value calculations, and loan amortization.
 
 ## Related Documentation
-- Pattern: [[../../obsidian/plugin-architecture|Plugin Architecture]]
-- Concept: [[../../obsidian/arithmetic-operations|Arithmetic Operations]]
+- Pattern: [[obsidian/plugin-architecture.md|Plugin Architecture]]
+- Concept: [[obsidian/arithmetic-operations.md|Arithmetic Operations]]
 
 ## Plugin Interface
 Exports PLUGIN_OPERATIONS dictionary for dynamic loading by the plugin system.
@@ -37,7 +37,7 @@ def compound_interest(principal: float, rate: float, time: float, n: float = 1) 
     Returns:
         Final amount after compound interest
 
-    Related: [[../../obsidian/arithmetic-operations|Arithmetic Operations]]
+    Related: [[obsidian/arithmetic-operations.md|Arithmetic Operations]]
     """
     if principal < 0:
         raise ValueError("Principal must be non-negative")
@@ -65,7 +65,7 @@ def present_value(future_value: float, rate: float, periods: float) -> float:  #
     Returns:
         Present value
 
-    Related: [[../../obsidian/arithmetic-operations|Arithmetic Operations]]
+    Related: [[obsidian/arithmetic-operations.md|Arithmetic Operations]]
     """
     if rate < 0:
         raise ValueError("Discount rate must be non-negative")
@@ -89,7 +89,7 @@ def future_value(present_value_amt: float, rate: float, periods: float) -> float
     Returns:
         Future value
 
-    Related: [[../../obsidian/arithmetic-operations|Arithmetic Operations]]
+    Related: [[obsidian/arithmetic-operations.md|Arithmetic Operations]]
     """
     if rate < 0:
         raise ValueError("Interest rate must be non-negative")
@@ -116,7 +116,7 @@ def loan_payment(principal: float, rate: float, periods: float) -> float:  # ^lo
     Raises:
         ValueError: If rate is zero (use principal/periods instead)
 
-    Related: [[../../obsidian/arithmetic-operations|Arithmetic Operations]]
+    Related: [[obsidian/arithmetic-operations.md|Arithmetic Operations]]
     """
     if principal < 0:
         raise ValueError("Principal must be non-negative")
@@ -146,7 +146,7 @@ def npv(rate: float, cash_flows: List[float]) -> float:  # ^npv
     Returns:
         Net present value
 
-    Related: [[../../obsidian/arithmetic-operations|Arithmetic Operations]]
+    Related: [[obsidian/arithmetic-operations.md|Arithmetic Operations]]
     """
     if not cash_flows:
         raise ValueError("Cash flows list cannot be empty")
@@ -174,7 +174,7 @@ def irr(cash_flows: List[float], guess: float = 0.1, max_iter: int = 100, tolera
     Raises:
         ValueError: If IRR cannot be found
 
-    Related: [[../../obsidian/arithmetic-operations|Arithmetic Operations]]
+    Related: [[obsidian/arithmetic-operations.md|Arithmetic Operations]]
     """
     if not cash_flows:
         raise ValueError("Cash flows list cannot be empty")
