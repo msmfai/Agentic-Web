@@ -31,12 +31,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ast-cache/code/test_operations/TestPowerOperations.test_power.ast.md",
+                "file": "ast-cache/code/calculator/Calculator.run_interactive.ast.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TestPowerOperations.test_power.ast"
+              "title": "Calculator.run_interactive.ast"
             }
           }
         ]
@@ -71,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:location/code-file/code/calculator.py",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -92,7 +92,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -184,12 +185,18 @@
       "bases:Create new base": false
     }
   },
-  "active": "5f83866c1c58f804",
+  "active": "2338fd467724e071",
   "lastOpenFiles": [
+    "ast-cache/code/calculator/Calculator._parse_and_calculate.ast.md",
+    "ast-cache/code/calculator/Calculator.run_interactive.ast.md",
+    "ast-cache/code/calculator/Calculator.ast.md",
+    "maintenance_scripts/generate_ast.py.tmp.41484.1761005149756",
+    "code/calculator.py",
+    "ast-cache/code/test_operations/TestPowerOperations.test_power.ast.md",
+    "maintenance_scripts/generate_ast.py.tmp.41484.1761005022480",
     "README.md.tmp.41484.1761004877830",
     "README.md.tmp.41484.1761004809509",
     "README.md.tmp.41484.1761004802322",
-    "ast-cache/code/test_operations/TestPowerOperations.test_power.ast.md",
     "maintenance_scripts/janitor.py.tmp.41484.1761004636759",
     "maintenance_scripts/generate_tags.py.tmp.41484.1761004621067",
     "maintenance_scripts/generate_tags.py.tmp.41484.1761004493227",
@@ -197,10 +204,6 @@
     "maintenance_scripts/janitor.py.tmp.41484.1761004413385",
     "whiteboard/janitor/02-error-getting-started.md",
     "whiteboard/janitor/01-error-README.md",
-    "obsidian/getting-started.md.tmp.41484.1761004372010",
-    "README.md.tmp.41484.1761004359879",
-    "schema.yaml.tmp.41484.1761004332424",
-    "schema.yaml.tmp.41484.1761004325530",
     "project_config/README.md",
     "maintenance_scripts/whiteboard/janitor/00-summary.md",
     "maintenance_scripts/whiteboard/graph-metrics.md",
@@ -220,8 +223,6 @@
     "whiteboard/janitor/13-error-Calculator.calculate.ast.md",
     "whiteboard/janitor/12-error-Calculator.calculate.ast.md",
     "whiteboard/janitor/11-error-Calculator.ast.md",
-    "whiteboard/janitor/10-error-Calculator.ast.md",
-    "whiteboard/janitor/09-error-testing-strategy.md",
-    "whiteboard/janitor/08-error-testing-strategy.md"
+    "whiteboard/janitor/10-error-Calculator.ast.md"
   ]
 }

@@ -9,11 +9,11 @@ tags:
 
 **Auto-generated - do not edit manually**
 
-**Last Updated**: 2025-10-21 00:57:50
+**Last Updated**: 2025-10-21 01:06:25
 
 ## Current Scale
 
-- Python files: 12
+- Python files: 11
 - Concept docs: 4
 - Pattern docs: 4
 - Case studies: 1
@@ -28,14 +28,14 @@ tags:
 - `#domain/testing` (82 files): [[../obsidian/testing-strategy|testing-strategy.md]], [[../ast-cache/code/test_calculator/TestCalculatorBasic.ast.md|TestCalculatorBasic.ast]], [[../ast-cache/code/test_calculator/TestCalculatorBasic.setUp.ast.md|TestCalculatorBasic.setUp.ast]] (+79 more)
 - `#domain/testing/integration` (38 files): [[../ast-cache/code/test_calculator/TestCalculatorBasic.ast.md|TestCalculatorBasic.ast]], [[../ast-cache/code/test_calculator/TestCalculatorBasic.setUp.ast.md|TestCalculatorBasic.setUp.ast]], [[../ast-cache/code/test_calculator/TestCalculatorBasic.test_basic_addition.ast.md|TestCalculatorBasic.test_basic_addition.ast]] (+35 more)
 - `#domain/testing/unit` (43 files): [[../ast-cache/code/test_operations/TestAngleConversion.ast.md|TestAngleConversion.ast]], [[../ast-cache/code/test_operations/TestAngleConversion.test_deg_to_rad.ast.md|TestAngleConversion.test_deg_to_rad.ast]], [[../ast-cache/code/test_operations/TestAngleConversion.test_rad_to_deg.ast.md|TestAngleConversion.test_rad_to_deg.ast]] (+40 more)
-- `#domain/ui` (46 files): [[../main.py|main.py]], [[../obsidian/calculator-interface|calculator-interface.md]], [[../obsidian/user-input-validation|user-input-validation.md]] (+43 more)
+- `#domain/ui` (45 files): [[../obsidian/calculator-interface|calculator-interface.md]], [[../obsidian/user-input-validation|user-input-validation.md]], [[../ast-cache/code/calculator/Calculator.ast.md|Calculator.ast]] (+42 more)
 
 ## Active Layers
 
 - `#layer/application` (4 files): [[../ast-cache/code/calculator/Calculator.ast.md|Calculator.ast]], [[../ast-cache/code/calculator/Calculator.calculate.ast.md|Calculator.calculate.ast]], [[../ast-cache/code/calculator/Calculator.run_interactive.ast.md|Calculator.run_interactive.ast]] (+1 more)
 - `#layer/core` (25 files): [[../obsidian/arithmetic-operations|arithmetic-operations.md]], [[../ast-cache/code/operations/acos.ast.md|acos.ast]], [[../ast-cache/code/operations/add.ast.md|add.ast]] (+22 more)
 - `#layer/domain` (24 files): [[../ast-cache/code/operations/acos.ast.md|acos.ast]], [[../ast-cache/code/operations/add.ast.md|add.ast]], [[../ast-cache/code/operations/asin.ast.md|asin.ast]] (+21 more)
-- `#layer/entry-point` (2 files): [[../main.py|main.py]], [[../ast-cache/code/main/main.ast.md|main.ast]]
+- `#layer/entry-point` (1 files): [[../ast-cache/code/main/main.ast.md|main.ast]]
 - `#layer/interface` (6 files): [[../obsidian/calculator-interface|calculator-interface.md]], [[../obsidian/user-input-validation|user-input-validation.md]], [[../ast-cache/code/calculator/Calculator.ast.md|Calculator.ast]] (+3 more)
 - `#layer/test` (81 files): [[../ast-cache/code/test_calculator/TestCalculatorBasic.ast.md|TestCalculatorBasic.ast]], [[../ast-cache/code/test_calculator/TestCalculatorBasic.setUp.ast.md|TestCalculatorBasic.setUp.ast]], [[../ast-cache/code/test_calculator/TestCalculatorBasic.test_basic_addition.ast.md|TestCalculatorBasic.test_basic_addition.ast]] (+78 more)
 

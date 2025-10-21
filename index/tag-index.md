@@ -43,10 +43,8 @@ tags:
   - purpose/human-entry-point
   - purpose/llm-instructions
   - purpose/onboarding
-  - status/deprecated
   - type/ast-node
   - type/case-study
-  - type/code-file
   - type/concept
   - type/entry-point
   - type/guide
@@ -58,20 +56,19 @@ tags:
 
 **Auto-generated - do not edit manually**
 
-**Last Updated**: 2025-10-21 00:57:50
+**Last Updated**: 2025-10-21 01:06:25
 
 This file lists every tag currently in use across the repository.
 
 ## Summary
 
-- Total unique tags: 49
-- Total files: 137
+- Total unique tags: 47
+- Total files: 136
 
 ## Type Tags
 
 - `#type/ast-node` (110 files)
 - `#type/case-study` (1 files)
-- `#type/code-file` (1 files)
 - `#type/concept` (4 files)
 - `#type/entry-point` (2 files)
 - `#type/guide` (3 files)
@@ -85,14 +82,14 @@ This file lists every tag currently in use across the repository.
 - `#domain/testing` (82 files)
 - `#domain/testing/integration` (38 files)
 - `#domain/testing/unit` (43 files)
-- `#domain/ui` (46 files)
+- `#domain/ui` (45 files)
 
 ## Layer Tags
 
 - `#layer/application` (4 files)
 - `#layer/core` (25 files)
 - `#layer/domain` (24 files)
-- `#layer/entry-point` (2 files)
+- `#layer/entry-point` (1 files)
 - `#layer/interface` (6 files)
 - `#layer/test` (81 files)
 
@@ -130,7 +127,3 @@ This file lists every tag currently in use across the repository.
 - `#ast-type/constant` (2 files)
 - `#ast-type/function` (23 files)
 - `#ast-type/method` (72 files)
-
-## Status Tags
-
-- `#status/deprecated` (1 files)

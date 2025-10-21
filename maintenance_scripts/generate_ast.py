@@ -568,11 +568,23 @@ class ASTGenerator:
                 for call in obj['calls']:
                     # Try to create link to AST node if it exists
                     link_created = False
+
+                    # Normalize the call name (handle self.method -> ClassName.method)
+                    call_name = call.replace('self.', '')
+
                     for other_obj in all_objects:
-                        if other_obj['name'] == call or other_obj['name'].endswith(f".{call}"):
-                            lines.append(f"- [[{other_obj['name']}.ast.md|{call}]]")
+                        other_name = other_obj['name']
+
+                        # Match full name or method name
+                        if (other_name == call_name or
+                            other_name.endswith(f".{call_name}") or
+                            (call_name.startswith('_') and other_name.endswith(call_name))):
+
+                            # Create relative link to other AST file
+                            lines.append(f"- [[{other_name}.ast.md|{call}]] (internal)")
                             link_created = True
                             break
+
                     if not link_created:
                         lines.append(f"- `{call}` (external or built-in)")
                 lines.append("")
@@ -624,10 +636,8 @@ class ASTGenerator:
             lines.append("")
             lines.append("Links to conceptual documentation:")
             for link in obj['wikilinks']:
-                if link.startswith("../"):
-                    lines.append(f"- [[{link}]]")
-                else:
-                    lines.append(f"- `[[{link}]]`")
+                # All wikilinks should be clickable, no backticks
+                lines.append(f"- [[{link}]]")
             lines.append("")
 
         return '\n'.join(lines)
