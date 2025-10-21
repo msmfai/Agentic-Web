@@ -280,15 +280,9 @@ Brief description
                     file_markers[marker] = lineno
 
                     # Check for duplicates across entire repository
-                    if marker in self.block_markers:
-                        other_file, other_line = self.block_markers[marker]
-                        self.issues.append(Issue(
-                            filepath=filepath,
-                            severity='error',
-                            message=f"Duplicate block marker ^{marker} across repository. Also in {other_file}:{other_line}",
-                            fix_available=False
-                        ))
-                    else:
+                    # CHANGED: Duplicate markers across files are now allowed (e.g., PLUGIN_OPERATIONS in multiple plugins)
+                    # Only register the FIRST occurrence for reference validation
+                    if marker not in self.block_markers:
                         # Register this marker globally
                         self.block_markers[marker] = (filepath, lineno)
 
@@ -749,11 +743,110 @@ tags: [type/FIXME]
                     fix_available=False
                 ))
 
+    def extract_wikilinks(self, filepath: Path, content: str) -> None:
+        """Extract all wikilinks from a file and validate they point to existing files.
+
+        Looks for patterns like:
+        - [[file-name]]
+        - [[file-name|Display]]
+        - [[../code/file.py]]
+        - [[../code/file.py|Display]]
+        - [[file#^marker]]
+        - [[file#^marker|Display]]
+        """
+        lines = content.split('\n')
+
+        # Pattern to match [[link]] or [[link|display]]
+        # Captures: [[path/to/file#section|display text]]
+        pattern = r'\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|[^\]]+)?\]\]'
+
+        for lineno, line in enumerate(lines, 1):
+            for match in re.finditer(pattern, line):
+                link_path = match.group(1).strip()
+
+                # Resolve the link path relative to the source file
+                target_path = self._resolve_wikilink(filepath, link_path)
+
+                if target_path and not target_path.exists():
+                    self.issues.append(Issue(
+                        filepath=filepath,
+                        severity='error',
+                        message=f"Broken wikilink at line {lineno}: [[{link_path}]] -> {target_path} does not exist",
+                        fix_available=False
+                    ))
+
+    def _resolve_wikilink(self, source_file: Path, link: str) -> Optional[Path]:
+        """Resolve a wikilink to an absolute path.
+
+        Args:
+            source_file: The file containing the wikilink
+            link: The wikilink path (e.g., '../code/file.py' or 'concept-name')
+
+        Returns:
+            Absolute path to the linked file, or None if link format is invalid
+        """
+        # Handle relative paths (contain ../ or ./)
+        if link.startswith('../') or link.startswith('./'):
+            # Relative to the source file's directory
+            resolved = (source_file.parent / link).resolve()
+            return resolved
+
+        # Handle absolute-looking paths that start from vault root
+        if '/' in link:
+            # Treat as path from vault root
+            resolved = (self.vault_path / link).resolve()
+            return resolved
+
+        # Plain filename - search in multiple locations
+        # 1. Same directory as source
+        same_dir = source_file.parent / link
+        if not link.endswith('.md') and not link.endswith('.py'):
+            # Try adding .md extension for markdown files
+            same_dir_md = source_file.parent / f"{link}.md"
+            if same_dir_md.exists():
+                return same_dir_md.resolve()
+
+        if same_dir.exists():
+            return same_dir.resolve()
+
+        # 2. obsidian/ directory for concept/pattern files
+        obsidian_path = self.vault_path / 'obsidian' / link
+        if not link.endswith('.md'):
+            obsidian_path_md = self.vault_path / 'obsidian' / f"{link}.md"
+            if obsidian_path_md.exists():
+                return obsidian_path_md.resolve()
+
+        if obsidian_path.exists():
+            return obsidian_path.resolve()
+
+        # 3. code/ directory for Python files
+        code_path = self.vault_path / 'code' / link
+        if not link.endswith('.py'):
+            code_path_py = self.vault_path / 'code' / f"{link}.py"
+            if code_path_py.exists():
+                return code_path_py.resolve()
+
+        if code_path.exists():
+            return code_path.resolve()
+
+        # If we get here, return the "expected" path for error reporting
+        # Default to same directory if no extension, otherwise use as-is
+        if '.' not in link:
+            return source_file.parent / f"{link}.md"
+        return source_file.parent / link
+
     def scan_repository(self) -> None:
         """Scan all files in the repository."""
         # Phase 1: Scan Python files and collect block markers
         for py_file in (self.vault_path / 'code').rglob('*.py'):
             self.validate_python_file(py_file)
+
+            # Extract wikilinks from Python docstrings
+            try:
+                content = py_file.read_text(encoding='utf-8')
+                self.extract_wikilinks(py_file, content)
+            except Exception:
+                pass  # Already reported in validate_python_file
 
         # Phase 2: Scan markdown files and collect block marker references
         for md_file in self.vault_path.rglob('*.md'):
@@ -766,10 +859,11 @@ tags: [type/FIXME]
             # Validate markdown file
             self.validate_markdown_file(md_file)
 
-            # Extract block marker references
+            # Extract block marker references and wikilinks
             try:
                 content = md_file.read_text(encoding='utf-8')
                 self.extract_block_marker_references(md_file, content)
+                self.extract_wikilinks(md_file, content)
             except Exception:
                 pass  # Already reported in validate_markdown_file
 
@@ -800,6 +894,8 @@ tags: [type/FIXME]
             return "orphaned-block-marker"
         elif "dead block marker reference" in message:
             return "dead-block-reference"
+        elif "broken wikilink" in message:
+            return "broken-wikilink"
         elif "docstring" in message:
             return "docstring-issue"
         elif "schema" in message:

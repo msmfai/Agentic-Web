@@ -4,39 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "e6602fef591e91fd",
+        "id": "8a48cdd35851a7d5",
         "type": "tabs",
         "children": [
           {
-            "id": "5f83866c1c58f804",
+            "id": "3009194352e5084b",
             "type": "leaf",
-            "pinned": true,
             "state": {
               "type": "graph",
               "state": {},
-              "pinned": true,
               "icon": "lucide-git-fork",
               "title": "Graph view"
-            }
-          }
-        ]
-      },
-      {
-        "id": "79045ee17d59b1f9",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "2338fd467724e071",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ast-cache/code/calculator/Calculator.run_interactive.ast.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Calculator.run_interactive.ast"
             }
           }
         ]
@@ -92,8 +70,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -185,44 +162,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "2338fd467724e071",
+  "active": "3009194352e5084b",
   "lastOpenFiles": [
-    "ast-cache/code/calculator/Calculator._parse_and_calculate.ast.md",
-    "ast-cache/code/calculator/Calculator.run_interactive.ast.md",
-    "ast-cache/code/calculator/Calculator.ast.md",
-    "maintenance_scripts/generate_ast.py.tmp.41484.1761005149756",
-    "code/calculator.py",
-    "ast-cache/code/test_operations/TestPowerOperations.test_power.ast.md",
-    "maintenance_scripts/generate_ast.py.tmp.41484.1761005022480",
-    "README.md.tmp.41484.1761004877830",
-    "README.md.tmp.41484.1761004809509",
-    "README.md.tmp.41484.1761004802322",
-    "maintenance_scripts/janitor.py.tmp.41484.1761004636759",
-    "maintenance_scripts/generate_tags.py.tmp.41484.1761004621067",
-    "maintenance_scripts/generate_tags.py.tmp.41484.1761004493227",
-    "whiteboard/janitor/01-error-tag-index.md",
-    "maintenance_scripts/janitor.py.tmp.41484.1761004413385",
-    "whiteboard/janitor/02-error-getting-started.md",
-    "whiteboard/janitor/01-error-README.md",
-    "project_config/README.md",
-    "maintenance_scripts/whiteboard/janitor/00-summary.md",
-    "maintenance_scripts/whiteboard/graph-metrics.md",
-    "maintenance_scripts/index/tag-index.md",
-    "maintenance_scripts/index/repository-map.md",
-    "CLAUDE.md",
-    "obsidian/getting-started.md",
-    "README.md",
-    "whiteboard/janitor/02-error-Untitled.canvas.md",
-    "whiteboard/janitor/01-error-2025-10-21.md",
-    "index/Untitled.canvas.md",
-    "Untitled.canvas",
-    "2025-10-21.md",
-    "obsidian/architecture-overview.md",
-    "ast-cache/code/test_operations/TestTrigonometric.test_asin_domain_error.ast.md",
-    "whiteboard/janitor/14-error-Calculator.run_interactive.ast.md",
-    "whiteboard/janitor/13-error-Calculator.calculate.ast.md",
-    "whiteboard/janitor/12-error-Calculator.calculate.ast.md",
-    "whiteboard/janitor/11-error-Calculator.ast.md",
-    "whiteboard/janitor/10-error-Calculator.ast.md"
+    "whiteboard/janitor/207-error-mean.ast.md",
+    "whiteboard/janitor/206-error-mean.ast.md",
+    "whiteboard/janitor/205-error-mean.ast.md",
+    "whiteboard/janitor/204-error-mean.ast.md",
+    "whiteboard/janitor/203-error-mean.ast.md",
+    "whiteboard/janitor/202-error-present_value.ast.md",
+    "whiteboard/janitor/201-error-present_value.ast.md",
+    "whiteboard/janitor/200-error-present_value.ast.md",
+    "whiteboard/janitor/199-error-present_value.ast.md",
+    "whiteboard/janitor/198-error-present_value.ast.md",
+    "whiteboard/janitor/197-error-PLUGIN_OPERATIONS.ast.md",
+    "whiteboard/janitor/196-error-PLUGIN_OPERATIONS.ast.md",
+    "whiteboard/janitor/195-error-npv.ast.md",
+    "whiteboard/janitor/194-error-npv.ast.md",
+    "whiteboard/janitor/193-error-npv.ast.md",
+    "whiteboard/janitor/192-error-npv.ast.md",
+    "whiteboard/janitor/191-error-npv.ast.md",
+    "whiteboard/janitor/190-error-loan_payment.ast.md",
+    "whiteboard/janitor/152-error-PluginSystem._notify_observers.ast.md",
+    "whiteboard/janitor/149-error-PluginSystem.unload_plugin.ast.md",
+    "whiteboard/janitor/146-error-PluginSystem.reload_plugin.ast.md",
+    "whiteboard/janitor/145-error-PluginSystem.reload_plugin.ast.md",
+    "whiteboard/janitor/144-error-PluginSystem.reload_plugin.ast.md",
+    "whiteboard/janitor/143-error-PluginSystem.register_observer.ast.md",
+    "whiteboard/janitor/142-error-PluginSystem.register_observer.ast.md",
+    "whiteboard/janitor/141-error-PluginSystem.register_observer.ast.md",
+    "whiteboard/wikilink-cleanup-todo.md.tmp.42184.1761006362274",
+    "whiteboard/wikilink-cleanup-todo.md.tmp.42184.1761006353925",
+    "whiteboard/wikilink-cleanup-todo.md.tmp.42184.1761006343227",
+    "whiteboard/plugin-system-checkpoint.md.tmp.42184.1761006215523",
+    "whiteboard/plugin-system-checkpoint.md.tmp.42184.1761006206961",
+    "CLAUDE.md.tmp.42184.1761006114077",
+    "maintenance_scripts/janitor.py.tmp.42184.1761006085879",
+    "maintenance_scripts/janitor.py.tmp.42184.1761006078020",
+    "maintenance_scripts/janitor.py.tmp.42184.1761006061902",
+    "maintenance_scripts/janitor.py.tmp.42184.1761006027502",
+    "Untitled.canvas"
   ]
 }

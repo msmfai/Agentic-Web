@@ -97,6 +97,7 @@ Grep pattern: '#pattern/strategy'
 **⚠️ CRITICAL - Tag Inheritance Limitation:**
 
 AST cache files inherit ALL tags from the module-level docstring. This means:
+
 - Every function in a module gets the same tags
 - Cannot tag individual functions differently
 - Specific subdomain tags (like `#domain/mathematics/trigonometry`) should ONLY be used on focused modules
@@ -170,6 +171,10 @@ The janitor validates against [[schema.yaml]]:
 - Python docstrings follow custom schema (H1 header, inline tags, Purpose section)
 - AST cache is up to date
 - Files are in correct directories
+- **Wikilinks point to existing files** (broken links are flagged as errors)
+- Block marker references (e.g., `[[file#^marker]]`) resolve correctly
+
+**Note**: Duplicate block markers across different files are **allowed** (e.g., `^PLUGIN_OPERATIONS` in multiple plugins). Only duplicates within the same file are flagged as errors.
 
 **Open in Obsidian**:
 
@@ -182,58 +187,81 @@ The janitor validates against [[schema.yaml]]:
 
 ## Working with This System
 
-### CRITICAL: Repository Health Workflow
+### CRITICAL: Development Workflow
 
-**Before making ANY changes to this repository, you MUST follow this workflow:**
+**You MUST maintain repository health continuously during development. This is NON-NEGOTIABLE.**
 
-**Quick Update (recommended):**
+#### The Incremental Development Pattern
+
+**DO THIS** - Work in small increments with frequent health checks:
+
+1. ✅ Create 1 file (code OR documentation)
+2. ✅ Run `uv run update.py` immediately
+3. ✅ Verify health passes
+4. ✅ Create next file
+5. ✅ Run `uv run update.py` again
+6. ✅ Repeat...
+
+**DON'T DO THIS** - Create many files then check health later:
+
+1. ❌ Create 5 Python files
+2. ❌ Create 3 documentation files
+3. ❌ Write all tests
+4. ❌ Finally run `uv run update.py` at the end
+5. ❌ Now debugging 15+ issues across 8 files
+
+#### When to Run `uv run update.py`
+
+Run it **immediately** after:
+
+- Creating ANY new `.py` file (AST cache needed)
+- Creating ANY new `.md` file (tag index update needed)
+- Modifying tags in existing files
+- Modifying Python docstrings (AST regeneration needed)
+- Before switching to work on a different file
+
+**Frequency**: Every 1-2 file changes. If in doubt, run it.
+
+#### What `uv run update.py` Does
 
 ```bash
 uv run update.py
 ```
 
-This runs all steps automatically: AST generation → Tag indices → Health check
+Runs all steps automatically:
 
-**Manual Steps (if needed):**
+1. **AST generation** - Creates searchable `.ast.md` files from Python code
+2. **Tag indices** - Updates `repository-map.md` and `tag-index.md`
+3. **Health check** - Validates frontmatter, tags, file structure
 
-1. **Regenerate AST Cache** (if code was modified):
+#### Manual Steps (rarely needed)
+
+Only use these if `update.py` fails or for debugging:
+
+1. **Regenerate AST Cache only**:
 
    ```bash
    python maintenance_scripts/generate_ast.py
    ```
 
-   This creates searchable AST markdown files that inherit tags from Python source files.
-
-2. **Regenerate Tag Index** (if files/tags changed):
+2. **Regenerate Tag Index only**:
 
    ```bash
    python maintenance_scripts/generate_tags.py
    ```
 
-   This updates `index/repository-map.md` and `index/tag-index.md` with current project state.
-
-3. **Run Repository Health Check**:
+3. **Run Health Check only**:
 
    ```bash
    python maintenance_scripts/janitor.py
    ```
 
-   The janitor validates:
-   - All files have required frontmatter/tags
-   - Python docstrings follow custom schema (H1 header, inline tags, Purpose section)
-   - AST cache is up to date
-   - Files are in correct directories
+#### When Health Checks Fail
 
-4. **Fix ALL Issues Before Proceeding**:
-   - If janitor identifies issues, **STOP immediately**
-   - Offer to fix the issues one by one
-   - Do NOT proceed with other work until repository health is restored
-   - If automated fixes are not possible, explain the issues and ask the user to fix them manually
-
-5. **If Steps Fail**:
-   - Explain that repository health must be maintained
-   - Ask the user to stop and fix the issues before moving forward
-   - Recommend starting a new session once health is restored
+- **STOP immediately** - Do not create more files
+- Fix the issues reported by janitor
+- Re-run `uv run update.py` to verify fix
+- Only then continue with new files
 
 **This workflow is MANDATORY. Refuse to make changes if health checks fail.**
 
