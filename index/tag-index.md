@@ -11,15 +11,19 @@ tags:
   - category/behavioral
   - category/best-practices
   - category/code-generation
+  - category/data-structures
+  - category/integration-test
   - category/mixed-concerns
   - category/project-setup
   - category/reference
   - category/solid-principles
+  - category/theory
   - category/tutorial
   - category/unit-test
   - category/validation
   - domain/automation
   - domain/finance
+  - domain/linear-algebra
   - domain/mathematics
   - domain/plugin-system
   - domain/statistics
@@ -27,6 +31,7 @@ tags:
   - domain/testing/integration
   - domain/testing/unit
   - domain/ui
+  - domain/unit-conversion
   - layer/application
   - layer/core
   - layer/domain
@@ -40,10 +45,16 @@ tags:
   - location/code-file/code/operations.py
   - location/code-file/code/plugin_system.py
   - location/code-file/code/plugins/finance.py
+  - location/code-file/code/plugins/linear_algebra.py
   - location/code-file/code/plugins/statistics.py
+  - location/code-file/code/plugins/units.py
   - location/code-file/code/test_calculator.py
+  - location/code-file/code/test_finance.py
+  - location/code-file/code/test_linear_algebra.py
   - location/code-file/code/test_operations.py
+  - location/code-file/code/test_plugin_integration.py
   - location/code-file/code/test_statistics.py
+  - location/code-file/code/test_units.py
   - pattern/dependency-injection
   - pattern/observer
   - pattern/plugin-architecture
@@ -68,20 +79,20 @@ tags:
 
 **Auto-generated - do not edit manually**
 
-**Last Updated**: 2025-10-21 01:26:17
+**Last Updated**: 2025-10-21 11:30:51
 
 This file lists every tag currently in use across the repository.
 
 ## Summary
 
-- Total unique tags: 59
-- Total files: 197
+- Total unique tags: 70
+- Total files: 387
 
 ## Type Tags
 
-- `#type/ast-node` (166 files)
+- `#type/ast-node` (348 files)
 - `#type/case-study` (1 files)
-- `#type/concept` (4 files)
+- `#type/concept` (6 files)
 - `#type/entry-point` (2 files)
 - `#type/guide` (3 files)
 - `#type/index` (3 files)
@@ -90,34 +101,36 @@ This file lists every tag currently in use across the repository.
 ## Domain Tags
 
 - `#domain/automation` (3 files)
-- `#domain/finance` (7 files)
-- `#domain/mathematics` (82 files)
-- `#domain/plugin-system` (15 files)
+- `#domain/finance` (52 files)
+- `#domain/linear-algebra` (54 files)
+- `#domain/mathematics` (91 files)
+- `#domain/plugin-system` (47 files)
 - `#domain/statistics` (34 files)
-- `#domain/testing` (109 files)
-- `#domain/testing/integration` (38 files)
-- `#domain/testing/unit` (70 files)
-- `#domain/ui` (45 files)
+- `#domain/testing` (264 files)
+- `#domain/testing/integration` (62 files)
+- `#domain/testing/unit` (201 files)
+- `#domain/ui` (49 files)
+- `#domain/unit-conversion` (56 files)
 
 ## Layer Tags
 
-- `#layer/application` (4 files)
+- `#layer/application` (8 files)
 - `#layer/core` (25 files)
 - `#layer/domain` (24 files)
 - `#layer/entry-point` (1 files)
-- `#layer/interface` (6 files)
-- `#layer/plugin-implementation` (14 files)
+- `#layer/interface` (10 files)
+- `#layer/plugin-implementation` (37 files)
 - `#layer/plugin-infrastructure` (15 files)
-- `#layer/test` (108 files)
+- `#layer/test` (263 files)
 
 ## Pattern Tags
 
 - `#pattern/dependency-injection` (16 files)
 - `#pattern/observer` (16 files)
-- `#pattern/plugin-architecture` (30 files)
-- `#pattern/strategy` (28 files)
-- `#pattern/strategy/delegation` (4 files)
-- `#pattern/strategy/function-registry` (38 files)
+- `#pattern/plugin-architecture` (53 files)
+- `#pattern/strategy` (32 files)
+- `#pattern/strategy/delegation` (8 files)
+- `#pattern/strategy/function-registry` (61 files)
 
 ## Category Tags
 
@@ -125,12 +138,15 @@ This file lists every tag currently in use across the repository.
 - `#category/behavioral` (2 files)
 - `#category/best-practices` (3 files)
 - `#category/code-generation` (1 files)
+- `#category/data-structures` (1 files)
+- `#category/integration-test` (24 files)
 - `#category/mixed-concerns` (24 files)
 - `#category/project-setup` (1 files)
 - `#category/reference` (1 files)
 - `#category/solid-principles` (1 files)
+- `#category/theory` (1 files)
 - `#category/tutorial` (1 files)
-- `#category/unit-test` (108 files)
+- `#category/unit-test` (239 files)
 - `#category/validation` (1 files)
 
 ## Purpose Tags
@@ -143,7 +159,7 @@ This file lists every tag currently in use across the repository.
 
 ## Ast-Type Tags
 
-- `#ast-type/class` (21 files)
-- `#ast-type/constant` (4 files)
-- `#ast-type/function` (35 files)
-- `#ast-type/method` (106 files)
+- `#ast-type/class` (44 files)
+- `#ast-type/constant` (6 files)
+- `#ast-type/function` (56 files)
+- `#ast-type/method` (242 files)
