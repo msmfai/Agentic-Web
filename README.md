@@ -139,6 +139,26 @@ This demonstration contains:
 
 All interconnected through wikilinks. All navigable as a knowledge graph.
 
+## Directory Structure
+
+```text
+📁 Root/
+├── 📁 code/                  # Source code
+├── 📁 obsidian/              # Documentation (markdown files)
+├── 📁 project_config/        # Project-specific tag rules and configuration
+├── 📁 maintenance_scripts/   # Framework tools (janitor, generators, etc.)
+├── 📁 ast-cache/             # Generated AST representations (auto-updated)
+├── 📁 index/                 # Generated indices (auto-updated)
+├── 📁 whiteboard/            # Generated reports (auto-updated)
+├── 📄 README.md              # Human entry point
+├── 📄 CLAUDE.md              # AI agent instructions
+├── 📄 schema.yaml            # Scaffold schema definitions
+├── 📄 update.py              # Regenerate all generated content
+└── 📄 pyproject.toml         # Python dependencies
+```
+
+**Key Principle**: User content (`code/`, `obsidian/`, `project_config/`) stays separate from generated content (`ast-cache/`, `index/`, `whiteboard/`).
+
 ## Key Features
 
 ### Bidirectional Links
